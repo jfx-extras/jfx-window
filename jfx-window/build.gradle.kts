@@ -5,7 +5,7 @@ plugins {
     java
     `java-library`
     `maven-publish`
-    id("org.jetbrains.dokka") version "0.9.17"
+    id("org.jetbrains.dokka") version "0.9.18"
     id("com.github.johnrengelman.shadow") version "5.0.0"
 }
 
