@@ -7,6 +7,7 @@ import jfxwindow.enums.ButtonStyle
 import jfxwindow.enums.ShadowStyle
 import jfxwindow.enums.TitleAlignment
 import jfxwindow.enums.TitleShadowDepth
+import sun.font.FontFamily
 import java.io.File
 
 internal class WindowOptions(stageInstance: Stage) {
@@ -75,7 +76,7 @@ internal class WindowOptions(stageInstance: Stage) {
     @set:JvmSynthetic @get:JvmSynthetic
     internal var titleTextSize: Double = 12.0
     @set:JvmSynthetic @get:JvmSynthetic
-    internal var titleTextFont: String = "Segoe UI"
+    internal var titleTextFont: FontFamily = FontFamily.getFamily("Segoe Ui")
 
     @set:JvmSynthetic @get:JvmSynthetic
     internal var titleBarBackground: Color = Color.web("#FFFFFF")
