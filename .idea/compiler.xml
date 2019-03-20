@@ -3,7 +3,6 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
       <module name="jfx-window.kdemo.test" target="1.8" />
-      <module name="jfx-window.test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
