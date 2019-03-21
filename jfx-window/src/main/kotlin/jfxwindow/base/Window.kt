@@ -447,8 +447,6 @@ class Window(private val stage: Stage) {
         WindowBuilderHelper.validateStageOnNull(stage)
         WindowBuilderHelper.validateStageStyle(stage)
         windowBase.windowOptions.stage = stage
-        
-        applyBuildProperties()
         return this
     }
 
@@ -472,7 +470,7 @@ class Window(private val stage: Stage) {
         return this
     }
 
-    private fun applyBuildProperties() {
-//        applyWindowPartBuildProperties()
+    private fun applyCreateProperties() {
+
     }
 }
