@@ -73,7 +73,7 @@ internal class WindowOptions(stageInstance: Stage) {
     @set:JvmSynthetic @get:JvmSynthetic
     internal var titleIsVisible: Boolean = true
     @set:JvmSynthetic @get:JvmSynthetic
-    internal var titleText: String = if (stageInstance.title != null) stageInstance.title else domain
+    internal var titleText: String = if (!stageInstance.title.isNullOrEmpty()) stageInstance.title else domain
     @set:JvmSynthetic @get:JvmSynthetic
     internal var titleTextSize: Double = 12.0
     @set:JvmSynthetic @get:JvmSynthetic
