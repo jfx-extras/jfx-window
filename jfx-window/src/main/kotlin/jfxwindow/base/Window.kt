@@ -466,7 +466,7 @@ class Window(private val stage: Stage) {
 //
 //        applyCreateProperties()
 //
-//        windowBase.contentPart.returnUserContent()
+        windowBase.contentPart.returnUserContent()
         return this
     }
 
