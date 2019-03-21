@@ -3,6 +3,7 @@ package jfxwindow.base
 import javafx.geometry.NodeOrientation
 import javafx.scene.paint.Color
 import javafx.stage.Stage
+import javafx.util.Duration
 import jfxwindow.enums.ButtonStyle
 import jfxwindow.enums.ShadowStyle
 import jfxwindow.enums.TitleAlignment
@@ -20,11 +21,11 @@ class Window(private val stage: Stage) {
     /**
      * Animation duration for background color changing of title-bar zone.
      *
-     * @param [seconds] animation duration time.
+     * @param [duration] animation duration time.
      * @return [Window] instance of window builder.
      */
-    fun animationDuration(seconds: Double): Window {
-        windowBase.windowOptions.animationDuration = seconds
+    fun animationDuration(duration: Duration): Window {
+        windowBase.windowOptions.animationDuration = duration
         return this
     }
 

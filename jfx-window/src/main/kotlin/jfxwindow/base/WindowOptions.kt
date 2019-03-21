@@ -3,6 +3,7 @@ package jfxwindow.base
 import javafx.geometry.NodeOrientation
 import javafx.scene.paint.Color
 import javafx.stage.Stage
+import javafx.util.Duration
 import jfxwindow.enums.ButtonStyle
 import jfxwindow.enums.ShadowStyle
 import jfxwindow.enums.TitleAlignment
@@ -19,7 +20,7 @@ internal class WindowOptions(stageInstance: Stage) {
     ).name
 
     @set:JvmSynthetic @get:JvmSynthetic
-    internal var animationDuration: Double = 0.2
+    internal var animationDuration: Duration = Duration.millis(200.0)
     @set:JvmSynthetic @get:JvmSynthetic
     internal var smoothColorAnimation: Boolean = true
 
