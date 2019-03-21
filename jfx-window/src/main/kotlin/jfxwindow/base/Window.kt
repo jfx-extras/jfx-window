@@ -434,6 +434,11 @@ class Window(private val stage: Stage) {
      * It method do some checks on compatibility and set stage value
      * to default options instance.
      *
+     * **WARN: It method recommended use BEFORE creating \ showing stage!!!**
+     *
+     * After calling [build] method, you must call [create] method for
+     * creating jfx-window.
+     *
      * @return [Window] instance of window builder.
      */
     fun build(): Window {
@@ -449,6 +454,10 @@ class Window(private val stage: Stage) {
     /**
      * It method create jfx-window and base tasks to
      * produce great and cool window for you ^_^
+     *
+     * **IMPORTANT: This method requires calling [build] method!!!**
+     *
+     * **WARN: It method must called AFTER creating \ showing stage!!!**
      *
      * @return [Window] instance of window builder.
      */
