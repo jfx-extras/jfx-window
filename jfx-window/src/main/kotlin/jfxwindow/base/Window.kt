@@ -461,8 +461,8 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun create(): Window {
-//        windowBase.contentPart.prepareUserWorkspace(stage)
-//        windowBase.titleBarUi.assignBaseUi(stage)
+        windowBase.contentPart.prepareUserWorkspace(stage)
+        windowBase.windowUi.assignBaseUi(stage)
 //
 //        applyCreateProperties()
 //

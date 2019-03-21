@@ -34,8 +34,8 @@ class ContentPart(private val windowUiInstance: WindowUi) {
     @JvmSynthetic
     internal fun returnUserContent() {
         userContent.forEach {
-            //windowUiInstance.titleBar.center.getChildList()?.clear()
-            //windowUiInstance.titleBar.center.addChildIfPossible(it)
+            windowUiInstance.windowPane.center.getChildList()?.clear()
+            //windowUiInstance.windowPane.center.addChildIfPossible(it)
         }
     }
 
