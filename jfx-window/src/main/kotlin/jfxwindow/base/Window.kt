@@ -8,6 +8,7 @@ import jfxwindow.enums.ButtonStyle
 import jfxwindow.enums.ShadowStyle
 import jfxwindow.enums.TitleAlignment
 import jfxwindow.enums.TitleShadowDepth
+import jfxwindow.helpers.WindowBuilderHelper
 import sun.font.FontFamily
 
 /**
@@ -442,12 +443,12 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun build(): Window {
-//        KBuildHelper.validateJVMVersion()
-//        KBuildHelper.validateStageOnNull(stage)
+        WindowBuilderHelper.validateJVMVersion()
+        WindowBuilderHelper.validateStageOnNull(stage)
+        WindowBuilderHelper.validateStageStyle(stage)
         windowBase.windowOptions.stage = stage
-
+        
         applyBuildProperties()
-
         return this
     }
 
