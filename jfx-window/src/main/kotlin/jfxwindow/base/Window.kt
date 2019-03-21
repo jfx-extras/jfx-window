@@ -56,22 +56,22 @@ class Window(private val stage: Stage) {
     /**
      * Border fill color of application window color.
      *
-     * @param [borderColor] color for fill border.
+     * @param [fillColor] color for fill border.
      * @return [Window] instance of window builder.
      */
-    fun borderColor(borderColor: Color): Window {
-        windowBase.windowOptions.borderColor = borderColor
+    fun borderColor(fillColor: Color): Window {
+        windowBase.windowOptions.borderColor = fillColor
         return this
     }
 
     /**
      * Border fill color of unfocused application window color.
      *
-     * @param [borderColor] color for fill border.
+     * @param [fillColor] color for fill border.
      * @return [Window] instance of window builder.
      */
-    fun borderInactiveColor(borderColor: Color): Window {
-        windowBase.windowOptions.borderInactiveColor = borderColor
+    fun borderInactiveColor(fillColor: Color): Window {
+        windowBase.windowOptions.borderInactiveColor = fillColor
         return this
     }
 
@@ -117,11 +117,11 @@ class Window(private val stage: Stage) {
      * **WARN: It not restrict Alt + F4 key's, if you need
      * restrict it - make it self.**
      *
-     * @param [isEnabled] ability status for close window.
+     * @param [isAble] ability status for close window.
      * @return [Window] instance of window builder.
      */
-    fun isClosable(isEnabled: Boolean): Window {
-        windowBase.windowOptions.isClosable = isEnabled
+    fun isClosable(isAble: Boolean): Window {
+        windowBase.windowOptions.isClosable = isAble
         return this
     }
 
@@ -140,11 +140,11 @@ class Window(private val stage: Stage) {
      * Controlling ability to maximize window with button or
      * maximize with context-menu.
      *
-     * @param [isEnabled] ability status for maximize window.
+     * @param [isAble] ability status for maximize window.
      * @return [Window] instance of window builder.
      */
-    fun isMaximizable(isEnabled: Boolean): Window {
-        windowBase.windowOptions.isMaximizable = isEnabled
+    fun isMaximizable(isAble: Boolean): Window {
+        windowBase.windowOptions.isMaximizable = isAble
         return this
     }
 
@@ -163,11 +163,11 @@ class Window(private val stage: Stage) {
      * Controlling ability to minimize window with button or
      * minimize with context-menu.
      *
-     * @param [isEnabled] ability status for minimize window.
+     * @param [isAble] ability status for minimize window.
      * @return [Window] instance of window builder.
      */
-    fun isMinimizable(isEnabled: Boolean): Window {
-        windowBase.windowOptions.isMinimizable = isEnabled
+    fun isMinimizable(isAble: Boolean): Window {
+        windowBase.windowOptions.isMinimizable = isAble
         return this
     }
 
@@ -289,11 +289,11 @@ class Window(private val stage: Stage) {
     /**
      * TitleBar title text font family or just font name.
      *
-     * @param [fontName] font name of text for title.
+     * @param [fontFamily] font name of text for title.
      * @return [Window] instance of window builder.
      */
-    fun titleTextFont(fontName: FontFamily): Window {
-        windowBase.windowOptions.titleTextFont = fontName
+    fun titleTextFont(fontFamily: FontFamily): Window {
+        windowBase.windowOptions.titleTextFont = fontFamily
         return this
     }
 
