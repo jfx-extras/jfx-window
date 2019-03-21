@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
+
+<BorderPane fx:id="windowShadowPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+    <center>
+        <BorderPane fx:id="windowPane">
+            <center>
+                <Pane fx:id="contentPane" prefHeight="0.0" prefWidth="0.0"/>
+            </center>
+            <top>
+                <BorderPane fx:id="windowTitleBarPane" prefHeight="32.0" prefWidth="603.0">
+                    <left>
+                        <HBox alignment="CENTER_LEFT" prefHeight="32.0" BorderPane.alignment="CENTER">
+                            <ImageView fx:id="icon" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true"
+                                       preserveRatio="true">
+                                <viewport>
+                                    <Rectangle2D/>
+                                </viewport>
+                                <HBox.margin>
+                                    <Insets left="10.0" right="-5.0"/>
+                                </HBox.margin>
+                            </ImageView>
+                            <WebView fx:id="svgIcon" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0"
+                                     prefHeight="20.0" prefWidth="20.0">
+                                <HBox.margin>
+                                    <Insets left="10.0" right="-5.0"/>
+                                </HBox.margin>
+                            </WebView>
+                            <Label fx:id="title" mouseTransparent="true" prefHeight="32.0" textFill="#111111">
+                                <opaqueInsets>
+                                    <Insets/>
+                                </opaqueInsets>
+                                <HBox.margin>
+                                    <Insets left="15.0"/>
+                                </HBox.margin>
+                            </Label>
+                        </HBox>
+                    </left>
+                    <right>
+                        <HBox fx:id="buttonContainer" alignment="CENTER_RIGHT" prefHeight="32.0"
+                              BorderPane.alignment="CENTER_RIGHT">
+                            <HBox fx:id="win32MinButton" alignment="CENTER" prefHeight="32.0" prefWidth="47.0">
+                                <SVGPath fx:id="win32MinIcon" content="M11 4.399V5.5H0V4.399h11z" smooth="false"
+                                         stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0"/>
+                            </HBox>
+                            <HBox fx:id="win32MaxButton" alignment="CENTER" prefHeight="32.0" prefWidth="47.0">
+                                <HBox.margin>
+                                    <Insets/>
+                                </HBox.margin>
+                                <SVGPath fx:id="win32MaxIcon" content="M11 0v11H0V0h11zM9.899 1.101H1.1V9.9h8.8V1.1z"
+                                         smooth="false" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE"
+                                         strokeWidth="0.0"/>
+                            </HBox>
+                            <HBox fx:id="win32UnMaxButton" alignment="CENTER" layoutX="55.0" layoutY="10.0"
+                                  prefHeight="32.0" prefWidth="47.0">
+                                <SVGPath fx:id="win32UnMaxIcon"
+                                         content="M11 8.798H8.798V11H0V2.202h2.202V0H11v8.798zm-3.298-5.5h-6.6v6.6h6.6v-6.6zM9.9 1.1H3.298v1.101h5.5v5.5h1.1v-6.6z"
+                                         smooth="false" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE"
+                                         strokeWidth="0.0"/>
+                            </HBox>
+                            <HBox fx:id="win32CloseButton" alignment="CENTER" prefHeight="32.0" prefWidth="47.0">
+                                <SVGPath fx:id="win32CloseIcon"
+                                         content="M 3.609375 2.890625 L 2.890625 3.609375 L 7.28125 8 L 2.890625 12.390625 L 3.609375 13.109375 L 8 8.71875 L 12.390625 13.109375 L 13.109375 12.390625 L 8.71875 8 L 13.109375 3.609375 L 12.390625 2.890625 L 8 7.28125 Z "
+                                         fill="BLACK" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0"/>
+                            </HBox>
+                        </HBox>
+                    </right>
+                    <center>
+                        <Label fx:id="titleCenter" alignment="CENTER" prefHeight="32.0" text="Application"
+                               textAlignment="CENTER" textFill="#111111" visible="false" BorderPane.alignment="CENTER">
+                            <font>
+                                <Font size="14.0"/>
+                            </font>
+                            <BorderPane.margin>
+                                <Insets left="67.0"/>
+                            </BorderPane.margin>
+                        </Label>
+                    </center>
+                </BorderPane>
+            </top>
+            <right>
+                <Pane fx:id="rightBorder" prefHeight="370.0" prefWidth="1.0" BorderPane.alignment="CENTER">
+                    <BorderPane.margin>
+                        <Insets top="-32.0"/>
+                    </BorderPane.margin>
+                </Pane>
+            </right>
+            <bottom>
+                <Pane fx:id="bottomBorder" prefHeight="1.0" prefWidth="200.0" BorderPane.alignment="CENTER"/>
+            </bottom>
+            <left>
+                <Pane fx:id="leftBorder" prefHeight="370.0" prefWidth="1.0" BorderPane.alignment="CENTER">
+                    <BorderPane.margin>
+                        <Insets top="-32.0"/>
+                    </BorderPane.margin>
+                </Pane>
+            </left>
+            <BorderPane.margin>
+                <Insets bottom="18.0" left="18.0" right="18.0" top="18.0"/>
+            </BorderPane.margin>
+        </BorderPane>
+    </center>
+</BorderPane>
