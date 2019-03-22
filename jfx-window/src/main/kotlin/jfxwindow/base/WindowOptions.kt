@@ -2,13 +2,13 @@ package jfxwindow.base
 
 import javafx.geometry.NodeOrientation
 import javafx.scene.paint.Color
+import javafx.scene.text.Font
 import javafx.stage.Stage
 import javafx.util.Duration
 import jfxwindow.enums.ButtonStyle
 import jfxwindow.enums.ShadowStyle
 import jfxwindow.enums.TitleAlignment
 import jfxwindow.enums.TitleShadowDepth
-import sun.font.FontFamily
 import java.io.File
 
 internal class WindowOptions(stageInstance: Stage) {
@@ -77,7 +77,7 @@ internal class WindowOptions(stageInstance: Stage) {
     @set:JvmSynthetic @get:JvmSynthetic
     internal var titleTextSize: Double = 12.0
     @set:JvmSynthetic @get:JvmSynthetic
-    internal var titleTextFont: FontFamily = FontFamily.getFamily("Segoe Ui")
+    internal var titleTextFont: Font = Font.getDefault()
 
     @set:JvmSynthetic @get:JvmSynthetic
     internal var titleBarBackground: Color = Color.web("#FFFFFF")

@@ -2,6 +2,7 @@ package jfxwindow.base
 
 import javafx.geometry.NodeOrientation
 import javafx.scene.paint.Color
+import javafx.scene.text.Font
 import javafx.stage.Stage
 import javafx.util.Duration
 import jfxwindow.enums.ButtonStyle
@@ -9,7 +10,6 @@ import jfxwindow.enums.ShadowStyle
 import jfxwindow.enums.TitleAlignment
 import jfxwindow.enums.TitleShadowDepth
 import jfxwindow.helpers.WindowBuilderHelper
-import sun.font.FontFamily
 
 /**
  * Base jfx-window library window constructor and builder.
@@ -290,11 +290,11 @@ class Window(private val stage: Stage) {
     /**
      * TitleBar title text font family or just font name.
      *
-     * @param [fontFamily] font name of text for title.
+     * @param [font] font name of text for title.
      * @return [Window] instance of window builder.
      */
-    fun titleTextFont(fontFamily: FontFamily): Window {
-        windowBase.windowOptions.titleTextFont = fontFamily
+    fun titleTextFont(font: Font): Window {
+        windowBase.windowOptions.titleTextFont = font
         return this
     }
 
