@@ -64,12 +64,12 @@ class ContextPart {
 
         val contextMenu = ContextMenu()
         val restore = MenuItem("${spacing}Restore", restoreSvg)
-        restore.accelerator = KeyCombination.keyCombination("ALT+F4")
         val move = MenuItem("${spacing}Move")
         val size = MenuItem("${spacing}Size")
         val maximize = MenuItem("${spacing}Minimize", minSvg)
         val minimize = MenuItem("${spacing}Maximize", maxSvg)
         val close = MenuItem("${spacing}Close", closeSvg)
+        close.accelerator = KeyCombination.keyCombination("ALT+F4")
 
         contextMenu.items.addAll(restore, move, size, minimize, maximize, SeparatorMenuItem(), close)
 
