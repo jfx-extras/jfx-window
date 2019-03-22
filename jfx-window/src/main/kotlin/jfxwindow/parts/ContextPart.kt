@@ -99,53 +99,39 @@ class ContextPart {
         }
 
         restore.setOnAction {
-            if (it == MouseEvent.MOUSE_CLICKED) {
-                windowOptionsInstance.stage.isMaximized = false
-            }
+            windowOptionsInstance.stage.isMaximized = false
         }
 
         maximize.setOnAction {
-            if (it == MouseEvent.MOUSE_CLICKED) {
-                windowOptionsInstance.stage.isMaximized = true
-            }
+            windowOptionsInstance.stage.isMaximized = true
         }
 
         close.setOnAction {
-            if (it == MouseEvent.MOUSE_CLICKED) {
-                windowOptionsInstance.stage.close()
-            }
+            windowOptionsInstance.stage.close()
         }
 
         minimize.setOnAction {
-            if (it == MouseEvent.MOUSE_CLICKED) {
-                windowOptionsInstance.stage.isIconified = true
-            }
+            windowOptionsInstance.stage.isIconified = true
         }
 
         move.setOnAction {
-            if (it == MouseEvent.MOUSE_CLICKED) {
-                windowOptionsInstance.stage.scene.cursor = Cursor.MOVE
+            windowOptionsInstance.stage.scene.cursor = Cursor.MOVE
 
-                val stageX = windowOptionsInstance.stage.x
-                val stageCenterX = windowOptionsInstance.stage.width
-                val cursorCenterX = stageX + (stageCenterX / 2)
+            val stageX = windowOptionsInstance.stage.x
+            val stageCenterX = windowOptionsInstance.stage.width
+            val cursorCenterX = stageX + (stageCenterX / 2)
 
-                val stageY = windowOptionsInstance.stage.y
-                val cursorCenterY = stageY + 35
+            val stageY = windowOptionsInstance.stage.y
+            val cursorCenterY = stageY + 35
 
-                Robot().mouseMove(cursorCenterX.toInt(), cursorCenterY.toInt())
-            }
+            Robot().mouseMove(cursorCenterX.toInt(), cursorCenterY.toInt())
         }
 
         size.setOnAction {
-            if (it == MouseEvent.MOUSE_CLICKED) {
-                windowOptionsInstance.stage.scene.cursor = Cursor.NW_RESIZE
-
-                val stageX = windowOptionsInstance.stage.x + 18
-                val stageY = windowOptionsInstance.stage.y + 18
-
-                Robot().mouseMove(stageX.toInt(), stageY.toInt())
-            }
+            windowOptionsInstance.stage.scene.cursor = Cursor.NW_RESIZE
+            val stageX = windowOptionsInstance.stage.x + 18
+            val stageY = windowOptionsInstance.stage.y + 18
+            Robot().mouseMove(stageX.toInt(), stageY.toInt())
         }
 
         windowUiInstance.windowTitleBarPane.setOnContextMenuRequested { e ->
