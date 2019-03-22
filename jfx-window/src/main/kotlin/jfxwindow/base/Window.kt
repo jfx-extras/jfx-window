@@ -463,14 +463,28 @@ class Window(private val stage: Stage) {
     fun create(): Window {
         windowBase.contentPart.prepareUserWorkspace(stage)
         windowBase.windowUi.assignBaseUi(stage)
-//
-//        applyCreateProperties()
-//
+        applyCreateProperties()
         windowBase.contentPart.returnUserContent()
         return this
     }
 
     private fun applyCreateProperties() {
+        windowBase.animationHelper.windowPart = windowBase.windowPart
 
+        windowBase.windowPart.windowUiInstance = windowBase.windowUi
+        windowBase.windowPart.contextPart = windowBase.contextPart
+        windowBase.windowPart.isResizable = windowBase.windowOptions.isResizable
+        windowBase.windowPart.isDraggable = windowBase.windowOptions.isDraggable
+        windowBase.windowPart.isMaximizable = windowBase.windowOptions.isMaximizable
+        windowBase.windowPart.isMinimizable = windowBase.windowOptions.isMinimizable
+        windowBase.windowPart.isClosable = windowBase.windowOptions.isClosable
+        windowBase.windowPart.animationDuration = windowBase.windowOptions.animationDuration
+        windowBase.windowPart.smoothColorAnim = windowBase.windowOptions.smoothColorAnimation
+
+        windowBase.contextPart.windowUiInstance = windowBase.windowUi
+        windowBase.contextPart.windowOptionsInstance = windowBase.windowOptions
+        windowBase.contextPart.windowPart = windowBase.windowPart
+
+        windowBase.contextPart.applyContextMenuProperties()
     }
 }
