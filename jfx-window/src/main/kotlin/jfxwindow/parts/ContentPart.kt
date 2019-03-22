@@ -26,7 +26,7 @@ class ContentPart(private val windowUiInstance: WindowUi) {
         stage.scene.root.getChildList()?.clear()
         stage.scene.root.getChildList()?.add(
             FXMLLoader.load<Any>(
-                ContentPart::class.java.classLoader.getResource("window.fxml")
+                ContentPart::class.java.classLoader.getResource("interface/window.fxml")
             ) as Node
         )
     }
