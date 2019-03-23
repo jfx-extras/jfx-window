@@ -485,6 +485,9 @@ class Window(private val stage: Stage) {
         windowBase.windowResizeHelper.stage = windowBase.windowOptions.stage
         windowBase.windowResizeHelper.scene = windowBase.windowOptions.stage.scene
 
+        windowBase.titlePart.windowOptionsInstance = windowBase.windowOptions
+        windowBase.titlePart.windowUiInstance = windowBase.windowUi
+
         windowBase.contextPart.windowUiInstance = windowBase.windowUi
         windowBase.contextPart.windowOptionsInstance = windowBase.windowOptions
         windowBase.contextPart.windowPart = windowBase.windowPart
@@ -493,5 +496,6 @@ class Window(private val stage: Stage) {
     private fun callInitMethods() {
         windowBase.windowResizeHelper.makeResizable()
         windowBase.contextPart.applyContextMenuProperties()
+        windowBase.titlePart.applyTitleProperties()
     }
 }

@@ -5,6 +5,7 @@ import jfxwindow.helpers.AnimationHelper
 import jfxwindow.helpers.WindowResizeHelper
 import jfxwindow.parts.ContentPart
 import jfxwindow.parts.ContextPart
+import jfxwindow.parts.TitlePart
 import jfxwindow.parts.WindowPart
 
 /**
@@ -20,6 +21,7 @@ class WindowBase(stage: Stage) {
     var contentPart = ContentPart(windowUi)
     var contextPart = ContextPart()
     var windowPart = WindowPart()
+    var titlePart = TitlePart()
     var animationHelper = AnimationHelper()
     @set:JvmSynthetic @get:JvmSynthetic
     internal var windowResizeHelper = WindowResizeHelper(windowPart)
