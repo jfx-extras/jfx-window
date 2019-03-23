@@ -479,6 +479,10 @@ class Window(private val stage: Stage) {
         windowBase.windowStateListener.windowUiInstance = windowBase.windowUi
         windowBase.windowStateListener.windowInstance = windowBase.windowPart
 
+//        windowBase.windowInactiveListener.borderPartInstance = windowBase.borderPart
+//        windowBase.windowInactiveListener.barPartInstance = windowBase.barBasePart
+//        windowBase.windowInactiveListener.defaultOptionsInstance = windowBase.defaultOptions
+
         windowBase.borderPart.windowOptionsInstance = windowBase.windowOptions
         windowBase.borderPart.windowUiInstance = windowBase.windowUi
         windowBase.borderPart.stateListener = windowBase.windowStateListener
@@ -489,6 +493,11 @@ class Window(private val stage: Stage) {
         
         windowBase.iconPart.windowOptionsInstance = windowBase.windowOptions
         windowBase.iconPart.windowUiInstance = windowBase.windowUi
+
+        windowBase.titleBarPart.animHelperInstance = windowBase.animationHelper
+        windowBase.titleBarPart.windowUiInstance = windowBase.windowUi
+        windowBase.titleBarPart.windowOptionsInstance = windowBase.windowOptions
+        windowBase.titleBarPart.windowPart = windowBase.windowPart
 
         windowBase.contextPart.windowUiInstance = windowBase.windowUi
         windowBase.contextPart.windowOptionsInstance = windowBase.windowOptions
@@ -504,5 +513,9 @@ class Window(private val stage: Stage) {
         windowBase.titlePart.applyTitleProperties()
         windowBase.iconPart.applyIconProperties()
         windowBase.borderPart.applyBorderProperties()
+        windowBase.titleBarPart.applyTitleBarColor()
+        windowBase.titleBarPart.applyTitleBarProperties()
+        windowBase.titleBarPart.applyResizeProperties()
+        //titleBase.unActiveListener.addWindowUnActiveListener()
     }
 }

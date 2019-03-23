@@ -3,6 +3,7 @@ package jfxwindow.base
 import javafx.stage.Stage
 import jfxwindow.helpers.AnimationHelper
 import jfxwindow.helpers.WindowResizeHelper
+import jfxwindow.listeners.WindowInactiveListener
 import jfxwindow.listeners.WindowStateListener
 import jfxwindow.parts.*
 
@@ -22,9 +23,12 @@ class WindowBase(stage: Stage) {
     var borderPart = BorderPart()
     var titlePart = TitlePart()
     var iconPart = IconPart()
+    var titleBarPart = TitleBarPart()
     var animationHelper = AnimationHelper()
     @set:JvmSynthetic @get:JvmSynthetic
     internal var windowResizeHelper = WindowResizeHelper(windowPart)
     @set:JvmSynthetic @get:JvmSynthetic
     internal var windowStateListener = WindowStateListener()
+    @set:JvmSynthetic @get:JvmSynthetic
+    internal var windowInactiveListener = WindowInactiveListener()
 }

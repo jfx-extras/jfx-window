@@ -6,12 +6,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import jfxwindow.base.Window;
-import jfxwindow.enums.TitleAlignment;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -26,9 +23,10 @@ public class EntryPoint extends Application {
         stage.initStyle(StageStyle.TRANSPARENT);
         Window window = new Window(stage)
                 .titleTextFont(Font.loadFont(String.valueOf(getClass().getClassLoader().getResource("UbuntuMono-Regular.ttf")), 16.0))
-                .borderIsVisible(false)
+                .borderIsVisible(true)
                 .icon("untitled.svg")
                 .borderColor(Color.BLUE)
+                .titleBarBottomBorderIsVisible(true)
                 .borderInactiveColor(Color.BLACK)
                 .iconIsVisible(true)
                 .build();
