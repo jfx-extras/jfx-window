@@ -14,12 +14,11 @@ class TitlePart {
 
     @JvmSynthetic
     internal fun applyTitleProperties() {
-        titleTextFont = windowOptionsInstance.titleTextFont
-        titleTextSize = windowOptionsInstance.titleTextSize
         titleAlign = windowOptionsInstance.titleAlignment
         titleIsVisible = windowOptionsInstance.titleIsVisible
         titleText = windowOptionsInstance.titleText
         titleAlignment = windowOptionsInstance.titleAlignment
+        titleTextFont = windowOptionsInstance.titleTextFont
     }
 
     var titleAlignment: TitleAlignment
@@ -56,19 +55,11 @@ class TitlePart {
             windowUiInstance.titleCenter.text = text
         }
 
-    var titleTextSize: Double
-        get() = windowUiInstance.title.font.size
-        set(size) {
-            windowUiInstance.title.font = Font.font(size)
-            windowUiInstance.titleCenter.font = Font.font(size)
-        }
-
-    // Maybe it contains problem with font size
     var titleTextFont: Font
         get() = windowUiInstance.title.font
-        set(fontName) {
-            windowUiInstance.title.font = fontName
-            windowUiInstance.titleCenter.font = fontName
+        set(font) {
+            windowUiInstance.title.font = font
+            windowUiInstance.titleCenter.font = font
         }
 
     var titleIsVisible: Boolean

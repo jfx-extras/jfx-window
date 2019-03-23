@@ -277,17 +277,6 @@ class Window(private val stage: Stage) {
     }
 
     /**
-     * TitleBar title text font size.
-     *
-     * @param [size] font size of text for title.
-     * @return [Window] instance of window builder.
-     */
-    fun titleTextSize(size: Double): Window {
-        windowBase.windowOptions.titleTextSize = size
-        return this
-    }
-
-    /**
      * TitleBar title text font family or just font name.
      *
      * @param [font] font name of text for title.
