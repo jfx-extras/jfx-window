@@ -479,9 +479,9 @@ class Window(private val stage: Stage) {
         windowBase.windowStateListener.windowUiInstance = windowBase.windowUi
         windowBase.windowStateListener.windowInstance = windowBase.windowPart
 
-//        windowBase.windowInactiveListener.borderPartInstance = windowBase.borderPart
-//        windowBase.windowInactiveListener.barPartInstance = windowBase.barBasePart
-//        windowBase.windowInactiveListener.defaultOptionsInstance = windowBase.defaultOptions
+        windowBase.windowInactiveListener.borderPartInstance = windowBase.borderPart
+        windowBase.windowInactiveListener.titleBarPart = windowBase.titleBarPart
+        windowBase.windowInactiveListener.windowOptionsInstance = windowBase.windowOptions
 
         windowBase.borderPart.windowOptionsInstance = windowBase.windowOptions
         windowBase.borderPart.windowUiInstance = windowBase.windowUi
@@ -516,6 +516,6 @@ class Window(private val stage: Stage) {
         windowBase.titleBarPart.applyTitleBarColor()
         windowBase.titleBarPart.applyTitleBarProperties()
         windowBase.titleBarPart.applyResizeProperties()
-        //titleBase.unActiveListener.addWindowUnActiveListener()
+        windowBase.windowInactiveListener.addWindowUnActiveListener()
     }
 }
