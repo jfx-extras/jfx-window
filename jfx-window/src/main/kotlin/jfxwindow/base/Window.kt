@@ -464,6 +464,7 @@ class Window(private val stage: Stage) {
         windowBase.contentPart.prepareUserWorkspace(stage)
         windowBase.windowUi.assignBaseUi(stage)
         applyCreateProperties()
+        callInitMethods()
         windowBase.contentPart.returnUserContent()
         return this
     }
@@ -481,10 +482,16 @@ class Window(private val stage: Stage) {
         windowBase.windowPart.animationDuration = windowBase.windowOptions.animationDuration
         windowBase.windowPart.smoothColorAnim = windowBase.windowOptions.smoothColorAnimation
 
+        windowBase.windowResizeHelper.stage = windowBase.windowOptions.stage
+        windowBase.windowResizeHelper.scene = windowBase.windowOptions.stage.scene
+
         windowBase.contextPart.windowUiInstance = windowBase.windowUi
         windowBase.contextPart.windowOptionsInstance = windowBase.windowOptions
         windowBase.contextPart.windowPart = windowBase.windowPart
+    }
 
+    private fun callInitMethods() {
+        windowBase.windowResizeHelper.makeResizable()
         windowBase.contextPart.applyContextMenuProperties()
     }
 }
