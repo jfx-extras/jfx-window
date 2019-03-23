@@ -27,6 +27,7 @@ class BorderPart {
         windowUiInstance.leftBorder.background = (Background(BackgroundFill(windowOptionsInstance.borderColor, CornerRadii.EMPTY, Insets.EMPTY)))
         windowUiInstance.rightBorder.background = (Background(BackgroundFill(windowOptionsInstance.borderColor, CornerRadii.EMPTY, Insets.EMPTY)))
         windowUiInstance.bottomBorder.background = (Background(BackgroundFill(windowOptionsInstance.borderColor, CornerRadii.EMPTY, Insets.EMPTY)))
+        borderIsVisible = windowOptionsInstance.borderIsVisible
         borderActiveColor = borderColor
         borderInactiveColor = windowOptionsInstance.borderInactiveColor
         bottomBorderIsVisible = windowOptionsInstance.borderIsVisible

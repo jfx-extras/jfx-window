@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -27,12 +28,16 @@ public class EntryPoint extends Application {
                 .titleTextFont(Font.loadFont(String.valueOf(getClass().getClassLoader().getResource("UbuntuMono-Regular.ttf")), 16.0))
                 .borderIsVisible(false)
                 .icon("untitled.svg")
+                .borderColor(Color.BLUE)
+                .borderInactiveColor(Color.BLACK)
                 .iconIsVisible(true)
                 .build();
         stage.show();
         window.create();
 
         System.out.println(window.getWindowBase().getTitlePart().getTitleTextFont());
+
+        //window.getWindowBase().getBorderPart().setBorderColor(Color.BLUE);
     }
 
     public static void main(String[] args) {
