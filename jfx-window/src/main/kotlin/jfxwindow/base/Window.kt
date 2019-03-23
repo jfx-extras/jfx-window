@@ -474,9 +474,19 @@ class Window(private val stage: Stage) {
         windowBase.windowResizeHelper.stage = windowBase.windowOptions.stage
         windowBase.windowResizeHelper.scene = windowBase.windowOptions.stage.scene
 
+        windowBase.windowStateListener.borderInstance = windowBase.borderPart
+        windowBase.windowStateListener.windowOptionsInstance = windowBase.windowOptions
+        windowBase.windowStateListener.windowUiInstance = windowBase.windowUi
+        windowBase.windowStateListener.windowInstance = windowBase.windowPart
+
+        windowBase.borderPart.windowOptionsInstance = windowBase.windowOptions
+        windowBase.borderPart.windowUiInstance = windowBase.windowUi
+        windowBase.borderPart.stateListener = windowBase.windowStateListener
+        windowBase.borderPart.borderIsVisibleHelper = windowBase.windowOptions.borderIsVisible
+
         windowBase.titlePart.windowOptionsInstance = windowBase.windowOptions
         windowBase.titlePart.windowUiInstance = windowBase.windowUi
-
+        
         windowBase.iconPart.windowOptionsInstance = windowBase.windowOptions
         windowBase.iconPart.windowUiInstance = windowBase.windowUi
 
@@ -487,8 +497,12 @@ class Window(private val stage: Stage) {
 
     private fun callInitMethods() {
         windowBase.windowResizeHelper.makeResizable()
+        windowBase.windowStateListener.addBorderChangeListener()
+        windowBase.windowStateListener.addWindowMaximizeListener()
+        windowBase.windowStateListener.addWindowMinimizeListener()
         windowBase.contextPart.applyContextMenuProperties()
         windowBase.titlePart.applyTitleProperties()
         windowBase.iconPart.applyIconProperties()
+        windowBase.borderPart.applyBorderProperties()
     }
 }
