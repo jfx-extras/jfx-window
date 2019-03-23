@@ -35,7 +35,7 @@ internal class WindowOptions(stageInstance: Stage) {
     internal var contextMenuIsEnabled: Boolean = true
 
     @set:JvmSynthetic @get:JvmSynthetic
-    internal lateinit var icon: String
+    internal var icon: String = ""
     @set:JvmSynthetic @get:JvmSynthetic
     internal var iconIsVisible: Boolean = false
 

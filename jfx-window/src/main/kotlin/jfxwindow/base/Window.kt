@@ -477,6 +477,9 @@ class Window(private val stage: Stage) {
         windowBase.titlePart.windowOptionsInstance = windowBase.windowOptions
         windowBase.titlePart.windowUiInstance = windowBase.windowUi
 
+        windowBase.iconPart.windowOptionsInstance = windowBase.windowOptions
+        windowBase.iconPart.windowUiInstance = windowBase.windowUi
+
         windowBase.contextPart.windowUiInstance = windowBase.windowUi
         windowBase.contextPart.windowOptionsInstance = windowBase.windowOptions
         windowBase.contextPart.windowPart = windowBase.windowPart
@@ -486,5 +489,6 @@ class Window(private val stage: Stage) {
         windowBase.windowResizeHelper.makeResizable()
         windowBase.contextPart.applyContextMenuProperties()
         windowBase.titlePart.applyTitleProperties()
+        windowBase.iconPart.applyIconProperties()
     }
 }

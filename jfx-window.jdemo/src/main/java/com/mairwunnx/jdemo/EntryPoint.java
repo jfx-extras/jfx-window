@@ -26,6 +26,8 @@ public class EntryPoint extends Application {
         Window window = new Window(stage)
                 .titleTextFont(Font.loadFont(String.valueOf(getClass().getClassLoader().getResource("UbuntuMono-Regular.ttf")), 16.0))
                 .borderIsVisible(false)
+                .icon("untitled.svg")
+                .iconIsVisible(true)
                 .build();
         stage.show();
         window.create();
