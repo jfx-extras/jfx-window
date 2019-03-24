@@ -500,6 +500,12 @@ class Window(private val stage: Stage) {
         windowBase.titleBarPart.windowOptionsInstance = windowBase.windowOptions
         windowBase.titleBarPart.windowPart = windowBase.windowPart
 
+        windowBase.buttonPart.titleBarPart = windowBase.titleBarPart
+        windowBase.buttonPart.windowOptionsInstance = windowBase.windowOptions
+        windowBase.buttonPart.windowUiInstance = windowBase.windowUi
+        windowBase.buttonPart.buttonHoverColor = windowBase.windowOptions.toolButtonsHoverColor
+        windowBase.buttonPart.buttonPressedColor = windowBase.windowOptions.toolButtonsPressedColor
+
         windowBase.windowTitleBarListener.windowOptionsInstance = windowBase.windowOptions
         windowBase.windowTitleBarListener.windowUiInstance = windowBase.windowUi
         windowBase.windowTitleBarListener.windowPart = windowBase.windowPart
@@ -521,6 +527,7 @@ class Window(private val stage: Stage) {
         windowBase.titleBarPart.applyTitleBarColor()
         windowBase.titleBarPart.applyTitleBarProperties()
         windowBase.titleBarPart.applyResizeProperties()
+        windowBase.buttonPart.applyButtonProperties()
         windowBase.windowTitleBarListener.addResizeListeners()
         windowBase.windowTitleBarListener.addTitleMoveListener()
         windowBase.windowInactiveListener.addWindowUnActiveListener()

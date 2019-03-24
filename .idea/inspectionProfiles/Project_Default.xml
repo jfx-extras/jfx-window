@@ -3,7 +3,7 @@
     <option name="myName" value="Project Default" />
     <inspection_tool class="Duplicates" enabled="true" level="WEAK WARNING" enabled_by_default="true">
       <Kotlin>
-        <minSize>81</minSize>
+        <minSize>98</minSize>
         <isEnabled>true</isEnabled>
       </Kotlin>
     </inspection_tool>

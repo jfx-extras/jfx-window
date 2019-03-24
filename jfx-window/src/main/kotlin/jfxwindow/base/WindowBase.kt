@@ -25,6 +25,7 @@ class WindowBase(stage: Stage) {
     var titlePart = TitlePart()
     var iconPart = IconPart()
     var titleBarPart = TitleBarPart()
+    var buttonPart = ButtonPart()
     var animationHelper = AnimationHelper()
     @set:JvmSynthetic @get:JvmSynthetic
     internal var windowResizeHelper = WindowResizeHelper(windowPart)
