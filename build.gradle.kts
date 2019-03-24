@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "org.jfx-extras"
-version = "0.0.0.0"
+version = "0.0.0"
 
 repositories {
     mavenCentral()
