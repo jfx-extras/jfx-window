@@ -25,6 +25,7 @@ public class EntryPoint extends Application {
                 .titleTextFont(Font.loadFont(String.valueOf(getClass().getClassLoader().getResource("UbuntuMono-Regular.ttf")), 16.0))
                 .borderIsVisible(true)
                 .icon("untitled.svg")
+                .saveWindowPosition(true)
                 .borderColor(Color.BLUE)
                 .titleBarBottomBorderIsVisible(true)
                 .borderInactiveColor(Color.BLACK)

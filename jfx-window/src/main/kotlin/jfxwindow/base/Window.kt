@@ -10,6 +10,8 @@ import jfxwindow.enums.ShadowStyle
 import jfxwindow.enums.TitleAlignment
 import jfxwindow.enums.TitleShadowDepth
 import jfxwindow.helpers.WindowBuilderHelper
+import jfxwindow.listeners.WindowDataListener
+import jfxwindow.listeners.WindowStateListener
 
 /**
  * Base jfx-window library window constructor and builder.
@@ -517,5 +519,16 @@ class Window(private val stage: Stage) {
         windowBase.titleBarPart.applyTitleBarProperties()
         windowBase.titleBarPart.applyResizeProperties()
         windowBase.windowInactiveListener.addWindowUnActiveListener()
+
+        if (!savePosInitialized) {
+            WindowDataListener.stage = windowBase.windowOptions.stage
+            WindowDataListener.savePosIsEnabled = windowBase.windowOptions.saveWindowPosition
+            WindowDataListener.addPosListener()
+            savePosInitialized = true
+        }
+    }
+
+    companion object {
+        var savePosInitialized: Boolean = false
     }
 }
