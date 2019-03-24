@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -17,7 +18,6 @@ public class EntryPoint extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         System.setProperty("prism.lcdtext", "false");
-
         Parent root = FXMLLoader.load(Objects.requireNonNull(
                 getClass().getClassLoader().getResource("demo.fxml")));
         Scene scene = new Scene(root, 640, 480);
@@ -27,18 +27,14 @@ public class EntryPoint extends Application {
                 .titleTextFont(Font.loadFont(String.valueOf(getClass().getClassLoader().getResource("UbuntuMono-Regular.ttf")), 16.0))
                 .borderIsVisible(true)
                 .icon("untitled.svg")
+                .windowRootElement(new HBox())
                 .saveWindowPosition(true)
-                .borderColor(Color.BLUE)
-                .titleBarBottomBorderIsVisible(true)
-                .borderInactiveColor(Color.BLACK)
+                .borderColor(Color.BLACK)
+                .borderInactiveColor(Color.DARKGRAY)
                 .iconIsVisible(true)
                 .build();
         stage.show();
         window.create();
-
-        System.out.println(window.getWindowBase().getTitlePart().getTitleTextFont());
-
-        //window.getWindowBase().getBorderPart().setBorderColor(Color.BLUE);
     }
 
     public static void main(String[] args) {

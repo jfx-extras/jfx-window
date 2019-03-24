@@ -15,24 +15,18 @@ import jfxwindow.helpers.AnimationHelper
 import jfxwindow.helpers.WindowColorHelper
 
 class TitleBarPart {
-    @set:JvmSynthetic
-    @get:JvmSynthetic
+    @set:JvmSynthetic @get:JvmSynthetic
     internal lateinit var animHelperInstance: AnimationHelper
-    @set:JvmSynthetic
-    @get:JvmSynthetic
+    @set:JvmSynthetic @get:JvmSynthetic
     internal lateinit var windowUiInstance: WindowUi
-    @set:JvmSynthetic
-    @get:JvmSynthetic
+    @set:JvmSynthetic @get:JvmSynthetic
     internal lateinit var windowOptionsInstance: WindowOptions
-    @set:JvmSynthetic
-    @get:JvmSynthetic
+    @set:JvmSynthetic @get:JvmSynthetic
     internal lateinit var windowPart: WindowPart
-    @get:JvmSynthetic
-    @set:JvmSynthetic
+    @set:JvmSynthetic @get:JvmSynthetic
     internal lateinit var titleActiveColor: Color
     lateinit var titleInactiveBackground: Color
-    @get:JvmSynthetic
-    @set:JvmSynthetic
+    @set:JvmSynthetic @get:JvmSynthetic
     internal lateinit var titleActiveShadow: TitleShadowDepth
     lateinit var titleInactiveShadow: TitleShadowDepth
 

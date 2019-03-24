@@ -27,12 +27,11 @@ class WindowBase(stage: Stage) {
     var titleBarPart = TitleBarPart()
     var buttonPart = ButtonPart()
     var animationHelper = AnimationHelper()
+    var windowTitleBarListener = WindowTitleBarListener()
     @set:JvmSynthetic @get:JvmSynthetic
     internal var windowResizeHelper = WindowResizeHelper(windowPart)
     @set:JvmSynthetic @get:JvmSynthetic
     internal var windowStateListener = WindowStateListener()
-    @set:JvmSynthetic @get:JvmSynthetic
-    internal var windowTitleBarListener = WindowTitleBarListener()
     @set:JvmSynthetic @get:JvmSynthetic
     internal var windowInactiveListener = WindowInactiveListener()
 }

@@ -12,7 +12,7 @@
     <center>
         <BorderPane fx:id="windowPane">
             <center>
-                <Pane fx:id="contentPane" prefHeight="0.0" prefWidth="0.0"/>
+                <Pane fx:id="contentPane"/>
             </center>
             <top>
                 <BorderPane fx:id="windowTitleBarPane" prefHeight="32.0" prefWidth="603.0">

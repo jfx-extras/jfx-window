@@ -1,6 +1,9 @@
 package jfxwindow.base
 
 import javafx.geometry.NodeOrientation
+import javafx.scene.Node
+import javafx.scene.layout.BorderPane
+import javafx.scene.layout.VBox
 import javafx.scene.paint.Color
 import javafx.scene.text.Font
 import javafx.stage.Stage
@@ -105,4 +108,7 @@ internal class WindowOptions(stageInstance: Stage) {
     internal var windowShadowIsEnabled: Boolean = true
     @set:JvmSynthetic @get:JvmSynthetic
     internal var windowShadowType: ShadowStyle = ShadowStyle.WIN32
+
+    @set:JvmSynthetic @get:JvmSynthetic
+    internal var windowRootElement: Node = VBox()
 }

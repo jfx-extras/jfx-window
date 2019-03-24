@@ -1,6 +1,7 @@
 package jfxwindow.base
 
 import javafx.geometry.NodeOrientation
+import javafx.scene.Node
 import javafx.scene.paint.Color
 import javafx.scene.text.Font
 import javafx.stage.Stage
@@ -422,6 +423,20 @@ class Window(private val stage: Stage) {
     }
 
     /**
+     * Controlling base window root element where will
+     * placed used content.
+     *
+     * #### By default value is VBox.
+     *
+     * @param [node] root element as node.
+     * @return [Window] instance of window builder.
+     */
+    fun windowRootElement(node: Node): Window {
+        windowBase.windowOptions.windowRootElement = node
+        return this
+    }
+
+    /**
      * It method do some checks on compatibility and set stage value
      * to default options instance.
      *
@@ -461,6 +476,8 @@ class Window(private val stage: Stage) {
 
     private fun applyCreateProperties() {
         windowBase.animationHelper.windowPart = windowBase.windowPart
+
+        windowBase.contentPart.windowOptionsInstance = windowBase.windowOptions
 
         windowBase.windowPart.windowUiInstance = windowBase.windowUi
         windowBase.windowPart.contextPart = windowBase.contextPart
