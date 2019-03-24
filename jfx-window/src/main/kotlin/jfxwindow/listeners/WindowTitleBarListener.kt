@@ -3,6 +3,7 @@ package jfxwindow.listeners
 import com.sun.javafx.cursor.CursorType
 import com.sun.javafx.cursor.StandardCursorFrame
 import javafx.scene.Cursor
+import javafx.scene.Node
 import javafx.scene.input.MouseButton
 import jfxwindow.base.WindowOptions
 import jfxwindow.base.WindowUi
@@ -17,17 +18,31 @@ class WindowTitleBarListener {
     internal lateinit var windowUiInstance: WindowUi
     @set:JvmSynthetic @get:JvmSynthetic
     internal lateinit var windowPart: WindowPart
+    var rootAutoSize: Boolean = false
+    var rootUiElements = arrayListOf<Node>()
 
     @JvmSynthetic
     internal fun addResizeListeners() {
         windowOptionsInstance.stage.widthProperty().addListener { _, _, _ ->
             windowUiInstance.windowShadowPane.setPrefSize(windowOptionsInstance.stage.width, windowOptionsInstance.stage.height)
             windowUiInstance.windowPane.setPrefSize(windowOptionsInstance.stage.width, windowOptionsInstance.stage.height)
+
+            if (rootAutoSize) {
+                rootUiElements.forEach {
+                    it?.prefWidth(windowUiInstance.windowPane.prefWidth)
+                }
+            }
         }
 
         windowOptionsInstance.stage.heightProperty().addListener { _, _, _ ->
             windowUiInstance.windowShadowPane.setPrefSize(windowOptionsInstance.stage.width, windowOptionsInstance.stage.height)
             windowUiInstance.windowPane.setPrefSize(windowOptionsInstance.stage.width, windowOptionsInstance.stage.height)
+
+            if (rootAutoSize) {
+                rootUiElements.forEach {
+                    it?.prefHeight(windowUiInstance.windowPane.prefHeight)
+                }
+            }
         }
     }
 
