@@ -5,6 +5,7 @@ import jfxwindow.helpers.AnimationHelper
 import jfxwindow.helpers.WindowResizeHelper
 import jfxwindow.listeners.WindowInactiveListener
 import jfxwindow.listeners.WindowStateListener
+import jfxwindow.listeners.WindowTitleBarListener
 import jfxwindow.parts.*
 
 /**
@@ -29,6 +30,8 @@ class WindowBase(stage: Stage) {
     internal var windowResizeHelper = WindowResizeHelper(windowPart)
     @set:JvmSynthetic @get:JvmSynthetic
     internal var windowStateListener = WindowStateListener()
+    @set:JvmSynthetic @get:JvmSynthetic
+    internal var windowTitleBarListener = WindowTitleBarListener()
     @set:JvmSynthetic @get:JvmSynthetic
     internal var windowInactiveListener = WindowInactiveListener()
 }

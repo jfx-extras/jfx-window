@@ -11,7 +11,6 @@ import jfxwindow.enums.TitleAlignment
 import jfxwindow.enums.TitleShadowDepth
 import jfxwindow.helpers.WindowBuilderHelper
 import jfxwindow.listeners.WindowDataListener
-import jfxwindow.listeners.WindowStateListener
 
 /**
  * Base jfx-window library window constructor and builder.
@@ -501,6 +500,10 @@ class Window(private val stage: Stage) {
         windowBase.titleBarPart.windowOptionsInstance = windowBase.windowOptions
         windowBase.titleBarPart.windowPart = windowBase.windowPart
 
+        windowBase.windowTitleBarListener.windowOptionsInstance = windowBase.windowOptions
+        windowBase.windowTitleBarListener.windowUiInstance = windowBase.windowUi
+        windowBase.windowTitleBarListener.windowPart = windowBase.windowPart
+
         windowBase.contextPart.windowUiInstance = windowBase.windowUi
         windowBase.contextPart.windowOptionsInstance = windowBase.windowOptions
         windowBase.contextPart.windowPart = windowBase.windowPart
@@ -518,6 +521,8 @@ class Window(private val stage: Stage) {
         windowBase.titleBarPart.applyTitleBarColor()
         windowBase.titleBarPart.applyTitleBarProperties()
         windowBase.titleBarPart.applyResizeProperties()
+        windowBase.windowTitleBarListener.addResizeListeners()
+        windowBase.windowTitleBarListener.addTitleMoveListener()
         windowBase.windowInactiveListener.addWindowUnActiveListener()
 
         if (!savePosInitialized) {
