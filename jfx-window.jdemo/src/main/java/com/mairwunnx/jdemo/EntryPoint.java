@@ -16,6 +16,8 @@ import java.util.Objects;
 public class EntryPoint extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        System.setProperty("prism.lcdtext", "false");
+
         Parent root = FXMLLoader.load(Objects.requireNonNull(
                 getClass().getClassLoader().getResource("demo.fxml")));
         Scene scene = new Scene(root, 640, 480);
