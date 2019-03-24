@@ -62,8 +62,13 @@ class ButtonPart {
         }
 
         windowUiInstance.win32CloseButton.setOnMouseEntered {
-            changeRegionBackground(windowUiInstance.win32CloseButton, Color.web("#E81123"))
-            windowUiInstance.win32CloseIcon.fill = Color.web("#fff")
+            if (windowUiInstance.win32CloseButton.isPressed) {
+                changeRegionBackground(windowUiInstance.win32CloseButton, Color.web("#F1707A"))
+                windowUiInstance.win32CloseIcon.fill = Color.web("#000")
+            } else {
+                changeRegionBackground(windowUiInstance.win32CloseButton, Color.web("#E81123"))
+                windowUiInstance.win32CloseIcon.fill = Color.web("#fff")
+            }
         }
 
         windowUiInstance.win32CloseButton.setOnMouseExited {
@@ -89,7 +94,11 @@ class ButtonPart {
         }
 
         windowUiInstance.win32MaxButton.setOnMouseEntered {
-            changeRegionBackground(windowUiInstance.win32MaxButton, buttonHoverColor)
+            if (windowUiInstance.win32MaxButton.isPressed) {
+                changeRegionBackground(windowUiInstance.win32MaxButton, buttonPressedColor)
+            } else {
+                changeRegionBackground(windowUiInstance.win32MaxButton, buttonHoverColor)
+            }
         }
 
         windowUiInstance.win32MaxButton.setOnMouseExited {
@@ -111,7 +120,11 @@ class ButtonPart {
         }
 
         windowUiInstance.win32UnMaxButton.setOnMouseEntered {
-            changeRegionBackground(windowUiInstance.win32UnMaxButton, buttonHoverColor)
+            if (windowUiInstance.win32UnMaxButton.isPressed) {
+                changeRegionBackground(windowUiInstance.win32UnMaxButton, buttonPressedColor)
+            } else {
+                changeRegionBackground(windowUiInstance.win32UnMaxButton, buttonHoverColor)
+            }
         }
 
         windowUiInstance.win32UnMaxButton.setOnMouseExited {
@@ -133,7 +146,11 @@ class ButtonPart {
         }
 
         windowUiInstance.win32MinButton.setOnMouseEntered {
-            changeRegionBackground(windowUiInstance.win32MinButton, buttonHoverColor)
+            if (windowUiInstance.win32MinButton.isPressed) {
+                changeRegionBackground(windowUiInstance.win32MinButton, buttonPressedColor)
+            } else {
+                changeRegionBackground(windowUiInstance.win32MinButton, buttonHoverColor)
+            }
         }
 
         windowUiInstance.win32MinButton.setOnMouseExited {
