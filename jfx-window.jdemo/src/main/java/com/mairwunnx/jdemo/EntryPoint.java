@@ -18,21 +18,24 @@ public class EntryPoint extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         System.setProperty("prism.lcdtext", "false");
+
         Parent root = FXMLLoader.load(Objects.requireNonNull(
                 getClass().getClassLoader().getResource("demo.fxml")));
+
         Scene scene = new Scene(root, 640, 480);
         stage.setScene(scene);
         stage.initStyle(StageStyle.TRANSPARENT);
+
         Window window = new Window(stage)
-                .titleTextFont(Font.loadFont(String.valueOf(getClass().getClassLoader().getResource("UbuntuMono-Regular.ttf")), 16.0))
-                .borderIsVisible(true)
-                .icon("untitled.svg")
-                .windowRootElement(new HBox())
-                .saveWindowPosition(true)
+                .titleTextFont(Font.loadFont(String.valueOf(getClass().getClassLoader().getResource("segoeui.ttf")), 12.0))
+                .titleText("jfx-window")
+                .icon("jfx-logo.png")
+                .iconIsVisible(false)
                 .borderColor(Color.BLACK)
                 .borderInactiveColor(Color.DARKGRAY)
-                .iconIsVisible(true)
+                .windowRootElement(new HBox())
                 .build();
+
         stage.show();
         window.create();
     }
