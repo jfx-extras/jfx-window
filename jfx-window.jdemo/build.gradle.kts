@@ -19,7 +19,7 @@ application {
 }
 
 dependencies {
-    implementation("org.jfxextras:jfxwindow:0.0.0")
+    implementation("org.jfxextras:jfxwindow:8.+")
 }
 
 configure<JavaPluginConvention> {

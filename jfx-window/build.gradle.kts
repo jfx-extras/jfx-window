@@ -1,6 +1,6 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-val projectVersion = "0.0.0"
+val projectVersion = "8.0.0.0"
 val projectGroup = "org.jfxextras"
 val projectArtifactId = "jfxwindow"
 
