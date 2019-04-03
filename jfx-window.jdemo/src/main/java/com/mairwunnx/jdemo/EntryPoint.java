@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class EntryPoint extends Application {
+    public static Window window;
+
     @Override
     public void start(Stage stage) throws IOException {
         System.setProperty("prism.lcdtext", "false");
@@ -26,7 +28,7 @@ public class EntryPoint extends Application {
         stage.setScene(scene);
         stage.initStyle(StageStyle.TRANSPARENT);
 
-        Window window = new Window(stage)
+        window = new Window(stage)
                 .titleTextFont(Font.loadFont(String.valueOf(getClass().getClassLoader().getResource("segoeui.ttf")), 12.0))
                 .titleText("jfx-window")
                 .icon("jfx-logo.png")
