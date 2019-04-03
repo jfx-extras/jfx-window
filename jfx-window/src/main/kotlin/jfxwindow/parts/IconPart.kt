@@ -78,6 +78,7 @@ class IconPart {
                     windowUiInstance.svgIcon.isManaged = false
 
                     windowUiInstance.icon.image = Image(iconPath)
+                    windowOptionsInstance.stage.icons.add(Image(iconPath))
                 }
             }
         }
