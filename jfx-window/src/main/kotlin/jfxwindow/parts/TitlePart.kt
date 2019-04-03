@@ -53,6 +53,7 @@ class TitlePart {
         set(text) {
             windowUiInstance.title.text = text
             windowUiInstance.titleCenter.text = text
+            windowOptionsInstance.stage.title = text
         }
 
     var titleTextFont: Font

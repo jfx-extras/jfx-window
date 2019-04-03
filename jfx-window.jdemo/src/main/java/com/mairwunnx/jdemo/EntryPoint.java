@@ -22,7 +22,7 @@ public class EntryPoint extends Application {
         Parent root = FXMLLoader.load(Objects.requireNonNull(
                 getClass().getClassLoader().getResource("demo.fxml")));
 
-        Scene scene = new Scene(root, 640, 480);
+        Scene scene = new Scene(root, 1121, 700);
         stage.setScene(scene);
         stage.initStyle(StageStyle.TRANSPARENT);
 
