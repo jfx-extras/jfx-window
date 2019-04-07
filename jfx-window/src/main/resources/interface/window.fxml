@@ -15,34 +15,7 @@
                 <Pane fx:id="contentPane"/>
             </center>
             <top>
-                <BorderPane fx:id="windowTitleBarPane" prefHeight="32.0" prefWidth="603.0">
-                    <left>
-                        <HBox alignment="CENTER_LEFT" prefHeight="32.0" BorderPane.alignment="CENTER">
-                            <ImageView fx:id="icon" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true"
-                                       preserveRatio="true">
-                                <viewport>
-                                    <Rectangle2D/>
-                                </viewport>
-                                <HBox.margin>
-                                    <Insets left="10.0" right="-5.0"/>
-                                </HBox.margin>
-                            </ImageView>
-                            <WebView fx:id="svgIcon" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0"
-                                     prefHeight="20.0" prefWidth="20.0">
-                                <HBox.margin>
-                                    <Insets left="10.0" right="-5.0"/>
-                                </HBox.margin>
-                            </WebView>
-                            <Label fx:id="title" mouseTransparent="true" prefHeight="32.0" textFill="#111111">
-                                <opaqueInsets>
-                                    <Insets/>
-                                </opaqueInsets>
-                                <HBox.margin>
-                                    <Insets left="15.0"/>
-                                </HBox.margin>
-                            </Label>
-                        </HBox>
-                    </left>
+                <BorderPane fx:id="windowTitleBarPane" prefHeight="32.0">
                     <right>
                         <HBox fx:id="buttonContainer" alignment="CENTER_RIGHT" prefHeight="32.0"
                               BorderPane.alignment="CENTER_RIGHT">
@@ -72,6 +45,33 @@
                             </HBox>
                         </HBox>
                     </right>
+                    <left>
+                        <HBox alignment="CENTER_LEFT" prefHeight="32.0" BorderPane.alignment="CENTER">
+                            <ImageView fx:id="icon" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true"
+                                       preserveRatio="true">
+                                <viewport>
+                                    <Rectangle2D/>
+                                </viewport>
+                                <HBox.margin>
+                                    <Insets left="10.0" right="-5.0"/>
+                                </HBox.margin>
+                            </ImageView>
+                            <WebView fx:id="svgIcon" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0"
+                                     prefHeight="20.0" prefWidth="20.0">
+                                <HBox.margin>
+                                    <Insets left="10.0" right="-5.0"/>
+                                </HBox.margin>
+                            </WebView>
+                            <Label fx:id="title" mouseTransparent="true" prefHeight="32.0" textFill="#111111">
+                                <opaqueInsets>
+                                    <Insets/>
+                                </opaqueInsets>
+                                <HBox.margin>
+                                    <Insets left="15.0"/>
+                                </HBox.margin>
+                            </Label>
+                        </HBox>
+                    </left>
                     <center>
                         <Label fx:id="titleCenter" alignment="CENTER" prefHeight="32.0" text="Application"
                                textAlignment="CENTER" textFill="#111111" visible="false" BorderPane.alignment="CENTER">
@@ -86,7 +86,7 @@
                 </BorderPane>
             </top>
             <right>
-                <Pane fx:id="rightBorder" prefHeight="370.0" prefWidth="1.0" BorderPane.alignment="CENTER">
+                <Pane fx:id="rightBorder" prefWidth="1.0" BorderPane.alignment="CENTER">
                     <BorderPane.margin>
                         <Insets top="-32.0"/>
                     </BorderPane.margin>
@@ -96,7 +96,7 @@
                 <Pane fx:id="bottomBorder" prefHeight="1.0" prefWidth="200.0" BorderPane.alignment="CENTER"/>
             </bottom>
             <left>
-                <Pane fx:id="leftBorder" prefHeight="370.0" prefWidth="1.0" BorderPane.alignment="CENTER">
+                <Pane fx:id="leftBorder" prefWidth="1.0" BorderPane.alignment="CENTER">
                     <BorderPane.margin>
                         <Insets top="-32.0"/>
                     </BorderPane.margin>

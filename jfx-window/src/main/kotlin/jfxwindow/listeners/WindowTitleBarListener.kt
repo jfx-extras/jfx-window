@@ -19,6 +19,8 @@ class WindowTitleBarListener {
     @set:JvmSynthetic @get:JvmSynthetic
     internal lateinit var windowPart: WindowPart
     var rootAutoSize: Boolean = false
+    var setAutomaticallyMinSizes: Boolean = false
+    var setAutomaticallyMaxSizes: Boolean = false
     var rootUiElements = arrayListOf<Node>()
 
     @JvmSynthetic
@@ -29,7 +31,15 @@ class WindowTitleBarListener {
 
             if (rootAutoSize) {
                 rootUiElements.forEach {
-                    it?.prefWidth(windowUiInstance.windowPane.prefWidth)
+                    it.prefWidth(windowUiInstance.windowPane.prefWidth)
+
+                    if (setAutomaticallyMinSizes) {
+                        it.minWidth(windowUiInstance.windowPane.prefWidth)
+                    }
+
+                    if (setAutomaticallyMaxSizes) {
+                        it.maxWidth(windowUiInstance.windowPane.prefWidth)
+                    }
                 }
             }
         }
@@ -40,7 +50,15 @@ class WindowTitleBarListener {
 
             if (rootAutoSize) {
                 rootUiElements.forEach {
-                    it?.prefHeight(windowUiInstance.windowPane.prefHeight)
+                    it.prefHeight(windowUiInstance.windowPane.prefHeight)
+
+                    if (setAutomaticallyMinSizes) {
+                        it.minHeight(windowUiInstance.windowPane.prefHeight)
+                    }
+
+                    if (setAutomaticallyMaxSizes) {
+                        it.maxHeight(windowUiInstance.windowPane.prefHeight)
+                    }
                 }
             }
         }

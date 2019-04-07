@@ -39,6 +39,9 @@ public class EntryPoint extends Application {
                 .build();
 
         stage.show();
+
+//        stage.setMinWidth(root.prefWidth(0));
+//        stage.setMinHeight(root.prefHeight(0));
         window.create();
     }
 
