@@ -4,6 +4,7 @@ import javafx.stage.Stage
 import jfxwindow.helpers.AnimationHelper
 import jfxwindow.helpers.WindowResizeHelper
 import jfxwindow.listeners.WindowInactiveListener
+import jfxwindow.listeners.WindowStageShownListener
 import jfxwindow.listeners.WindowStateListener
 import jfxwindow.listeners.WindowTitleBarListener
 import jfxwindow.parts.*
@@ -34,4 +35,6 @@ class WindowBase(stage: Stage) {
     internal var windowStateListener = WindowStateListener()
     @set:JvmSynthetic @get:JvmSynthetic
     internal var windowInactiveListener = WindowInactiveListener()
+    @set:JvmSynthetic @get:JvmSynthetic
+    internal var windowStageShownListener = WindowStageShownListener()
 }

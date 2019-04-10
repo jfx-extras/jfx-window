@@ -4,8 +4,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<HBox prefHeight="602.0" fx:controller="com.mairwunnx.jdemo.Controller" xmlns="http://javafx.com/javafx/8.0.171"
-      xmlns:fx="http://javafx.com/fxml/1">
+<HBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.mairwunnx.jdemo.Controller">
     <children>
         <VBox prefHeight="400.0" prefWidth="161.0" style="-fx-background-color: #fff;" HBox.hgrow="ALWAYS">
             <children>
@@ -17,61 +17,60 @@
                         <Insets left="20.0" top="10.0"/>
                     </VBox.margin>
                 </Label>
-                <Button onMouseClicked="#getTitleText" focusTraversable="false" maxHeight="1.7976931348623157E308"
-                        maxWidth="1.7976931348623157E308"
-                        mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="get title text">
+                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false" onMouseClicked="#getTitleText" prefHeight="25.0" prefWidth="170.0"
+                        text="get title text">
                     <VBox.margin>
                         <Insets top="10.0"/>
                     </VBox.margin>
                 </Button>
                 <TextField fx:id="titleTextResult" editable="false" focusTraversable="false"
                            promptText="get title text result"/>
-                <Button onMouseClicked="#setTitleText" focusTraversable="false" maxHeight="1.7976931348623157E308"
-                        maxWidth="1.7976931348623157E308"
-                        mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="set title text">
+                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false" onMouseClicked="#setTitleText" prefHeight="25.0" prefWidth="170.0"
+                        text="set title text">
                     <VBox.margin>
                         <Insets top="10.0"/>
                     </VBox.margin>
                 </Button>
                 <TextField fx:id="titleTextTextField" focusTraversable="false" promptText="type here new title text"/>
-                <ToggleButton onMouseClicked="#changeTitleVisibility" focusTraversable="false"
-                              maxHeight="1.7976931348623157E308"
-                              maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0"
-                              prefWidth="185.0" selected="true" text="switch title visibility">
+                <ToggleButton focusTraversable="false" maxHeight="1.7976931348623157E308"
+                              maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                              onMouseClicked="#changeTitleVisibility" prefHeight="25.0" prefWidth="185.0"
+                              selected="true" text="switch title visibility">
                     <VBox.margin>
                         <Insets top="10.0"/>
                     </VBox.margin>
                 </ToggleButton>
-                <Button onMouseClicked="#getTitleAlign" focusTraversable="false" maxHeight="1.7976931348623157E308"
-                        maxWidth="1.7976931348623157E308"
-                        mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="get title alignment">
+                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false" onMouseClicked="#getTitleAlign" prefHeight="25.0" prefWidth="170.0"
+                        text="get title alignment">
                     <VBox.margin>
                         <Insets top="10.0"/>
                     </VBox.margin>
                 </Button>
                 <TextField fx:id="titleAlignResult" editable="false" focusTraversable="false"
                            promptText="get title alignment result"/>
-                <Button onMouseClicked="#changeTitleAlign" focusTraversable="false" maxHeight="1.7976931348623157E308"
-                        maxWidth="1.7976931348623157E308"
-                        mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="set title alignment">
+                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false" onMouseClicked="#changeTitleAlign" prefHeight="25.0" prefWidth="170.0"
+                        text="set title alignment">
                     <VBox.margin>
                         <Insets top="10.0"/>
                     </VBox.margin>
                 </Button>
                 <TextField fx:id="titleAlignTextField" focusTraversable="false" promptText="type here title alignment"/>
-                <Button onMouseClicked="#getTitleFont" focusTraversable="false" maxHeight="1.7976931348623157E308"
-                        maxWidth="1.7976931348623157E308"
-                        mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="get title text font">
+                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false" onMouseClicked="#getTitleFont" prefHeight="25.0" prefWidth="170.0"
+                        text="get title text font">
                     <VBox.margin>
                         <Insets top="10.0"/>
                     </VBox.margin>
                 </Button>
                 <TextArea fx:id="titleFontResult" editable="false" focusTraversable="false" prefHeight="82.0"
-                          prefWidth="161.0"
-                          promptText="get title text font result" wrapText="true"/>
-                <Button onMouseClicked="#setTitleFont" focusTraversable="false" maxHeight="1.7976931348623157E308"
-                        maxWidth="1.7976931348623157E308"
-                        mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="set title text font">
+                          prefWidth="161.0" promptText="get title text font result" wrapText="true"/>
+                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false" onMouseClicked="#setTitleFont" prefHeight="25.0" prefWidth="170.0"
+                        text="set title text font">
                     <VBox.margin>
                         <Insets top="10.0"/>
                     </VBox.margin>

@@ -15,7 +15,9 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class EntryPoint extends Application {
-    public static Window window;
+    static Window window;
+    private static Double width;
+    private static Double height;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -24,7 +26,7 @@ public class EntryPoint extends Application {
         Parent root = FXMLLoader.load(Objects.requireNonNull(
                 getClass().getClassLoader().getResource("demo.fxml")));
 
-        Scene scene = new Scene(root, 1121, 700);
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.initStyle(StageStyle.TRANSPARENT);
 
@@ -35,14 +37,28 @@ public class EntryPoint extends Application {
                 .iconIsVisible(false)
                 .borderColor(Color.BLACK)
                 .borderInactiveColor(Color.DARKGRAY)
+                .useMinSizeAsContentSize(true)
                 .windowRootElement(new HBox())
                 .build();
 
         stage.show();
-
-//        stage.setMinWidth(root.prefWidth(0));
-//        stage.setMinHeight(root.prefHeight(0));
         window.create();
+
+        stage.widthProperty().addListener((newValue) -> {
+            width = Double.parseDouble(newValue.toString().split("value: ")[1].replace("]", ""));
+            calculateSize();
+        });
+        stage.heightProperty().addListener((newValue) -> {
+            height = Double.parseDouble(newValue.toString().split("value: ")[1].replace("]", ""));
+            calculateSize();
+        });
+
+        System.out.println("stage min width: " + stage.getMinWidth());
+        System.out.println("stage min height: " + stage.getMinHeight());
+    }
+
+    private static void calculateSize() {
+        window.getWindowBase().getTitlePart().setTitleText("Size: " + width + "x" + height);
     }
 
     public static void main(String[] args) {

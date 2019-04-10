@@ -401,6 +401,18 @@ class Window(private val stage: Stage) {
     }
 
     /**
+     * Enabling auto-calculating min sizes for window by content size.
+     *
+     * @param [isEnabled] auto-calculating min sizes status.
+     * @return [Window] instance of window builder.
+     */
+    fun useMinSizeAsContentSize(isEnabled: Boolean): Window {
+        windowBase.windowOptions.useMinSizeAsContentSize = isEnabled
+        return this
+    }
+
+
+    /**
      * Window shadow enabled \ visible status.
      *
      * @param [isEnabled] window shadow enabled status.
@@ -452,6 +464,8 @@ class Window(private val stage: Stage) {
         WindowBuilderHelper.validateStageOnNull(stage)
         WindowBuilderHelper.validateStageStyle(stage)
         windowBase.windowOptions.stage = stage
+        windowBase.windowStageShownListener.windowOptionsInstance = windowBase.windowOptions
+        windowBase.windowStageShownListener.addShownListener()
         return this
     }
 
@@ -480,6 +494,8 @@ class Window(private val stage: Stage) {
         windowBase.contentPart.windowOptionsInstance = windowBase.windowOptions
 
         windowBase.windowPart.windowUiInstance = windowBase.windowUi
+        windowBase.windowPart.windowOptionsInstance = windowBase.windowOptions
+        windowBase.windowPart.windowBaseInstance = windowBase
         windowBase.windowPart.contextPart = windowBase.contextPart
         windowBase.windowPart.isResizable = windowBase.windowOptions.isResizable
         windowBase.windowPart.isDraggable = windowBase.windowOptions.isDraggable
@@ -488,6 +504,8 @@ class Window(private val stage: Stage) {
         windowBase.windowPart.isClosable = windowBase.windowOptions.isClosable
         windowBase.windowPart.animationDuration = windowBase.windowOptions.animationDuration
         windowBase.windowPart.smoothColorAnim = windowBase.windowOptions.smoothColorAnimation
+        windowBase.windowPart.useMinSizeAsContentSize = windowBase.windowOptions.useMinSizeAsContentSize
+        windowBase.windowPart.useMinSizeAsContentSizeHelper = windowBase.windowOptions.useMinSizeAsContentSize
 
         windowBase.windowResizeHelper.stage = windowBase.windowOptions.stage
         windowBase.windowResizeHelper.scene = windowBase.windowOptions.stage.scene

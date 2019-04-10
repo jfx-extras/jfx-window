@@ -1,6 +1,8 @@
 package jfxwindow.parts
 
 import javafx.util.Duration
+import jfxwindow.base.WindowBase
+import jfxwindow.base.WindowOptions
 import jfxwindow.base.WindowUi
 import jfxwindow.listeners.WindowDataListener
 import kotlin.properties.Delegates
@@ -13,8 +15,15 @@ class WindowPart {
     @get:JvmSynthetic @set:JvmSynthetic
     internal lateinit var windowUiInstance: WindowUi
     @get:JvmSynthetic @set:JvmSynthetic
+    internal lateinit var windowOptionsInstance: WindowOptions
+    @get:JvmSynthetic @set:JvmSynthetic
+    internal lateinit var windowBaseInstance: WindowBase
+    @get:JvmSynthetic @set:JvmSynthetic
     internal lateinit var contextPart: ContextPart
+    @get:JvmSynthetic @set:JvmSynthetic
+    internal var useMinSizeAsContentSizeHelper: Boolean = true
 
+    var useCalculatedSizesByTitleBar: Boolean = false
     var defaultOpacity: Double = 1.0
     var disabledOpacity: Double = 0.4
     var animationDuration: Duration = Duration.millis(200.0)
@@ -61,6 +70,25 @@ class WindowPart {
             windowUiInstance.win32CloseButton.opacity = defaultOpacity
         } else {
             windowUiInstance.win32CloseButton.opacity = disabledOpacity
+        }
+    }
+    var useMinSizeAsContentSize: Boolean
+        get() = useMinSizeAsContentSizeHelper
+        set(isEnabled) {
+            if (isEnabled) {
+                windowOptionsInstance.stage.minWidth = windowBaseInstance.windowStageShownListener.sizes[0]
+                windowOptionsInstance.stage.minHeight = windowBaseInstance.windowStageShownListener.sizes[1]
+            } else {
+                calculateMinSizeByTitleBarContent()
+                windowOptionsInstance.stage.minWidth = windowBaseInstance.windowStageShownListener.defaultSizeWidth
+                windowOptionsInstance.stage.minHeight = windowBaseInstance.windowStageShownListener.defaultSizeHeight
+            }
+        }
+
+    private fun calculateMinSizeByTitleBarContent() {
+        if (useCalculatedSizesByTitleBar) {
+            windowOptionsInstance.stage.minWidth = windowUiInstance.title.width + windowUiInstance.title.padding.left + 47
+            windowOptionsInstance.stage.minHeight = 32.0
         }
     }
 }

@@ -105,6 +105,9 @@ internal class WindowOptions(stageInstance: Stage) {
     internal var toolButtonsPressedColor: Color = Color.color(0.0, 0.0, 0.0, 0.2)
 
     @set:JvmSynthetic @get:JvmSynthetic
+    internal var useMinSizeAsContentSize: Boolean = true
+
+    @set:JvmSynthetic @get:JvmSynthetic
     internal var windowShadowIsEnabled: Boolean = true
     @set:JvmSynthetic @get:JvmSynthetic
     internal var windowShadowType: ShadowStyle = ShadowStyle.WIN32
