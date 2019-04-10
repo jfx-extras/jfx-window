@@ -23,7 +23,6 @@ class WindowPart {
     @get:JvmSynthetic @set:JvmSynthetic
     internal var useMinSizeAsContentSizeHelper: Boolean = true
 
-    var useCalculatedSizesByTitleBar: Boolean = false
     var defaultOpacity: Double = 1.0
     var disabledOpacity: Double = 0.4
     var animationDuration: Duration = Duration.millis(200.0)
@@ -79,16 +78,14 @@ class WindowPart {
                 windowOptionsInstance.stage.minWidth = windowBaseInstance.windowStageShownListener.sizes[0]
                 windowOptionsInstance.stage.minHeight = windowBaseInstance.windowStageShownListener.sizes[1]
             } else {
-                calculateMinSizeByTitleBarContent()
                 windowOptionsInstance.stage.minWidth = windowBaseInstance.windowStageShownListener.defaultSizeWidth
                 windowOptionsInstance.stage.minHeight = windowBaseInstance.windowStageShownListener.defaultSizeHeight
             }
         }
 
-    private fun calculateMinSizeByTitleBarContent() {
-        if (useCalculatedSizesByTitleBar) {
-            windowOptionsInstance.stage.minWidth = windowUiInstance.title.width + windowUiInstance.title.padding.left + 47
-            windowOptionsInstance.stage.minHeight = 32.0
-        }
+    // todo: add kdoc for it method.
+    fun calculateMinWidthSizeByTitleBar() {
+        windowOptionsInstance.stage.minWidth =
+            windowUiInstance.title.width + windowUiInstance.title.padding.left + (47 * 4) + 36
     }
 }
