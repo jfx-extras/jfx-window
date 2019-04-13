@@ -59,9 +59,9 @@ public class EntryPoint extends Application {
     private static void calculateSize() {
         window.getWindowBase().getTitlePart().setTitleText("Size: " + width + "x" + height);
         window.getWindowBase().getWindowPart().calculateMinWidthSizeByTitleBar();
-        // window.getWindowBase().getWindowPart().calculateMinWidthSizeByTitleBar();
         // ↑ It can be applied if you want to set min width size (label width + button widths)
-        // just uncomment 62 line for see what it work, and you can also change "Size:" to another text.
+        // just comment 61 line for see what be if disable it, and you can also change "Size:" to another text.
+        // but you can just set fixed minWidth on stage.
     }
 
     public static void main(String[] args) {

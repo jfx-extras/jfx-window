@@ -78,8 +78,7 @@ class WindowPart {
                 windowOptionsInstance.stage.minWidth = windowBaseInstance.windowStageShownListener.sizes[0]
                 windowOptionsInstance.stage.minHeight = windowBaseInstance.windowStageShownListener.sizes[1]
             } else {
-                windowOptionsInstance.stage.minWidth = windowBaseInstance.windowStageShownListener.defaultSizeWidth
-                windowOptionsInstance.stage.minHeight = windowBaseInstance.windowStageShownListener.defaultSizeHeight
+                windowBaseInstance.windowDefaultSizeListener.setDefaultMinSize()
             }
         }
 
@@ -88,4 +87,7 @@ class WindowPart {
         windowOptionsInstance.stage.minWidth =
             windowUiInstance.title.width + windowUiInstance.title.padding.left + (47 * 4) + 36
     }
+
+    fun returnMinWidthSizeByTitleBar(): Double =
+        windowUiInstance.title.width + windowUiInstance.title.padding.left + (47 * 4) + 36
 }

@@ -493,6 +493,9 @@ class Window(private val stage: Stage) {
 
         windowBase.contentPart.windowOptionsInstance = windowBase.windowOptions
 
+        windowBase.windowDefaultSizeListener.windowBaseInstance = windowBase
+        windowBase.windowDefaultSizeListener.windowOptionsInstance = windowBase.windowOptions
+
         windowBase.windowPart.windowUiInstance = windowBase.windowUi
         windowBase.windowPart.windowOptionsInstance = windowBase.windowOptions
         windowBase.windowPart.windowBaseInstance = windowBase

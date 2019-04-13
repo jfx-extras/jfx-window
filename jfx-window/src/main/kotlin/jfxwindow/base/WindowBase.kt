@@ -2,6 +2,7 @@ package jfxwindow.base
 
 import javafx.stage.Stage
 import jfxwindow.helpers.AnimationHelper
+import jfxwindow.helpers.WindowDefaultSizeHelper
 import jfxwindow.helpers.WindowResizeHelper
 import jfxwindow.listeners.WindowInactiveListener
 import jfxwindow.listeners.WindowStageShownListener
@@ -37,4 +38,6 @@ class WindowBase(stage: Stage) {
     internal var windowInactiveListener = WindowInactiveListener()
     @set:JvmSynthetic @get:JvmSynthetic
     internal var windowStageShownListener = WindowStageShownListener()
+    @set:JvmSynthetic @get:JvmSynthetic
+    internal var windowDefaultSizeListener = WindowDefaultSizeHelper()
 }
