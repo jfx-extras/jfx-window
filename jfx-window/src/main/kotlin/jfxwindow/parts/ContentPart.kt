@@ -47,7 +47,7 @@ class ContentPart(private val windowUiInstance: WindowUi) {
 
     @JvmSynthetic
     internal fun returnUserContent() {
-        windowUiInstance.windowPane.center.getChildList()?.clear()
+        windowUiInstance.windowContainer.getChildList()?.clear()
 
         when {
             windowOptionsInstance.windowRootElement is AnchorPane -> {
@@ -58,7 +58,7 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = anchorPane
-                windowUiInstance.windowPane.center = anchorPane
+                windowUiInstance.windowContainer.content = anchorPane
             }
             windowOptionsInstance.windowRootElement is BorderPane -> {
                 userContent.forEach {
@@ -68,7 +68,7 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = borderPane
-                windowUiInstance.windowPane.center = borderPane
+                windowUiInstance.windowContainer.content = borderPane
             }
             windowOptionsInstance.windowRootElement is FlowPane -> {
                 userContent.forEach {
@@ -78,7 +78,7 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = flowPane
-                windowUiInstance.windowPane.center = flowPane
+                windowUiInstance.windowContainer.content = flowPane
             }
             windowOptionsInstance.windowRootElement is GridPane -> {
                 userContent.forEach {
@@ -88,7 +88,7 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = gridPane
-                windowUiInstance.windowPane.center = gridPane
+                windowUiInstance.windowContainer.content = gridPane
             }
             windowOptionsInstance.windowRootElement is HBox -> {
                 userContent.forEach {
@@ -98,7 +98,7 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = hBox
-                windowUiInstance.windowPane.center = hBox
+                windowUiInstance.windowContainer.content = hBox
             }
             windowOptionsInstance.windowRootElement is Pane -> {
                 userContent.forEach {
@@ -108,7 +108,7 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = pane
-                windowUiInstance.windowPane.center = pane
+                windowUiInstance.windowContainer.content = pane
             }
             windowOptionsInstance.windowRootElement is ScrollPane -> {
                 userContent.forEach {
@@ -118,7 +118,7 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = scrollPane
-                windowUiInstance.windowPane.center = scrollPane
+                windowUiInstance.windowContainer.content = scrollPane
             }
             windowOptionsInstance.windowRootElement is SplitPane -> {
                 userContent.forEach {
@@ -128,7 +128,7 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = splitPane
-                windowUiInstance.windowPane.center = splitPane
+                windowUiInstance.windowContainer.content = splitPane
             }
             windowOptionsInstance.windowRootElement is StackPane -> {
                 userContent.forEach {
@@ -138,7 +138,7 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = stackPane
-                windowUiInstance.windowPane.center = stackPane
+                windowUiInstance.windowContainer.content = stackPane
             }
             windowOptionsInstance.windowRootElement is TabPane -> {
                 userContent.forEach {
@@ -148,7 +148,7 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = tabPane
-                windowUiInstance.windowPane.center = tabPane
+                windowUiInstance.windowContainer.content = tabPane
             }
             windowOptionsInstance.windowRootElement is TilePane -> {
                 userContent.forEach {
@@ -158,7 +158,7 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = tilePane
-                windowUiInstance.windowPane.center = tilePane
+                windowUiInstance.windowContainer.content = tilePane
             }
             windowOptionsInstance.windowRootElement is TitledPane -> {
                 userContent.forEach {
@@ -168,7 +168,7 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = titledPane
-                windowUiInstance.windowPane.center = titledPane
+                windowUiInstance.windowContainer.content = titledPane
             }
             windowOptionsInstance.windowRootElement is VBox -> {
                 userContent.forEach {
@@ -178,7 +178,7 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = vBox
-                windowUiInstance.windowPane.center = vBox
+                windowUiInstance.windowContainer.content = vBox
             }
             else -> {
                 userContent.forEach {
@@ -188,7 +188,7 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = vBox
-                windowUiInstance.windowPane.center = vBox
+                windowUiInstance.windowContainer.content = vBox
             }
         }
     }

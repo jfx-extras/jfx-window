@@ -1,6 +1,7 @@
 package jfxwindow.base
 
 import javafx.scene.control.Label
+import javafx.scene.control.ScrollPane
 import javafx.scene.image.ImageView
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.HBox
@@ -16,6 +17,8 @@ class WindowUi {
     internal lateinit var windowPane: BorderPane
     @set:JvmSynthetic @get:JvmSynthetic
     internal lateinit var windowTitleBarPane: BorderPane
+    @set:JvmSynthetic @get:JvmSynthetic
+    internal lateinit var windowContainer: ScrollPane
 
     @set:JvmSynthetic @get:JvmSynthetic
     internal lateinit var leftBorder: Pane
@@ -57,6 +60,7 @@ class WindowUi {
         windowShadowPane = stage.scene.root.lookup("#windowShadowPane") as BorderPane
         windowPane = stage.scene.root.lookup("#windowPane") as BorderPane
         windowTitleBarPane = stage.scene.root.lookup("#windowTitleBarPane") as BorderPane
+        windowContainer = stage.scene.root.lookup("#windowContainer") as ScrollPane
 
         leftBorder = stage.scene.root.lookup("#leftBorder") as Pane
         rightBorder = stage.scene.root.lookup("#rightBorder") as Pane

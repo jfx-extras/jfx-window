@@ -21,7 +21,7 @@ class WindowPart {
     @get:JvmSynthetic @set:JvmSynthetic
     internal lateinit var contextPart: ContextPart
     @get:JvmSynthetic @set:JvmSynthetic
-    internal var useMinSizeAsContentSizeHelper: Boolean = true
+    internal var useMinSizeAsContentSizeHelper: Boolean = false
 
     var defaultOpacity: Double = 1.0
     var disabledOpacity: Double = 0.4

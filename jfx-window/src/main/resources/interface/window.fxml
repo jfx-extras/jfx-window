@@ -2,17 +2,27 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 <BorderPane fx:id="windowShadowPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+            xmlns="http://javafx.com/javafx/8.0.171"
+            xmlns:fx="http://javafx.com/fxml/1">
     <center>
         <BorderPane fx:id="windowPane">
             <center>
-                <Pane fx:id="contentPane"/>
+                <ScrollPane fx:id="windowContainer" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER"
+                            minHeight="0.0" minWidth="0.0" styleClass="edge-to-edge" vbarPolicy="NEVER">
+                    <content>
+                        <Pane fx:id="contentPane" minHeight="0.0" minWidth="0.0"/>
+                    </content>
+                    <BorderPane.margin>
+                        <Insets/>
+                    </BorderPane.margin>
+                </ScrollPane>
             </center>
             <top>
                 <BorderPane fx:id="windowTitleBarPane" prefHeight="32.0">
