@@ -51,7 +51,7 @@ public class EntryPoint extends Application {
             height = Double.parseDouble(newValue.toString().split("value: ")[1].replace("]", ""));
             calculateSize();
         });
-
+        
         System.out.println("stage min width: " + stage.getMinWidth());
         System.out.println("stage min height: " + stage.getMinHeight());
     }

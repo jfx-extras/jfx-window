@@ -9,13 +9,11 @@ internal class WindowStageShownListener {
     internal lateinit var windowOptionsInstance: WindowOptions
 
     internal fun addShownListener() {
-        if (windowOptionsInstance.useMinSizeAsContentSize) {
-            windowOptionsInstance.stage.setOnShown {
-                val titleBarHeight = 32.0
-                val shadowMaxZoneRadius = 18.0
-                sizes[0] = windowOptionsInstance.stage.width + shadowMaxZoneRadius * 2
-                sizes[1] = windowOptionsInstance.stage.height + titleBarHeight + shadowMaxZoneRadius * 2
-            }
+        windowOptionsInstance.stage.setOnShown {
+            val titleBarHeight = 32.0
+            val shadowMaxZoneRadius = 18.0
+            sizes[0] = windowOptionsInstance.stage.width + shadowMaxZoneRadius * 2
+            sizes[1] = windowOptionsInstance.stage.height + titleBarHeight + shadowMaxZoneRadius * 2
         }
     }
 }
