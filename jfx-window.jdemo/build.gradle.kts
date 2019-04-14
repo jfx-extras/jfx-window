@@ -5,18 +5,18 @@ plugins {
 }
 
 group = "org.jfxextras"
-version = "0.0.0.1"
+version = "8.0.0.0"
 
 repositories {
+    maven("https://kotlin.bintray.com/kotlinx")
     mavenLocal()
     mavenCentral()
-    maven("https://kotlin.bintray.com/kotlinx")
     jcenter()
 }
 
 application {
     group = "org.jfxextras"
-    version = "0.0.0.1"
+    version = "8.0.0.0"
     applicationName = "jfx-window.jdemo"
     mainClassName = "com.mairwunnx.jdemo.EntryPoint"
 }
