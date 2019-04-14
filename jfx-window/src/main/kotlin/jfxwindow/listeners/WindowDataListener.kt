@@ -5,7 +5,6 @@ import jfxwindow.json.WindowSettings
 import kotlinx.serialization.json.Json
 import java.io.File
 
-
 class WindowDataListener {
     companion object {
         @get:JvmSynthetic @set:JvmSynthetic
@@ -30,7 +29,7 @@ class WindowDataListener {
 
             stage.setOnHiding {
                 if (savePosIsEnabled) {
-                    val jsonData = Json.stringify(
+                    val windowData = Json.stringify(
                         WindowSettings.Window.serializer(),
                         WindowSettings.Window(
                             WindowSettings.Window.Positions(
@@ -48,7 +47,7 @@ class WindowDataListener {
                         )
                     )
 
-                    File(file).writeText(jsonData, Charsets.UTF_8)
+                    File(file).writeText(windowData, Charsets.UTF_8)
                 }
             }
         }

@@ -2,11 +2,11 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     java
-    kotlin("jvm") version "1.3.21"
+    kotlin("jvm") version "1.3.30"
 }
 
 group = "org.jfx-extras"
-version = "0.0.0"
+version = "8.0.0.0"
 
 repositories {
     mavenCentral()
