@@ -485,6 +485,10 @@ class Window(private val stage: Stage) {
         applyCreateProperties()
         callInitMethods()
         windowBase.contentPart.returnUserContent()
+        if (!savePosInitialized) {
+            WindowDataListener.loadWindowSettings()
+            savePosInitialized = true
+        }
         return this
     }
 
@@ -574,7 +578,6 @@ class Window(private val stage: Stage) {
             WindowDataListener.stage = windowBase.windowOptions.stage
             WindowDataListener.savePosIsEnabled = windowBase.windowOptions.saveWindowPosition
             WindowDataListener.addPosListener()
-            savePosInitialized = true
         }
     }
 

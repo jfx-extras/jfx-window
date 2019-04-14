@@ -1,7 +1,10 @@
 package jfxwindow.listeners
 
 import javafx.stage.Stage
+import jfxwindow.json.WindowSettings
+import kotlinx.serialization.json.Json
 import java.io.File
+
 
 class WindowDataListener {
     companion object {
@@ -15,93 +18,62 @@ class WindowDataListener {
                 .location.toURI()
                 .path
         ).name
+        @get:JvmSynthetic @set:JvmSynthetic
+        internal lateinit var file: String
 
         @JvmSynthetic
         internal fun addPosListener() {
             val filePath = "${System.getProperty("java.io.tmpdir")}$domain"
-            val file = "$filePath\\app.prefx"
+            file = "$filePath\\settings.json"
 
             File(filePath).mkdirs()
 
             stage.setOnHiding {
                 if (savePosIsEnabled) {
-                    var state = "DEFAULT"
+                    val jsonData = Json.stringify(
+                        WindowSettings.Window.serializer(),
+                        WindowSettings.Window(
+                            WindowSettings.Window.Positions(
+                                stage.x.toString(),
+                                stage.y.toString()
+                            ),
+                            WindowSettings.Window.Sizes(
+                                stage.height.toString(),
+                                stage.width.toString()
+                            ),
+                            WindowSettings.Window.States(
+                                stage.isMaximized.toString(),
+                                stage.isIconified.toString()
+                            )
+                        )
+                    )
 
-                    when {
-                        stage.isMaximized -> state = "MAXIMIZED"
-                        stage.isIconified -> state = "MINIMIZED"
-                    }
-
-                    File(file).writeText("POS: ${stage.x} x ${stage.y}\nSIZE: ${stage.height} x ${stage.width}\nSTATE: $state")
+                    File(file).writeText(jsonData, Charsets.UTF_8)
                 }
             }
+        }
 
+        @JvmSynthetic
+        internal fun loadWindowSettings() {
             if (savePosIsEnabled) {
-                val configuration = readData(file)
-                loadWindowPos(configuration)
-                loadWindowSize(configuration)
-                loadWindowState(configuration)
-            }
-        }
-
-        @JvmSynthetic
-        internal fun loadWindowPos(configuration: List<String>) {
-            if (!configuration.isEmpty()) {
-                val positions =
-                    configuration[0]
-                        .replace("POS: ", "", true)
-                        .split(" x ")
-
-                if (!positions.isEmpty()) {
-                    stage.x = positions[0].toDouble()
-                    stage.y = positions[1].toDouble()
+                val obj = Json.parse(WindowSettings.Window.serializer(), readData(file))
+                if (WindowSettings(obj).window.states.isMaximized.toBoolean()) {
+                    stage.isMaximized = true
+                } else {
+                    stage.x = WindowSettings(obj).window.positions.x.toDouble()
+                    stage.y = WindowSettings(obj).window.positions.y.toDouble()
+                    stage.height = WindowSettings(obj).window.sizes.height.toDouble()
+                    stage.width = WindowSettings(obj).window.sizes.width.toDouble()
+                    stage.isIconified = WindowSettings(obj).window.states.isMinimized.toBoolean()
                 }
             }
         }
 
-        @JvmSynthetic
-        internal fun loadWindowSize(configuration: List<String>) {
-            if (!configuration.isEmpty()) {
-                val sizes =
-                    configuration[1]
-                        .replace("SIZE: ", "", true)
-                        .split(" x ")
-
-                if (!sizes.isEmpty()) {
-                    stage.height = sizes[0].toDouble()
-                    stage.width = sizes[1].toDouble()
-                }
-            }
-        }
-
-        @JvmSynthetic
-        internal fun loadWindowState(configuration: List<String>) {
-            if (!configuration.isEmpty()) {
-                val state =
-                    configuration[2]
-                        .replace("STATE: ", "", true)
-
-                if (state.toUpperCase() == "NORMAL"
-                    || state.toUpperCase() == "DEFAULT"
-                ) {
-                    if (stage.isMaximized) stage.isMaximized = false
-                } else if (state.toUpperCase() == "MAXIMIZED" ||
-                    state.toUpperCase() == "MAX"
-                ) {
-                    if (!stage.isMaximized) stage.isMaximized = true
-                } else if (state.toUpperCase() == "MINIMIZED" ||
-                    state.toUpperCase() == "MIN"
-                ) {
-                    if (!stage.isIconified) stage.isIconified = true
-                }
-            }
-        }
-
-        private fun readData(fileName: String): List<String> {
+        private fun readData(fileName: String): String {
             return if (File(fileName).exists() && File(fileName).isFile) {
-                File(fileName).readLines(Charsets.UTF_8)
+                File(fileName).readText(Charsets.UTF_8)
             } else {
-                emptyList()
+                "{\"positions\":{\"x\":\"${stage.x}\",\"y\":\"${stage.y}\"},\"sizes\":{\"height\":\"${stage.height}\",\"width\":\"${stage.width}\"},\"states\":{\"isMaximized\":\"${stage.isMaximized}\",\"isMinimized\":\"${stage.isIconified}\"}}"
             }
         }
     }

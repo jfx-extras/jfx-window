@@ -10,6 +10,8 @@ version = "0.0.0.1"
 repositories {
     mavenLocal()
     mavenCentral()
+    maven("https://kotlin.bintray.com/kotlinx")
+    jcenter()
 }
 
 application {

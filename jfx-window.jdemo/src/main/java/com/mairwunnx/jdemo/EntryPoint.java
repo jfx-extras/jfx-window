@@ -35,6 +35,7 @@ public class EntryPoint extends Application {
                 .titleText("jfx-window")
                 .icon("jfx-logo.png")
                 .iconIsVisible(false)
+                .saveWindowPosition(true)
                 .borderColor(Color.BLACK)
                 .borderInactiveColor(Color.DARKGRAY)
                 .windowRootElement(new HBox())
@@ -51,7 +52,7 @@ public class EntryPoint extends Application {
             height = Double.parseDouble(newValue.toString().split("value: ")[1].replace("]", ""));
             calculateSize();
         });
-        
+
         System.out.println("stage min width: " + stage.getMinWidth());
         System.out.println("stage min height: " + stage.getMinHeight());
     }
