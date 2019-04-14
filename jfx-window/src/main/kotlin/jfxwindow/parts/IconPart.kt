@@ -62,7 +62,7 @@ class IconPart {
                     windowUiInstance.icon.isVisible = false
                     windowUiInstance.icon.isManaged = false
 
-                    val url = IconPart::class.java.classLoader.getResource(iconPath).toExternalForm()
+                    val url = iconPath
                     windowUiInstance.svgIcon.engine.load(url)
                     windowUiInstance.svgIcon.isContextMenuEnabled = false
                     svgIconZoom = windowOptionsInstance.svgIconZoom
