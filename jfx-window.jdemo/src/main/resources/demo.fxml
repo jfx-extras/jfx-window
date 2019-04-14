@@ -80,42 +80,42 @@
                         <Insets left="20.0" top="10.0" />
                     </VBox.margin>
                 </Label>
-                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="get title icon path">
+                <Button onMouseClicked="#getIconPath" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="get title icon path">
                     <VBox.margin>
                         <Insets top="10.0" />
                     </VBox.margin>
                 </Button>
-                <TextField editable="false" focusTraversable="false" promptText="get icon path result" />
-                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="set new icon path">
+                <TextField fx:id="iconPathResult" editable="false" focusTraversable="false" promptText="get icon path result" />
+                <Button onMouseClicked="#setIconPath" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="set new icon path">
                     <VBox.margin>
                         <Insets top="10.0" />
                     </VBox.margin>
                 </Button>
-                <TextField focusTraversable="false" promptText="type here new icon path" />
-                <ToggleButton focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="185.0" selected="true" text="switch icon visibility">
+                <TextField fx:id="iconPath" focusTraversable="false" promptText="type here new icon path" />
+                <ToggleButton onMouseClicked="#changeIconVisible" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="185.0" selected="true" text="switch icon visibility">
                     <VBox.margin>
                         <Insets top="10.0" />
                     </VBox.margin>
                 </ToggleButton>
-                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="get icon is svg">
+                <Button onMouseClicked="#getIconIsSvg" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="get icon is svg">
                     <VBox.margin>
                         <Insets top="10.0" />
                     </VBox.margin>
                 </Button>
-                <TextField editable="false" focusTraversable="false" promptText="get icon is svg result" />
-                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="get svg icon zoom">
+                <TextField fx:id="iconIsSvgResult" editable="false" focusTraversable="false" promptText="get icon is svg result" />
+                <Button onMouseClicked="#getSvgIconZoom" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="get svg icon zoom">
                     <VBox.margin>
                         <Insets top="10.0" />
                     </VBox.margin>
                 </Button>
-                <TextField editable="false" focusTraversable="false" promptText="get svg icon zoom result" />
-                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="set svg icon zoom">
+                <TextField fx:id="svgIconZoomResult" editable="false" focusTraversable="false" promptText="get svg icon zoom result" />
+                <Button onMouseClicked="#setSvgIconZoom" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="set svg icon zoom">
                     <VBox.margin>
                         <Insets top="10.0" />
                     </VBox.margin>
                 </Button>
-                <TextField focusTraversable="false" promptText="type here svg icon zoom" />
-                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="remove icon">
+                <TextField fx:id="svgIconZoom" focusTraversable="false" promptText="type here svg icon zoom" />
+                <Button onMouseClicked="#removeIcon" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="remove icon">
                     <VBox.margin>
                         <Insets top="10.0" />
                     </VBox.margin>
