@@ -241,44 +241,44 @@
                         <Insets left="20.0" top="10.0"/>
                     </VBox.margin>
                 </Label>
-                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                <Button onMouseClicked="#getTitleBackground" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                         mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="get title background ">
                     <VBox.margin>
                         <Insets top="10.0"/>
                     </VBox.margin>
                 </Button>
-                <TextField editable="false" focusTraversable="false" promptText="get title background result"/>
-                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                <TextField fx:id="titleBackgroundResult" editable="false" focusTraversable="false" promptText="get title background result"/>
+                <Button onMouseClicked="#setTitleBackground" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                         mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="set background color">
                     <VBox.margin>
                         <Insets top="10.0"/>
                     </VBox.margin>
                 </Button>
-                <TextField focusTraversable="false" promptText="type here background color"/>
-                <ToggleButton focusTraversable="false" maxHeight="1.7976931348623157E308"
+                <TextField fx:id="titleBackground" focusTraversable="false" promptText="type here background color"/>
+                <ToggleButton onMouseClicked="#changeTitleOrder" focusTraversable="false" maxHeight="1.7976931348623157E308"
                               maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0"
                               prefWidth="185.0" text="switch order">
                     <VBox.margin>
                         <Insets top="10.0"/>
                     </VBox.margin>
                 </ToggleButton>
-                <ToggleButton focusTraversable="false" maxHeight="1.7976931348623157E308"
+                <ToggleButton onMouseClicked="#changeContextMenuIsEnabled" focusTraversable="false" maxHeight="1.7976931348623157E308"
                               maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0"
                               prefWidth="185.0" selected="true" text="context menu is enabled"/>
-                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                <Button onMouseClicked="#getShadowDepth" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                         mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="get title shadow depth">
                     <VBox.margin>
                         <Insets top="10.0"/>
                     </VBox.margin>
                 </Button>
-                <TextField editable="false" focusTraversable="false" promptText="title shadow depth result"/>
-                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                <TextField fx:id="shadowDepthResult" editable="false" focusTraversable="false" promptText="title shadow depth result"/>
+                <Button onMouseClicked="#setShadowDepth" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                         mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="set title shadow depth">
                     <VBox.margin>
                         <Insets top="10.0"/>
                     </VBox.margin>
                 </Button>
-                <TextField editable="false" focusTraversable="false" promptText="type here shadow depth"/>
+                <TextField fx:id="shadowDepth" focusTraversable="false" promptText="type here shadow depth"/>
                 <Label focusTraversable="false"
                        text="Type shadow depth as 0 - 5. e.g (&quot;2&quot;). For disable type 0." wrapText="true">
                     <VBox.margin>
