@@ -34,6 +34,10 @@ public class Controller {
     public TextField titleBackground;
     public TextField shadowDepthResult;
     public TextField shadowDepth;
+    public TextField buttonHoverColorResult;
+    public TextField buttonHoverColor;
+    public TextField buttonPressedColorResult;
+    public TextField buttonPressedColor;
 
     public void getTitleText(MouseEvent mouseEvent) {
         titleTextResult.setText(window.getWindowBase().getTitlePart().getTitleText());
@@ -167,5 +171,37 @@ public class Controller {
 
     public void setShadowDepth(MouseEvent mouseEvent) {
         window.getWindowBase().getTitleBarPart().setShadowDepth(TitleShadowDepth.valueOf("DEPTH" + shadowDepth.getText()));
+    }
+
+    public void getButtonHoverColor(MouseEvent mouseEvent) {
+        buttonHoverColorResult.setText(String.valueOf(window.getWindowBase().getButtonPart().getButtonHoverColor()));
+    }
+
+    public void setButtonHoverColor(MouseEvent mouseEvent) {
+        window.getWindowBase().getButtonPart().setButtonHoverColor(Color.web(buttonHoverColor.getText()));
+    }
+
+    public void getButtonPressedColor(MouseEvent mouseEvent) {
+        buttonPressedColorResult.setText(String.valueOf(window.getWindowBase().getButtonPart().getButtonPressedColor()));
+    }
+
+    public void setButtonPressedColor(MouseEvent mouseEvent) {
+        window.getWindowBase().getButtonPart().setButtonPressedColor(Color.web(buttonPressedColor.getText()));
+    }
+
+    public void changeToolTipsVisibility(MouseEvent mouseEvent) {
+        window.getWindowBase().getButtonPart().setTooltipIsEnabled(!window.getWindowBase().getButtonPart().getTooltipIsEnabled());
+    }
+
+    public void changeCloseButtonVisible(MouseEvent mouseEvent) {
+        window.getWindowBase().getButtonPart().setCloseButtonIsVisible(!window.getWindowBase().getButtonPart().getCloseButtonIsVisible());
+    }
+
+    public void changeMaxButtonVisible(MouseEvent mouseEvent) {
+        window.getWindowBase().getButtonPart().setMaxButtonIsVisible(!window.getWindowBase().getButtonPart().getMaxButtonIsVisible());
+    }
+
+    public void changeMinButtonVisible(MouseEvent mouseEvent) {
+        window.getWindowBase().getButtonPart().setMinButtonIsVisible(!window.getWindowBase().getButtonPart().getMinButtonIsVisible());
     }
 }

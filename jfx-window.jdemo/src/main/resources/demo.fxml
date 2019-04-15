@@ -297,52 +297,52 @@
                         <Insets left="20.0" top="10.0"/>
                     </VBox.margin>
                 </Label>
-                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                <Button onMouseClicked="#getButtonHoverColor" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                         mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="get button hover color">
                     <VBox.margin>
                         <Insets top="10.0"/>
                     </VBox.margin>
                 </Button>
-                <TextField editable="false" focusTraversable="false" promptText="button hover color result"/>
-                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                <TextField fx:id="buttonHoverColorResult" editable="false" focusTraversable="false" promptText="button hover color result"/>
+                <Button onMouseClicked="#setButtonHoverColor" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                         mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="set button hover color">
                     <VBox.margin>
                         <Insets top="10.0"/>
                     </VBox.margin>
                 </Button>
-                <TextField focusTraversable="false" promptText="type here hover color"/>
-                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                <TextField fx:id="buttonHoverColor" focusTraversable="false" promptText="type here hover color"/>
+                <Button onMouseClicked="#getButtonPressedColor" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                         mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="get button pressed color">
                     <VBox.margin>
                         <Insets top="15.0"/>
                     </VBox.margin>
                 </Button>
-                <TextField editable="false" focusTraversable="false" promptText="button pressed color result">
+                <TextField fx:id="buttonPressedColorResult" editable="false" focusTraversable="false" promptText="button pressed color result">
                     <VBox.margin>
                         <Insets/>
                     </VBox.margin>
                 </TextField>
-                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                <Button onMouseClicked="#setButtonPressedColor" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                         mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="set button pressed color">
                     <VBox.margin>
                         <Insets top="15.0"/>
                     </VBox.margin>
                 </Button>
-                <TextField focusTraversable="false" promptText="button pressed color"/>
-                <ToggleButton focusTraversable="false" maxHeight="1.7976931348623157E308"
+                <TextField fx:id="buttonPressedColor" focusTraversable="false" promptText="button pressed color"/>
+                <ToggleButton onMouseClicked="#changeToolTipsVisibility" focusTraversable="false" maxHeight="1.7976931348623157E308"
                               maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0"
                               prefWidth="185.0" selected="true" text="switch tooltips is enabled">
                     <VBox.margin>
                         <Insets top="10.0"/>
                     </VBox.margin>
                 </ToggleButton>
-                <ToggleButton focusTraversable="false" maxHeight="1.7976931348623157E308"
+                <ToggleButton onMouseClicked="#changeCloseButtonVisible" focusTraversable="false" maxHeight="1.7976931348623157E308"
                               maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0"
                               prefWidth="185.0" selected="true" text="close button is visible"/>
-                <ToggleButton focusTraversable="false" maxHeight="1.7976931348623157E308"
+                <ToggleButton onMouseClicked="#changeMaxButtonVisible" focusTraversable="false" maxHeight="1.7976931348623157E308"
                               maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0"
                               prefWidth="185.0" selected="true" text="max button is visible"/>
-                <ToggleButton focusTraversable="false" maxHeight="1.7976931348623157E308"
+                <ToggleButton onMouseClicked="#changeMinButtonVisible" focusTraversable="false" maxHeight="1.7976931348623157E308"
                               maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0"
                               prefWidth="185.0" selected="true" text="min button is visible"/>
             </children>
