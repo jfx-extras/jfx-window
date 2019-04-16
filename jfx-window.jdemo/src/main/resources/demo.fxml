@@ -357,46 +357,46 @@
                         <Insets left="20.0" top="10.0"/>
                     </VBox.margin>
                 </Label>
-                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                <Button onMouseClicked="#getBorderColor" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                         mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="get border color">
                     <VBox.margin>
                         <Insets top="10.0"/>
                     </VBox.margin>
                 </Button>
-                <TextField editable="false" focusTraversable="false" promptText="get border color result"/>
-                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                <TextField fx:id="borderColorResult" editable="false" focusTraversable="false" promptText="get border color result"/>
+                <Button onMouseClicked="#setBorderColor" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                         mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="set border color">
                     <VBox.margin>
                         <Insets top="10.0"/>
                     </VBox.margin>
                 </Button>
-                <TextField focusTraversable="false" promptText="type here border color"/>
-                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                <TextField fx:id="borderColor" focusTraversable="false" promptText="type here border color"/>
+                <Button onMouseClicked="#getBorderInactiveColor" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                         mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="get border inactive color">
                     <VBox.margin>
                         <Insets top="15.0"/>
                     </VBox.margin>
                 </Button>
-                <TextField editable="false" focusTraversable="false" promptText="inactive border color result">
+                <TextField fx:id="borderInactiveColorResult" editable="false" focusTraversable="false" promptText="inactive border color result">
                     <VBox.margin>
                         <Insets/>
                     </VBox.margin>
                 </TextField>
-                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                <Button onMouseClicked="#setBorderInactiveColor" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                         mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="set border inactive color">
                     <VBox.margin>
                         <Insets top="15.0"/>
                     </VBox.margin>
                 </Button>
-                <TextField focusTraversable="false" promptText="border inactive color"/>
-                <ToggleButton focusTraversable="false" maxHeight="1.7976931348623157E308"
+                <TextField fx:id="borderInactiveColor" focusTraversable="false" promptText="border inactive color"/>
+                <ToggleButton onMouseClicked="#changeBottomBorderVisible" focusTraversable="false" maxHeight="1.7976931348623157E308"
                               maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0"
                               prefWidth="185.0" text="bottom border is visible">
                     <VBox.margin>
                         <Insets top="10.0"/>
                     </VBox.margin>
                 </ToggleButton>
-                <ToggleButton focusTraversable="false" maxHeight="1.7976931348623157E308"
+                <ToggleButton onMouseClicked="#changeBorderIsVisible" focusTraversable="false" maxHeight="1.7976931348623157E308"
                               maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0"
                               prefWidth="185.0" selected="true" text="border is visible"/>
             </children>

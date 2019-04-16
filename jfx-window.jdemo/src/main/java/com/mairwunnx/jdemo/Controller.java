@@ -38,6 +38,10 @@ public class Controller {
     public TextField buttonHoverColor;
     public TextField buttonPressedColorResult;
     public TextField buttonPressedColor;
+    public TextField borderColorResult;
+    public TextField borderColor;
+    public TextField borderInactiveColorResult;
+    public TextField borderInactiveColor;
 
     public void getTitleText(MouseEvent mouseEvent) {
         titleTextResult.setText(window.getWindowBase().getTitlePart().getTitleText());
@@ -203,5 +207,29 @@ public class Controller {
 
     public void changeMinButtonVisible(MouseEvent mouseEvent) {
         window.getWindowBase().getButtonPart().setMinButtonIsVisible(!window.getWindowBase().getButtonPart().getMinButtonIsVisible());
+    }
+
+    public void getBorderColor(MouseEvent mouseEvent) {
+        borderColorResult.setText(String.valueOf(window.getWindowBase().getBorderPart().getBorderColor()));
+    }
+
+    public void setBorderColor(MouseEvent mouseEvent) {
+        window.getWindowBase().getBorderPart().setBorderColor(Color.web(borderColor.getText()));
+    }
+
+    public void getBorderInactiveColor(MouseEvent mouseEvent) {
+        borderInactiveColorResult.setText(String.valueOf(window.getWindowBase().getBorderPart().getBorderInactiveColor()));
+    }
+
+    public void setBorderInactiveColor(MouseEvent mouseEvent) {
+        window.getWindowBase().getBorderPart().setBorderInactiveColor(Color.web(borderInactiveColor.getText()));
+    }
+
+    public void changeBottomBorderVisible(MouseEvent mouseEvent) {
+        window.getWindowBase().getBorderPart().setBottomBorderIsVisible(!window.getWindowBase().getBorderPart().getBottomBorderIsVisible());
+    }
+
+    public void changeBorderIsVisible(MouseEvent mouseEvent) {
+        window.getWindowBase().getBorderPart().setBorderIsVisible(!window.getWindowBase().getBorderPart().getBorderIsVisible());
     }
 }
