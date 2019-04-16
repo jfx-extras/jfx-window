@@ -8,15 +8,15 @@ import jfxwindow.base.WindowUi
 import jfxwindow.listeners.WindowStateListener
 
 class BorderPart {
-    @set:JvmSynthetic @get:JvmSynthetic
+    @set:JvmSynthetic @get:JvmSynthetic @JvmSynthetic
     internal lateinit var windowUiInstance: WindowUi
-    @set:JvmSynthetic @get:JvmSynthetic
+    @set:JvmSynthetic @get:JvmSynthetic @JvmSynthetic
     internal lateinit var windowOptionsInstance: WindowOptions
-    @set:JvmSynthetic @get:JvmSynthetic
+    @set:JvmSynthetic @get:JvmSynthetic @JvmSynthetic
     internal lateinit var stateListener: WindowStateListener
-    @set:JvmSynthetic @get:JvmSynthetic
+    @set:JvmSynthetic @get:JvmSynthetic @JvmSynthetic
     internal var borderIsVisibleHelper: Boolean = true
-    @set:JvmSynthetic @get:JvmSynthetic
+    @set:JvmSynthetic @get:JvmSynthetic @JvmSynthetic
     internal lateinit var borderActiveColor: Color
     lateinit var borderInactiveColor: Color
     private var borderWidths: BorderWidths = BorderWidths(1.0, 0.0, 0.0, 0.0)
