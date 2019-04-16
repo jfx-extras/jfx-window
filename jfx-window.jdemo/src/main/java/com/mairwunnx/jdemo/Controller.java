@@ -1,7 +1,6 @@
 package com.mairwunnx.jdemo;
 
 import javafx.geometry.NodeOrientation;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
@@ -12,7 +11,7 @@ import javafx.util.Duration;
 import jfxwindow.enums.TitleAlignment;
 import jfxwindow.enums.TitleShadowDepth;
 
-import static com.mairwunnx.jdemo.EntryPoint.*;
+import static com.mairwunnx.jdemo.EntryPoint.window;
 
 public class Controller {
     public TextField titleTextResult;
@@ -43,11 +42,11 @@ public class Controller {
     public TextField borderInactiveColorResult;
     public TextField borderInactiveColor;
 
-    public void getTitleText(MouseEvent mouseEvent) {
+    public void getTitleText() {
         titleTextResult.setText(window.getWindowBase().getTitlePart().getTitleText());
     }
 
-    public void setTitleText(MouseEvent mouseEvent) {
+    public void setTitleText() {
         window.getWindowBase().getTitlePart().setTitleText(titleTextTextField.getText());
     }
 
@@ -56,7 +55,7 @@ public class Controller {
         window.getWindowBase().getTitlePart().setTitleIsVisible(toggleButton.isSelected());
     }
 
-    public void changeTitleAlign(MouseEvent mouseEvent) {
+    public void changeTitleAlign() {
         if (titleAlignTextField.getText().toLowerCase().equals(TitleAlignment.CENTER.name().toLowerCase())) {
             window.getWindowBase().getTitlePart().setTitleAlignment(TitleAlignment.CENTER);
         } else {
@@ -64,100 +63,100 @@ public class Controller {
         }
     }
 
-    public void getTitleAlign(MouseEvent mouseEvent) {
+    public void getTitleAlign() {
         titleAlignResult.setText(window.getWindowBase().getTitlePart().getTitleAlignment().name());
     }
 
-    public void getTitleFont(MouseEvent mouseEvent) {
+    public void getTitleFont() {
         titleFontResult.setText(window.getWindowBase().getTitlePart().getTitleTextFont().toString());
     }
 
-    public void setTitleFont(MouseEvent mouseEvent) {
+    public void setTitleFont() {
         String[] font = ";".split(titleFontName.getText());
         window.getWindowBase().getTitlePart().setTitleTextFont(new Font(font[0], Double.parseDouble(font[1])));
     }
 
-    public void getIconPath(MouseEvent mouseEvent) {
+    public void getIconPath() {
         iconPathResult.setText(window.getWindowBase().getIconPart().getIcon());
     }
 
-    public void setIconPath(MouseEvent mouseEvent) {
+    public void setIconPath() {
         window.getWindowBase().getIconPart().setIcon(iconPath.getText());
     }
 
-    public void changeIconVisible(MouseEvent mouseEvent) {
+    public void changeIconVisible() {
         window.getWindowBase().getIconPart().setIconIsVisible(!window.getWindowBase().getIconPart().getIconIsVisible());
     }
 
-    public void getIconIsSvg(MouseEvent mouseEvent) {
+    public void getIconIsSvg() {
         iconIsSvgResult.setText(String.valueOf(window.getWindowBase().getIconPart().getIconIsSvg()));
     }
 
-    public void getSvgIconZoom(MouseEvent mouseEvent) {
+    public void getSvgIconZoom() {
         svgIconZoomResult.setText(String.valueOf(window.getWindowBase().getIconPart().getSvgIconZoom()));
     }
 
-    public void setSvgIconZoom(MouseEvent mouseEvent) {
+    public void setSvgIconZoom() {
         window.getWindowBase().getIconPart().setSvgIconZoom(Double.parseDouble(svgIconZoom.getText()));
     }
 
-    public void removeIcon(MouseEvent mouseEvent) {
+    public void removeIcon() {
         window.getWindowBase().getIconPart().removeIcon();
     }
 
-    public void getAnimationDuration(MouseEvent mouseEvent) {
+    public void getAnimationDuration() {
         animationDurationResult.setText(String.valueOf(window.getWindowBase().getWindowPart().getAnimationDuration().toMillis()));
     }
 
-    public void setAnimationDuration(MouseEvent mouseEvent) {
+    public void setAnimationDuration() {
         window.getWindowBase().getWindowPart().setAnimationDuration(Duration.millis(Double.parseDouble(animationDuration.getText())));
     }
 
-    public void changeAnimationDuration(MouseEvent mouseEvent) {
+    public void changeAnimationDuration() {
         window.getWindowBase().getWindowPart().setSmoothColorAnim(!window.getWindowBase().getWindowPart().getSmoothColorAnim());
     }
 
-    public void changeSavingPosition(MouseEvent mouseEvent) {
+    public void changeSavingPosition() {
         window.getWindowBase().getWindowPart().setSaveWindowPosition(!window.getWindowBase().getWindowPart().getSaveWindowPosition());
     }
 
-    public void changeIsResizable(MouseEvent mouseEvent) {
+    public void changeIsResizable() {
         window.getWindowBase().getWindowPart().setResizable(!window.getWindowBase().getWindowPart().isResizable());
     }
 
-    public void changeIsDraggable(MouseEvent mouseEvent) {
+    public void changeIsDraggable() {
         window.getWindowBase().getWindowPart().setDraggable(!window.getWindowBase().getWindowPart().isDraggable());
     }
 
-    public void changeIsMaximizable(MouseEvent mouseEvent) {
+    public void changeIsMaximizable() {
         window.getWindowBase().getWindowPart().setMaximizable(!window.getWindowBase().getWindowPart().isMaximizable());
     }
 
-    public void changeIsMinimizable(MouseEvent mouseEvent) {
+    public void changeIsMinimizable() {
         window.getWindowBase().getWindowPart().setMinimizable(!window.getWindowBase().getWindowPart().isMinimizable());
     }
 
-    public void changeIsClosable(MouseEvent mouseEvent) {
+    public void changeIsClosable() {
         window.getWindowBase().getWindowPart().setClosable(!window.getWindowBase().getWindowPart().isClosable());
     }
 
-    public void getButtonDisableOpacity(MouseEvent mouseEvent) {
+    public void getButtonDisableOpacity() {
         buttonDisableOpacityResult.setText(String.valueOf(window.getWindowBase().getWindowPart().getDisabledOpacity()));
     }
 
-    public void setButtonDusableOpacityResult(MouseEvent mouseEvent) {
+    public void setButtonDusableOpacityResult() {
         window.getWindowBase().getWindowPart().setDisabledOpacity(Double.parseDouble(buttonDisableOpacity.getText()));
     }
 
-    public void getTitleBackground(MouseEvent mouseEvent) {
+    public void getTitleBackground() {
         titleBackgroundResult.setText(String.valueOf(window.getWindowBase().getTitleBarPart().getTitleBackground()));
     }
 
-    public void setTitleBackground(MouseEvent mouseEvent) {
+    public void setTitleBackground() {
         window.getWindowBase().getTitleBarPart().setTitleBackground(Color.web(titleBackground.getText()));
     }
 
-    public void changeTitleOrder(MouseEvent mouseEvent) {
+    public void changeTitleOrder() {
         if (window.getWindowBase().getTitleBarPart().getOrder() == NodeOrientation.LEFT_TO_RIGHT) {
             window.getWindowBase().getTitleBarPart().setOrder(NodeOrientation.RIGHT_TO_LEFT);
         } else {
@@ -165,71 +164,71 @@ public class Controller {
         }
     }
 
-    public void changeContextMenuIsEnabled(MouseEvent mouseEvent) {
+    public void changeContextMenuIsEnabled() {
         window.getWindowBase().getContextPart().setContextMenuIsEnabled(!window.getWindowBase().getContextPart().getContextMenuIsEnabled());
     }
 
-    public void getShadowDepth(MouseEvent mouseEvent) {
+    public void getShadowDepth() {
         shadowDepthResult.setText(window.getWindowBase().getTitleBarPart().getShadowDepth().name());
     }
 
-    public void setShadowDepth(MouseEvent mouseEvent) {
+    public void setShadowDepth() {
         window.getWindowBase().getTitleBarPart().setShadowDepth(TitleShadowDepth.valueOf("DEPTH" + shadowDepth.getText()));
     }
 
-    public void getButtonHoverColor(MouseEvent mouseEvent) {
+    public void getButtonHoverColor() {
         buttonHoverColorResult.setText(String.valueOf(window.getWindowBase().getButtonPart().getButtonHoverColor()));
     }
 
-    public void setButtonHoverColor(MouseEvent mouseEvent) {
+    public void setButtonHoverColor() {
         window.getWindowBase().getButtonPart().setButtonHoverColor(Color.web(buttonHoverColor.getText()));
     }
 
-    public void getButtonPressedColor(MouseEvent mouseEvent) {
+    public void getButtonPressedColor() {
         buttonPressedColorResult.setText(String.valueOf(window.getWindowBase().getButtonPart().getButtonPressedColor()));
     }
 
-    public void setButtonPressedColor(MouseEvent mouseEvent) {
+    public void setButtonPressedColor() {
         window.getWindowBase().getButtonPart().setButtonPressedColor(Color.web(buttonPressedColor.getText()));
     }
 
-    public void changeToolTipsVisibility(MouseEvent mouseEvent) {
+    public void changeToolTipsVisibility() {
         window.getWindowBase().getButtonPart().setTooltipIsEnabled(!window.getWindowBase().getButtonPart().getTooltipIsEnabled());
     }
 
-    public void changeCloseButtonVisible(MouseEvent mouseEvent) {
+    public void changeCloseButtonVisible() {
         window.getWindowBase().getButtonPart().setCloseButtonIsVisible(!window.getWindowBase().getButtonPart().getCloseButtonIsVisible());
     }
 
-    public void changeMaxButtonVisible(MouseEvent mouseEvent) {
+    public void changeMaxButtonVisible() {
         window.getWindowBase().getButtonPart().setMaxButtonIsVisible(!window.getWindowBase().getButtonPart().getMaxButtonIsVisible());
     }
 
-    public void changeMinButtonVisible(MouseEvent mouseEvent) {
+    public void changeMinButtonVisible() {
         window.getWindowBase().getButtonPart().setMinButtonIsVisible(!window.getWindowBase().getButtonPart().getMinButtonIsVisible());
     }
 
-    public void getBorderColor(MouseEvent mouseEvent) {
+    public void getBorderColor() {
         borderColorResult.setText(String.valueOf(window.getWindowBase().getBorderPart().getBorderColor()));
     }
 
-    public void setBorderColor(MouseEvent mouseEvent) {
+    public void setBorderColor() {
         window.getWindowBase().getBorderPart().setBorderColor(Color.web(borderColor.getText()));
     }
 
-    public void getBorderInactiveColor(MouseEvent mouseEvent) {
+    public void getBorderInactiveColor() {
         borderInactiveColorResult.setText(String.valueOf(window.getWindowBase().getBorderPart().getBorderInactiveColor()));
     }
 
-    public void setBorderInactiveColor(MouseEvent mouseEvent) {
+    public void setBorderInactiveColor() {
         window.getWindowBase().getBorderPart().setBorderInactiveColor(Color.web(borderInactiveColor.getText()));
     }
 
-    public void changeBottomBorderVisible(MouseEvent mouseEvent) {
+    public void changeBottomBorderVisible() {
         window.getWindowBase().getBorderPart().setBottomBorderIsVisible(!window.getWindowBase().getBorderPart().getBottomBorderIsVisible());
     }
 
-    public void changeBorderIsVisible(MouseEvent mouseEvent) {
+    public void changeBorderIsVisible() {
         window.getWindowBase().getBorderPart().setBorderIsVisible(!window.getWindowBase().getBorderPart().getBorderIsVisible());
     }
 }
