@@ -4,6 +4,7 @@ import javafx.scene.text.Font
 import jfxwindow.base.WindowOptions
 import jfxwindow.base.WindowUi
 import jfxwindow.enums.TitleAlignment
+import java.lang.Exception
 
 class TitlePart {
     private var titleAlign: TitleAlignment = TitleAlignment.LEFT
@@ -53,7 +54,11 @@ class TitlePart {
         set(text) {
             windowUiInstance.title.text = text
             windowUiInstance.titleCenter.text = text
-            windowOptionsInstance.stage.title = text
+            try {
+                windowOptionsInstance.stage.title = text
+            } catch (ex: Exception) {
+                // Sorry for code monkey.
+            }
         }
 
     var titleTextFont: Font
