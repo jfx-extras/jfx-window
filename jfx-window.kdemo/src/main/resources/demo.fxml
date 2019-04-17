@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<HBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <VBox minHeight="10.0" prefWidth="161.0" style="-fx-background-color: #fff;" HBox.hgrow="ALWAYS">
+            <children>
+                <Label text="Title">
+                    <font>
+                        <Font name="Segoe UI Semilight" size="29.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets left="20.0" top="10.0"/>
+                    </VBox.margin>
+                </Label>
+                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false"  prefHeight="25.0" prefWidth="170.0"
+                        text="get title text">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="titleTextResult" editable="false" focusTraversable="false"
+                           promptText="get title text result"/>
+                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false"  prefHeight="25.0" prefWidth="170.0"
+                        text="set title text">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="titleTextTextField" focusTraversable="false" promptText="type here new title text"/>
+                <ToggleButton focusTraversable="false" maxHeight="1.7976931348623157E308"
+                              maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                               prefHeight="25.0" prefWidth="185.0"
+                              selected="true" text="switch title visibility">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </ToggleButton>
+                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false"  prefHeight="25.0" prefWidth="170.0"
+                        text="get title alignment">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="titleAlignResult" editable="false" focusTraversable="false"
+                           promptText="get title alignment result"/>
+                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false"  prefHeight="25.0" prefWidth="170.0"
+                        text="set title alignment">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="titleAlignTextField" focusTraversable="false" promptText="type here title alignment"/>
+                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false"  prefHeight="25.0" prefWidth="170.0"
+                        text="get title text font">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextArea fx:id="titleFontResult" editable="false" focusTraversable="false" prefHeight="82.0"
+                          prefWidth="161.0" promptText="get title text font result" wrapText="true"/>
+                <Button focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false"  prefHeight="25.0" prefWidth="170.0"
+                        text="set title text font">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="titleFontName" focusTraversable="false" promptText="type here title text font"/>
+                <Label focusTraversable="false"
+                       text="Type font as Segoe UI;16 - When Segoe UI is font, 16 is font size." wrapText="true">
+                    <VBox.margin>
+                        <Insets left="5.0" top="5.0"/>
+                    </VBox.margin>
+                </Label>
+            </children>
+        </VBox>
+        <VBox minHeight="10.0" prefWidth="161.0" style="-fx-background-color: #fff;" HBox.hgrow="ALWAYS">
+            <children>
+                <Label text="Icon">
+                    <font>
+                        <Font name="Segoe UI Semilight" size="29.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets left="20.0" top="10.0"/>
+                    </VBox.margin>
+                </Label>
+                <Button  focusTraversable="false" maxHeight="1.7976931348623157E308"
+                        maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0"
+                        text="get title icon path">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="iconPathResult" editable="false" focusTraversable="false"
+                           promptText="get icon path result"/>
+                <Button  focusTraversable="false" maxHeight="1.7976931348623157E308"
+                        maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0"
+                        text="set new icon path">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="iconPath" focusTraversable="false" promptText="type here new icon path"/>
+                <ToggleButton  focusTraversable="false"
+                              maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                              mnemonicParsing="false" prefHeight="25.0" prefWidth="185.0" selected="true"
+                              text="switch icon visibility">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </ToggleButton>
+                <Button  focusTraversable="false" maxHeight="1.7976931348623157E308"
+                        maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0"
+                        text="get icon is svg">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="iconIsSvgResult" editable="false" focusTraversable="false"
+                           promptText="get icon is svg result"/>
+                <Button  focusTraversable="false" maxHeight="1.7976931348623157E308"
+                        maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0"
+                        text="get svg icon zoom">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="svgIconZoomResult" editable="false" focusTraversable="false"
+                           promptText="get svg icon zoom result"/>
+                <Button  focusTraversable="false" maxHeight="1.7976931348623157E308"
+                        maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0"
+                        text="set svg icon zoom">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="svgIconZoom" focusTraversable="false" promptText="type here svg icon zoom"/>
+                <Button  focusTraversable="false" maxHeight="1.7976931348623157E308"
+                        maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0"
+                        text="remove icon">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <Label focusTraversable="false" text="If you remove icon, then you need set new icon, for new icon."
+                       wrapText="true">
+                    <VBox.margin>
+                        <Insets left="5.0" top="5.0"/>
+                    </VBox.margin>
+                </Label>
+            </children>
+        </VBox>
+        <VBox minHeight="10.0" prefWidth="161.0" style="-fx-background-color: #fff;" HBox.hgrow="ALWAYS">
+            <children>
+                <Label text="Window">
+                    <font>
+                        <Font name="Segoe UI Semilight" size="29.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets left="20.0" top="10.0"/>
+                    </VBox.margin>
+                </Label>
+                <Button  focusTraversable="false"
+                        maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="get animation duration">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="animationDurationResult" editable="false" focusTraversable="false"
+                           promptText="get anim. duration result"/>
+                <Button  focusTraversable="false"
+                        maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="set anim. duration">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="animationDuration" focusTraversable="false"
+                           promptText="type here anim. dur... in ms"/>
+                <ToggleButton  focusTraversable="false"
+                              maxHeight="1.7976931348623157E308"
+                              maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0"
+                              prefWidth="185.0" selected="true" text="switch anim. duration">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </ToggleButton>
+                <ToggleButton  focusTraversable="false" layoutX="10.0"
+                              layoutY="193.0" maxHeight="1.7976931348623157E308"
+                              maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0"
+                              prefWidth="185.0" text="switch saving position"/>
+                <ToggleButton  focusTraversable="false"
+                              maxHeight="1.7976931348623157E308"
+                              maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0"
+                              prefWidth="185.0" selected="true" text="switch is resizable"/>
+                <ToggleButton  focusTraversable="false"
+                              maxHeight="1.7976931348623157E308"
+                              maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0"
+                              prefWidth="185.0" selected="true" text="switch is draggable"/>
+                <ToggleButton  focusTraversable="false"
+                              maxHeight="1.7976931348623157E308"
+                              maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0"
+                              prefWidth="185.0" selected="true" text="switch is maximizable"/>
+                <ToggleButton  focusTraversable="false"
+                              maxHeight="1.7976931348623157E308"
+                              maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0"
+                              prefWidth="185.0" selected="true" text="switch is minimizable"/>
+                <ToggleButton  focusTraversable="false"
+                              maxHeight="1.7976931348623157E308"
+                              maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0"
+                              prefWidth="185.0" selected="true" text="switch is closable"/>
+                <Button  focusTraversable="false"
+                        maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="get btn disabled opacity">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="buttonDisableOpacityResult" editable="false" focusTraversable="false"
+                           promptText="btn disabled opacity result"/>
+                <Button  focusTraversable="false"
+                        maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="set btn disabled opacity">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="buttonDisableOpacity" focusTraversable="false" promptText="type here opacity result"/>
+            </children>
+        </VBox>
+        <VBox minHeight="10.0" prefWidth="161.0" style="-fx-background-color: #fff;" HBox.hgrow="ALWAYS">
+            <children>
+                <Label text="TitleBar">
+                    <font>
+                        <Font name="Segoe UI Semilight" size="29.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets left="20.0" top="10.0"/>
+                    </VBox.margin>
+                </Label>
+                <Button  focusTraversable="false" maxHeight="1.7976931348623157E308"
+                        maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="get title background ">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="titleBackgroundResult" editable="false" focusTraversable="false"
+                           promptText="get title background result"/>
+                <Button  focusTraversable="false" maxHeight="1.7976931348623157E308"
+                        maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="set background color">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="titleBackground" focusTraversable="false" promptText="type here background color"/>
+                <ToggleButton  focusTraversable="false"
+                              maxHeight="1.7976931348623157E308"
+                              maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0"
+                              prefWidth="185.0" text="switch order">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </ToggleButton>
+                <ToggleButton  focusTraversable="false"
+                              maxHeight="1.7976931348623157E308"
+                              maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0"
+                              prefWidth="185.0" selected="true" text="context menu is enabled"/>
+                <Button  focusTraversable="false" maxHeight="1.7976931348623157E308"
+                        maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="get title shadow depth">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="shadowDepthResult" editable="false" focusTraversable="false"
+                           promptText="title shadow depth result"/>
+                <Button  focusTraversable="false" maxHeight="1.7976931348623157E308"
+                        maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="set title shadow depth">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="shadowDepth" focusTraversable="false" promptText="type here shadow depth"/>
+                <Label focusTraversable="false"
+                       text="Type shadow depth as 0 - 5. e.g (&quot;2&quot;). For disable type 0." wrapText="true">
+                    <VBox.margin>
+                        <Insets left="5.0" top="5.0"/>
+                    </VBox.margin>
+                </Label>
+            </children>
+        </VBox>
+        <VBox minHeight="10.0" prefWidth="161.0" style="-fx-background-color: #fff;" HBox.hgrow="ALWAYS">
+            <children>
+                <Label text="Buttons">
+                    <font>
+                        <Font name="Segoe UI Semilight" size="29.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets left="20.0" top="10.0"/>
+                    </VBox.margin>
+                </Label>
+                <Button  focusTraversable="false"
+                        maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="get button hover color">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="buttonHoverColorResult" editable="false" focusTraversable="false"
+                           promptText="button hover color result"/>
+                <Button  focusTraversable="false"
+                        maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="set button hover color">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="buttonHoverColor" focusTraversable="false" promptText="type here hover color"/>
+                <Button  focusTraversable="false"
+                        maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="get button pressed color">
+                    <VBox.margin>
+                        <Insets top="15.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="buttonPressedColorResult" editable="false" focusTraversable="false"
+                           promptText="button pressed color result">
+                    <VBox.margin>
+                        <Insets/>
+                    </VBox.margin>
+                </TextField>
+                <Button  focusTraversable="false"
+                        maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="set button pressed color">
+                    <VBox.margin>
+                        <Insets top="15.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="buttonPressedColor" focusTraversable="false" promptText="button pressed color"/>
+                <ToggleButton  focusTraversable="false"
+                              maxHeight="1.7976931348623157E308"
+                              maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0"
+                              prefWidth="185.0" selected="true" text="switch tooltips is enabled">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </ToggleButton>
+                <ToggleButton  focusTraversable="false"
+                              maxHeight="1.7976931348623157E308"
+                              maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0"
+                              prefWidth="185.0" selected="true" text="close button is visible"/>
+                <ToggleButton  focusTraversable="false"
+                              maxHeight="1.7976931348623157E308"
+                              maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0"
+                              prefWidth="185.0" selected="true" text="max button is visible"/>
+                <ToggleButton  focusTraversable="false"
+                              maxHeight="1.7976931348623157E308"
+                              maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0"
+                              prefWidth="185.0" selected="true" text="min button is visible"/>
+            </children>
+        </VBox>
+        <VBox minHeight="10.0" prefWidth="161.0" style="-fx-background-color: #fff;" HBox.hgrow="ALWAYS">
+            <children>
+                <Label text="Border">
+                    <font>
+                        <Font name="Segoe UI Semilight" size="29.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets left="20.0" top="10.0"/>
+                    </VBox.margin>
+                </Label>
+                <Button  focusTraversable="false" maxHeight="1.7976931348623157E308"
+                        maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="get border color">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="borderColorResult" editable="false" focusTraversable="false"
+                           promptText="get border color result"/>
+                <Button  focusTraversable="false" maxHeight="1.7976931348623157E308"
+                        maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="set border color">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="borderColor" focusTraversable="false" promptText="type here border color"/>
+                <Button  focusTraversable="false"
+                        maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="get border inactive color">
+                    <VBox.margin>
+                        <Insets top="15.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="borderInactiveColorResult" editable="false" focusTraversable="false"
+                           promptText="inactive border color result">
+                    <VBox.margin>
+                        <Insets/>
+                    </VBox.margin>
+                </TextField>
+                <Button  focusTraversable="false"
+                        maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                        mnemonicParsing="false" prefHeight="25.0" prefWidth="170.0" text="set border inactive color">
+                    <VBox.margin>
+                        <Insets top="15.0"/>
+                    </VBox.margin>
+                </Button>
+                <TextField fx:id="borderInactiveColor" focusTraversable="false" promptText="border inactive color"/>
+                <ToggleButton  focusTraversable="false"
+                              maxHeight="1.7976931348623157E308"
+                              maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0"
+                              prefWidth="185.0" text="bottom border is visible">
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </ToggleButton>
+                <ToggleButton  focusTraversable="false"
+                              maxHeight="1.7976931348623157E308"
+                              maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0"
+                              prefWidth="185.0" selected="true" text="border is visible"/>
+            </children>
+        </VBox>
+    </children>
+</HBox>

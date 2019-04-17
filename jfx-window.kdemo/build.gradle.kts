@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.3.21"
     application
+    java
     id("com.github.johnrengelman.shadow") version "5.0.0"
 }
 
@@ -20,12 +21,13 @@ application {
     group = "org.jfxextras"
     version = "8.0.0.0"
     applicationName = "jfx-window.kdemo"
-    mainClassName = "com.mairwunnx.kdemo.EntryPoint"
+    mainClassName = "com.mairwunnx.kdemo.EntryPointKt"
 }
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation("org.jfxextras:jfxwindow:8.+")
+    implementation("no.tornado:tornadofx:1.7.18")
 }
 
 tasks.withType<KotlinCompile> {
