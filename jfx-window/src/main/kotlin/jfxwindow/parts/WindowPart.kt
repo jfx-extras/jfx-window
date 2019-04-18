@@ -89,5 +89,5 @@ class WindowPart {
     }
 
     fun returnMinWidthSizeByTitleBar(): Double =
-        windowUiInstance.title.width + windowUiInstance.title.padding.left + (47 * 4) + 36
+        windowUiInstance.title.width + windowUiInstance.title.padding.left + (47 * 4) + 36 + windowUiInstance.title.layoutX
 }
