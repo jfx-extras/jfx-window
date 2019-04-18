@@ -24,7 +24,20 @@ class WindowTitleBarListener {
     var rootUiElements = arrayListOf<Node>()
 
     @JvmSynthetic
+    internal fun addMinSizeListener() {
+        windowOptionsInstance.stage.minWidthProperty().addListener { _,
+                                                                     _,
+                                                                     newValue ->
+            if (newValue.toDouble() < windowPart.returnMinWidthSizeByTitleBar()) {
+                windowOptionsInstance.stage.minWidth = windowPart.returnMinWidthSizeByTitleBar() + 74
+            }
+        }
+    }
+
+    @JvmSynthetic
     internal fun addResizeListeners() {
+        addMinSizeListener()
+
         windowOptionsInstance.stage.widthProperty().addListener { _, _, _ ->
             windowUiInstance.windowShadowPane.setPrefSize(windowOptionsInstance.stage.width, windowOptionsInstance.stage.height)
             windowUiInstance.windowPane.setPrefSize(windowOptionsInstance.stage.width, windowOptionsInstance.stage.height)

@@ -85,7 +85,7 @@ class WindowPart {
     // todo: add kdoc for it method.
     fun calculateMinWidthSizeByTitleBar() {
         windowOptionsInstance.stage.minWidth =
-            windowUiInstance.title.width + windowUiInstance.title.padding.left + (47 * 4) + 36
+            windowUiInstance.title.width + windowUiInstance.title.padding.left + (47 * 4) + 36 + windowUiInstance.title.layoutX
     }
 
     fun returnMinWidthSizeByTitleBar(): Double =

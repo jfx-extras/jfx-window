@@ -25,13 +25,9 @@ class Application : App(BaseView::class) {
         super.start(stage)
         window.create()
 
-        stage.widthProperty().addListener { observableValue, _, _ ->
-            window.windowBase.windowPart.calculateMinWidthSizeByTitleBar()
-        }
-
-        stage.heightProperty().addListener { observableValue, _, _ ->
-            window.windowBase.windowPart.calculateMinWidthSizeByTitleBar()
-        }
+        stage.minWidth = 0.0
+        // ↑ it test of exhibiting incompatible size for stage.
+        // if size so small, it make stage with default min size.
     }
 
     companion object {
