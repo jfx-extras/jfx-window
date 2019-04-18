@@ -107,10 +107,5 @@ internal class WindowStateListener {
 
         windowOptionsInstance.stage.x = 0.0
         windowOptionsInstance.stage.y = 0.0
-
-        Logger.getLogger(WindowStateListener::class.java.name).log(
-                Level.WARNING,
-                "stage maximizing was finished with error, but the position has been corrected, you have nothing to worry about."
-        )
     }
 }

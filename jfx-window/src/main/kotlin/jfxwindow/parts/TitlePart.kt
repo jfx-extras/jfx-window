@@ -4,7 +4,8 @@ import javafx.scene.text.Font
 import jfxwindow.base.WindowOptions
 import jfxwindow.base.WindowUi
 import jfxwindow.enums.TitleAlignment
-import java.lang.Exception
+import java.util.logging.Level
+import java.util.logging.Logger
 
 class TitlePart {
     private var titleAlign: TitleAlignment = TitleAlignment.LEFT
@@ -56,8 +57,11 @@ class TitlePart {
             windowUiInstance.titleCenter.text = text
             try {
                 windowOptionsInstance.stage.title = text
-            } catch (ex: Exception) {
-                // Sorry for code monkey.
+            } catch (runtimeException: RuntimeException) {
+                Logger.getLogger(TitlePart::class.java.name).log(
+                    Level.SEVERE,
+                    "Failed to set new title value for stage. Sorry. This is usually discarded when using TornadoFx."
+                )
             }
         }
 
