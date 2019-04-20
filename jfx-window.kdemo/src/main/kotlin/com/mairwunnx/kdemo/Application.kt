@@ -6,13 +6,24 @@ import javafx.scene.text.Font
 import javafx.stage.Stage
 import javafx.stage.StageStyle
 import jfxwindow.base.Window
-import jfxwindow.enums.TitleAlignment
 import tornadofx.App
 
 class Application : App(BaseView::class) {
     override fun start(stage: Stage) {
+        /*
+        ↓ It is necessary in order to have the opportunity
+        to set a shadow for the window, in case you make
+        a mistake or comment out the line above, an exception
+        will be thrown.
+         */
         stage.initStyle(StageStyle.TRANSPARENT)
 
+        /*
+        ↓ It window instance, it need because it instance
+        will used for creating window after creating stage.
+
+        Or it also can use for further use in controllers.
+         */
         val window = Window(stage)
             .titleTextFont(Font.loadFont(javaClass.classLoader.getResource("segoeui.ttf").toString(), 12.0))
             .titleText("jfx-window")
@@ -24,30 +35,39 @@ class Application : App(BaseView::class) {
 
         windowInstance = window
         super.start(stage)
+        /*
+        ↓ It line just do creating window, but it need
+         use after line upper ↑ (after creating stage).
+         */
         window.create()
+        addListeners(stage)
+        width = stage.width
+        height = stage.height
+        calculateSize()
 
-        stage.widthProperty().addListener { newValue ->
-            width = java.lang.Double.parseDouble(
-                newValue.toString().split("value: ".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1].replace(
-                    "]",
-                    ""
-                )
-            )
+        /*
+        ↓ it test of exhibiting incompatible size for stage.
+        if size so small, it make stage with default min size.
+
+        but for it comment addListeners(stage) line for
+        see effect after uncomment ↓ line.
+         */
+        // stage.minWidth = 0.0
+    }
+
+    private fun addListeners(stage: Stage) {
+        stage.widthProperty().addListener { _,
+                                            _,
+                                            newValue ->
+            width = newValue.toDouble()
             calculateSize()
         }
-        stage.heightProperty().addListener { newValue ->
-            height = java.lang.Double.parseDouble(
-                newValue.toString().split("value: ".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1].replace(
-                    "]",
-                    ""
-                )
-            )
+        stage.heightProperty().addListener { _,
+                                             _,
+                                             newValue ->
+            height = newValue.toDouble()
             calculateSize()
         }
-
-        //stage.minWidth = 0.0
-        // ↑ it test of exhibiting incompatible size for stage.
-        // if size so small, it make stage with default min size.
     }
 
     private fun calculateSize() {
