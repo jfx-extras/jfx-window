@@ -22,6 +22,7 @@ class WindowPart {
     internal lateinit var contextPart: ContextPart
     @get:JvmSynthetic @set:JvmSynthetic
     internal var useMinSizeAsContentSizeHelper: Boolean = false
+    private var isMaximizableOldValueHelper: Boolean = true
 
     var defaultOpacity: Double = 1.0
     var disabledOpacity: Double = 0.4
@@ -34,6 +35,13 @@ class WindowPart {
         }
     var isResizable: Boolean by Delegates.observable(true) { _, _, newValue ->
         contextPart.forceDisableResize = !newValue
+
+        if (isMaximizable && !newValue) {
+            isMaximizableOldValueHelper = isMaximizable
+            isMaximizable = false
+        } else {
+            isMaximizable = isMaximizableOldValueHelper
+        }
     }
     var isDraggable: Boolean by Delegates.observable(true) { _, _, newValue ->
         contextPart.forceDisableMove = !newValue
