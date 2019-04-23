@@ -46,7 +46,7 @@ internal class WindowResizeHelper(private val windowPart: WindowPart) {
         resizeMarginLeft = marginLeft
 
         scene.addEventHandler(MouseEvent.MOUSE_MOVED) {
-            if (windowPart.isResizable && !isResizing) {
+            if (windowPart.isResizable && !isResizing && !stage.isMaximized) {
                 when (detectResizeDirection(it)) {
                     ResizeDirection.NORTH_WEST -> scene.cursor = Cursor.NW_RESIZE
                     ResizeDirection.NORTH_EAST -> scene.cursor = Cursor.NE_RESIZE
