@@ -7,8 +7,6 @@ import jfxwindow.base.WindowOptions
 import jfxwindow.base.WindowUi
 import jfxwindow.parts.BorderPart
 import jfxwindow.parts.WindowPart
-import java.util.logging.Level
-import java.util.logging.Logger
 
 internal class WindowStateListener {
     private var borderChangeRestricted: Boolean = false
@@ -30,7 +28,7 @@ internal class WindowStateListener {
                 windowUiInstance.win32MaxButton.isVisible = !newValue
                 windowUiInstance.win32UnMaxButton.isManaged = newValue
                 windowUiInstance.win32UnMaxButton.isVisible = newValue
-
+                
                 borderOnState(newValue)
 
                 if (newValue) {
