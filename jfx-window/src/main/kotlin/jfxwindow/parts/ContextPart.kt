@@ -5,7 +5,6 @@ import javafx.scene.control.ContextMenu
 import javafx.scene.control.MenuItem
 import javafx.scene.control.SeparatorMenuItem
 import javafx.scene.input.KeyCombination
-import javafx.scene.input.MouseEvent
 import javafx.scene.shape.SVGPath
 import jfxwindow.base.WindowOptions
 import jfxwindow.base.WindowUi
@@ -71,9 +70,10 @@ class ContextPart {
         val close = MenuItem("${spacing}Close", closeSvg)
         close.accelerator = KeyCombination.keyCombination("ALT+F4")
 
-        contextMenu.items.addAll(restore, move, size, minimize, maximize, SeparatorMenuItem(), close)
-
         contextMenu.setOnShowing {
+            contextMenu.items.clear()
+            contextMenu.items.addAll(restore, move, size, minimize, maximize, SeparatorMenuItem(), close)
+
             close.isDisable = forceDisableClose
             minimize.isDisable = forceDisableMinimize
             move.isDisable = forceDisableMove
@@ -95,6 +95,10 @@ class ContextPart {
                 size.isDisable = true
             } else {
                 size.isDisable = forceDisableResize
+            }
+
+            if (!this.contextMenu) {
+                contextMenu.items.clear()
             }
         }
 
@@ -148,12 +152,6 @@ class ContextPart {
     var contextMenuIsEnabled
         get() = contextMenu
         set(value) {
-            contextMenu = if (value) {
-                createContextMenu()
-                true
-            } else {
-                removeContextMenu()
-                false
-            }
+            contextMenu = value
         }
 }
