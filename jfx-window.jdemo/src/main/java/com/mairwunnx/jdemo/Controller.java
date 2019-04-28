@@ -43,192 +43,192 @@ public class Controller {
     public TextField borderInactiveColor;
 
     public void getTitleText() {
-        titleTextResult.setText(window.getWindowBase().getTitlePart().getTitleText());
+        titleTextResult.setText(window.getInstance().getTitlePart().getTitleText());
     }
 
     public void setTitleText() {
-        window.getWindowBase().getTitlePart().setTitleText(titleTextTextField.getText());
+        window.getInstance().getTitlePart().setTitleText(titleTextTextField.getText());
     }
 
     public void changeTitleVisibility(MouseEvent mouseEvent) {
         ToggleButton toggleButton = (ToggleButton) mouseEvent.getSource();
-        window.getWindowBase().getTitlePart().setTitleIsVisible(toggleButton.isSelected());
+        window.getInstance().getTitlePart().setTitleIsVisible(toggleButton.isSelected());
     }
 
     public void changeTitleAlign() {
         if (titleAlignTextField.getText().toLowerCase().equals(TitleAlignment.CENTER.name().toLowerCase())) {
-            window.getWindowBase().getTitlePart().setTitleAlignment(TitleAlignment.CENTER);
+            window.getInstance().getTitlePart().setTitleAlignment(TitleAlignment.CENTER);
         } else {
-            window.getWindowBase().getTitlePart().setTitleAlignment(TitleAlignment.LEFT);
+            window.getInstance().getTitlePart().setTitleAlignment(TitleAlignment.LEFT);
         }
     }
 
     public void getTitleAlign() {
-        titleAlignResult.setText(window.getWindowBase().getTitlePart().getTitleAlignment().name());
+        titleAlignResult.setText(window.getInstance().getTitlePart().getTitleAlignment().name());
     }
 
     public void getTitleFont() {
-        titleFontResult.setText(window.getWindowBase().getTitlePart().getTitleTextFont().toString());
+        titleFontResult.setText(window.getInstance().getTitlePart().getTitleTextFont().toString());
     }
 
     public void setTitleFont() {
         String[] font = ";".split(titleFontName.getText());
-        window.getWindowBase().getTitlePart().setTitleTextFont(new Font(font[0], Double.parseDouble(font[1])));
+        window.getInstance().getTitlePart().setTitleTextFont(new Font(font[0], Double.parseDouble(font[1])));
     }
 
     public void getIconPath() {
-        iconPathResult.setText(window.getWindowBase().getIconPart().getIcon());
+        iconPathResult.setText(window.getInstance().getIconPart().getIcon());
     }
 
     public void setIconPath() {
-        window.getWindowBase().getIconPart().setIcon(iconPath.getText());
+        window.getInstance().getIconPart().setIcon(iconPath.getText());
     }
 
     public void changeIconVisible() {
-        window.getWindowBase().getIconPart().setIconIsVisible(!window.getWindowBase().getIconPart().getIconIsVisible());
+        window.getInstance().getIconPart().setIconIsVisible(!window.getInstance().getIconPart().getIconIsVisible());
     }
 
     public void getIconIsSvg() {
-        iconIsSvgResult.setText(String.valueOf(window.getWindowBase().getIconPart().getIconIsSvg()));
+        iconIsSvgResult.setText(String.valueOf(window.getInstance().getIconPart().getIconIsSvg()));
     }
 
     public void getSvgIconZoom() {
-        svgIconZoomResult.setText(String.valueOf(window.getWindowBase().getIconPart().getSvgIconZoom()));
+        svgIconZoomResult.setText(String.valueOf(window.getInstance().getIconPart().getSvgIconZoom()));
     }
 
     public void setSvgIconZoom() {
-        window.getWindowBase().getIconPart().setSvgIconZoom(Double.parseDouble(svgIconZoom.getText()));
+        window.getInstance().getIconPart().setSvgIconZoom(Double.parseDouble(svgIconZoom.getText()));
     }
 
     public void removeIcon() {
-        window.getWindowBase().getIconPart().removeIcon();
+        window.getInstance().getIconPart().removeIcon();
     }
 
     public void getAnimationDuration() {
-        animationDurationResult.setText(String.valueOf(window.getWindowBase().getWindowPart().getAnimationDuration().toMillis()));
+        animationDurationResult.setText(String.valueOf(window.getInstance().getWindowPart().getAnimationDuration().toMillis()));
     }
 
     public void setAnimationDuration() {
-        window.getWindowBase().getWindowPart().setAnimationDuration(Duration.millis(Double.parseDouble(animationDuration.getText())));
+        window.getInstance().getWindowPart().setAnimationDuration(Duration.millis(Double.parseDouble(animationDuration.getText())));
     }
 
     public void changeAnimationDuration() {
-        window.getWindowBase().getWindowPart().setSmoothColorAnim(!window.getWindowBase().getWindowPart().getSmoothColorAnim());
+        window.getInstance().getWindowPart().setSmoothColorAnim(!window.getInstance().getWindowPart().getSmoothColorAnim());
     }
 
     public void changeSavingPosition() {
-        window.getWindowBase().getWindowPart().setSaveWindowPosition(!window.getWindowBase().getWindowPart().getSaveWindowPosition());
+        window.getInstance().getWindowPart().setSaveWindowPosition(!window.getInstance().getWindowPart().getSaveWindowPosition());
     }
 
     public void changeIsResizable() {
-        window.getWindowBase().getWindowPart().setResizable(!window.getWindowBase().getWindowPart().isResizable());
+        window.getInstance().getWindowPart().setResizable(!window.getInstance().getWindowPart().isResizable());
     }
 
     public void changeIsDraggable() {
-        window.getWindowBase().getWindowPart().setDraggable(!window.getWindowBase().getWindowPart().isDraggable());
+        window.getInstance().getWindowPart().setDraggable(!window.getInstance().getWindowPart().isDraggable());
     }
 
     public void changeIsMaximizable() {
-        window.getWindowBase().getWindowPart().setMaximizable(!window.getWindowBase().getWindowPart().isMaximizable());
+        window.getInstance().getWindowPart().setMaximizable(!window.getInstance().getWindowPart().isMaximizable());
     }
 
     public void changeIsMinimizable() {
-        window.getWindowBase().getWindowPart().setMinimizable(!window.getWindowBase().getWindowPart().isMinimizable());
+        window.getInstance().getWindowPart().setMinimizable(!window.getInstance().getWindowPart().isMinimizable());
     }
 
     public void changeIsClosable() {
-        window.getWindowBase().getWindowPart().setClosable(!window.getWindowBase().getWindowPart().isClosable());
+        window.getInstance().getWindowPart().setClosable(!window.getInstance().getWindowPart().isClosable());
     }
 
     public void getButtonDisableOpacity() {
-        buttonDisableOpacityResult.setText(String.valueOf(window.getWindowBase().getWindowPart().getDisabledOpacity()));
+        buttonDisableOpacityResult.setText(String.valueOf(window.getInstance().getWindowPart().getDisabledOpacity()));
     }
 
     public void setButtonDusableOpacityResult() {
-        window.getWindowBase().getWindowPart().setDisabledOpacity(Double.parseDouble(buttonDisableOpacity.getText()));
+        window.getInstance().getWindowPart().setDisabledOpacity(Double.parseDouble(buttonDisableOpacity.getText()));
     }
 
     public void getTitleBackground() {
-        titleBackgroundResult.setText(String.valueOf(window.getWindowBase().getTitleBarPart().getTitleBackground()));
+        titleBackgroundResult.setText(String.valueOf(window.getInstance().getTitleBarPart().getTitleBackground()));
     }
 
     public void setTitleBackground() {
-        window.getWindowBase().getTitleBarPart().setTitleBackground(Color.web(titleBackground.getText()));
+        window.getInstance().getTitleBarPart().setTitleBackground(Color.web(titleBackground.getText()));
     }
 
     public void changeTitleOrder() {
-        if (window.getWindowBase().getTitleBarPart().getOrder() == NodeOrientation.LEFT_TO_RIGHT) {
-            window.getWindowBase().getTitleBarPart().setOrder(NodeOrientation.RIGHT_TO_LEFT);
+        if (window.getInstance().getTitleBarPart().getOrder() == NodeOrientation.LEFT_TO_RIGHT) {
+            window.getInstance().getTitleBarPart().setOrder(NodeOrientation.RIGHT_TO_LEFT);
         } else {
-            window.getWindowBase().getTitleBarPart().setOrder(NodeOrientation.LEFT_TO_RIGHT);
+            window.getInstance().getTitleBarPart().setOrder(NodeOrientation.LEFT_TO_RIGHT);
         }
     }
 
     public void changeContextMenuIsEnabled() {
-        window.getWindowBase().getContextPart().setContextMenuIsEnabled(!window.getWindowBase().getContextPart().getContextMenuIsEnabled());
+        window.getInstance().getContextPart().setContextMenuIsEnabled(!window.getInstance().getContextPart().getContextMenuIsEnabled());
     }
 
     public void getShadowDepth() {
-        shadowDepthResult.setText(window.getWindowBase().getTitleBarPart().getShadowDepth().name());
+        shadowDepthResult.setText(window.getInstance().getTitleBarPart().getShadowDepth().name());
     }
 
     public void setShadowDepth() {
-        window.getWindowBase().getTitleBarPart().setShadowDepth(TitleShadowDepth.valueOf("DEPTH" + shadowDepth.getText()));
+        window.getInstance().getTitleBarPart().setShadowDepth(TitleShadowDepth.valueOf("DEPTH" + shadowDepth.getText()));
     }
 
     public void getButtonHoverColor() {
-        buttonHoverColorResult.setText(String.valueOf(window.getWindowBase().getButtonPart().getButtonHoverColor()));
+        buttonHoverColorResult.setText(String.valueOf(window.getInstance().getButtonPart().getButtonHoverColor()));
     }
 
     public void setButtonHoverColor() {
-        window.getWindowBase().getButtonPart().setButtonHoverColor(Color.web(buttonHoverColor.getText()));
+        window.getInstance().getButtonPart().setButtonHoverColor(Color.web(buttonHoverColor.getText()));
     }
 
     public void getButtonPressedColor() {
-        buttonPressedColorResult.setText(String.valueOf(window.getWindowBase().getButtonPart().getButtonPressedColor()));
+        buttonPressedColorResult.setText(String.valueOf(window.getInstance().getButtonPart().getButtonPressedColor()));
     }
 
     public void setButtonPressedColor() {
-        window.getWindowBase().getButtonPart().setButtonPressedColor(Color.web(buttonPressedColor.getText()));
+        window.getInstance().getButtonPart().setButtonPressedColor(Color.web(buttonPressedColor.getText()));
     }
 
     public void changeToolTipsVisibility() {
-        window.getWindowBase().getButtonPart().setTooltipIsEnabled(!window.getWindowBase().getButtonPart().getTooltipIsEnabled());
+        window.getInstance().getButtonPart().setTooltipIsEnabled(!window.getInstance().getButtonPart().getTooltipIsEnabled());
     }
 
     public void changeCloseButtonVisible() {
-        window.getWindowBase().getButtonPart().setCloseButtonIsVisible(!window.getWindowBase().getButtonPart().getCloseButtonIsVisible());
+        window.getInstance().getButtonPart().setCloseButtonIsVisible(!window.getInstance().getButtonPart().getCloseButtonIsVisible());
     }
 
     public void changeMaxButtonVisible() {
-        window.getWindowBase().getButtonPart().setMaxButtonIsVisible(!window.getWindowBase().getButtonPart().getMaxButtonIsVisible());
+        window.getInstance().getButtonPart().setMaxButtonIsVisible(!window.getInstance().getButtonPart().getMaxButtonIsVisible());
     }
 
     public void changeMinButtonVisible() {
-        window.getWindowBase().getButtonPart().setMinButtonIsVisible(!window.getWindowBase().getButtonPart().getMinButtonIsVisible());
+        window.getInstance().getButtonPart().setMinButtonIsVisible(!window.getInstance().getButtonPart().getMinButtonIsVisible());
     }
 
     public void getBorderColor() {
-        borderColorResult.setText(String.valueOf(window.getWindowBase().getBorderPart().getBorderColor()));
+        borderColorResult.setText(String.valueOf(window.getInstance().getBorderPart().getBorderColor()));
     }
 
     public void setBorderColor() {
-        window.getWindowBase().getBorderPart().setBorderColor(Color.web(borderColor.getText()));
+        window.getInstance().getBorderPart().setBorderColor(Color.web(borderColor.getText()));
     }
 
     public void getBorderInactiveColor() {
-        borderInactiveColorResult.setText(String.valueOf(window.getWindowBase().getBorderPart().getBorderInactiveColor()));
+        borderInactiveColorResult.setText(String.valueOf(window.getInstance().getBorderPart().getBorderInactiveColor()));
     }
 
     public void setBorderInactiveColor() {
-        window.getWindowBase().getBorderPart().setBorderInactiveColor(Color.web(borderInactiveColor.getText()));
+        window.getInstance().getBorderPart().setBorderInactiveColor(Color.web(borderInactiveColor.getText()));
     }
 
     public void changeBottomBorderVisible() {
-        window.getWindowBase().getBorderPart().setBottomBorderIsVisible(!window.getWindowBase().getBorderPart().getBottomBorderIsVisible());
+        window.getInstance().getBorderPart().setBottomBorderIsVisible(!window.getInstance().getBorderPart().getBottomBorderIsVisible());
     }
 
     public void changeBorderIsVisible() {
-        window.getWindowBase().getBorderPart().setBorderIsVisible(!window.getWindowBase().getBorderPart().getBorderIsVisible());
+        window.getInstance().getBorderPart().setBorderIsVisible(!window.getInstance().getBorderPart().getBorderIsVisible());
     }
 }
