@@ -83,7 +83,7 @@ class WindowTitleBarListener {
         windowOptionsInstance.stage.scene.cursor = Cursor.DEFAULT
 
         windowUiInstance.windowTitleBarPane.setOnMousePressed {
-            if (windowPart.isDraggable) {
+            if (windowPart.isDraggable && windowPart.isMaximizable) {
                 if (it.target == windowUiInstance.windowTitleBarPane) {
                     if (!StandardCursorFrame(CursorType.valueOf(windowOptionsInstance.stage.scene.cursor.toString())).cursorType.name.contains("RESIZE")) {
                         if (it.button == MouseButton.PRIMARY) {
@@ -101,7 +101,7 @@ class WindowTitleBarListener {
         }
 
         windowUiInstance.windowTitleBarPane.setOnMouseDragged {
-            if (windowPart.isDraggable) {
+            if (windowPart.isDraggable && windowPart.isMaximizable) {
                 if (it.target == windowUiInstance.windowTitleBarPane) {
                     if (!StandardCursorFrame(CursorType.valueOf(windowOptionsInstance.stage.scene.cursor.toString())).cursorType.name.contains("RESIZE")) {
                         if (it.button == MouseButton.PRIMARY) {
