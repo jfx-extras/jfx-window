@@ -39,7 +39,7 @@ class WindowView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                animationDurationResult.text = window.windowBase.windowPart.animationDuration.toString()
+                animationDurationResult.text = window.instance.windowPart.animationDuration.toString()
             }
         }
 
@@ -57,7 +57,7 @@ class WindowView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                window.windowBase.windowPart.animationDuration = Duration.millis(animationDuration.text.toDouble())
+                window.instance.windowPart.animationDuration = Duration.millis(animationDuration.text.toDouble())
             }
         }
 
@@ -75,7 +75,7 @@ class WindowView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                window.windowBase.windowPart.smoothColorAnim = this.isSelected
+                window.instance.windowPart.smoothColorAnim = this.isSelected
             }
         }
 
@@ -88,7 +88,7 @@ class WindowView : View() {
             prefWidth = 170.0
 
             setOnAction {
-                window.windowBase.windowPart.saveWindowPosition = this.isSelected
+                window.instance.windowPart.saveWindowPosition = this.isSelected
             }
         }
 
@@ -101,7 +101,7 @@ class WindowView : View() {
             prefWidth = 170.0
 
             setOnAction {
-                window.windowBase.windowPart.isResizable = this.isSelected
+                window.instance.windowPart.isResizable = this.isSelected
             }
         }
 
@@ -114,7 +114,7 @@ class WindowView : View() {
             prefWidth = 170.0
 
             setOnAction {
-                window.windowBase.windowPart.isDraggable = this.isSelected
+                window.instance.windowPart.isDraggable = this.isSelected
             }
         }
 
@@ -127,7 +127,7 @@ class WindowView : View() {
             prefWidth = 170.0
 
             setOnAction {
-                window.windowBase.windowPart.isMaximizable = this.isSelected
+                window.instance.windowPart.isMaximizable = this.isSelected
             }
         }
 
@@ -140,7 +140,7 @@ class WindowView : View() {
             prefWidth = 170.0
 
             setOnAction {
-                window.windowBase.windowPart.isMinimizable = this.isSelected
+                window.instance.windowPart.isMinimizable = this.isSelected
             }
         }
 
@@ -153,7 +153,7 @@ class WindowView : View() {
             prefWidth = 170.0
 
             setOnAction {
-                window.windowBase.windowPart.isClosable = this.isSelected
+                window.instance.windowPart.isClosable = this.isSelected
             }
         }
 
@@ -167,7 +167,7 @@ class WindowView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                disabledOpacityResult.text = window.windowBase.windowPart.disabledOpacity.toString()
+                disabledOpacityResult.text = window.instance.windowPart.disabledOpacity.toString()
             }
         }
 
@@ -185,7 +185,7 @@ class WindowView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                window.windowBase.windowPart.disabledOpacity = disabledOpacity.text.toDouble()
+                window.instance.windowPart.disabledOpacity = disabledOpacity.text.toDouble()
             }
         }
 

@@ -38,7 +38,7 @@ class ButtonView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                buttonHoverColorResult.text = window.windowBase.buttonPart.buttonHoverColor.toString()
+                buttonHoverColorResult.text = window.instance.buttonPart.buttonHoverColor.toString()
             }
         }
 
@@ -56,7 +56,7 @@ class ButtonView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                window.windowBase.buttonPart.buttonHoverColor = c(buttonHoverColor.text)
+                window.instance.buttonPart.buttonHoverColor = c(buttonHoverColor.text)
             }
         }
 
@@ -74,7 +74,7 @@ class ButtonView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                buttonPressedColorResult.text = window.windowBase.buttonPart.buttonPressedColor.toString()
+                buttonPressedColorResult.text = window.instance.buttonPart.buttonPressedColor.toString()
             }
         }
 
@@ -92,7 +92,7 @@ class ButtonView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                window.windowBase.buttonPart.buttonPressedColor = c(buttonPressedColor.text)
+                window.instance.buttonPart.buttonPressedColor = c(buttonPressedColor.text)
             }
         }
 
@@ -110,7 +110,7 @@ class ButtonView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                window.windowBase.buttonPart.tooltipIsEnabled = this.isSelected
+                window.instance.buttonPart.tooltipIsEnabled = this.isSelected
             }
         }
 
@@ -123,7 +123,7 @@ class ButtonView : View() {
             prefWidth = 170.0
 
             setOnAction {
-                window.windowBase.buttonPart.closeButtonIsVisible = this.isSelected
+                window.instance.buttonPart.closeButtonIsVisible = this.isSelected
             }
         }
 
@@ -136,7 +136,7 @@ class ButtonView : View() {
             prefWidth = 170.0
 
             setOnAction {
-                window.windowBase.buttonPart.maxButtonIsVisible = this.isSelected
+                window.instance.buttonPart.maxButtonIsVisible = this.isSelected
             }
         }
 
@@ -149,7 +149,7 @@ class ButtonView : View() {
             prefWidth = 170.0
 
             setOnAction {
-                window.windowBase.buttonPart.minButtonIsVisible = this.isSelected
+                window.instance.buttonPart.minButtonIsVisible = this.isSelected
             }
         }
     }

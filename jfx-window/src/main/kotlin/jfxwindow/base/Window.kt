@@ -19,7 +19,7 @@ import jfxwindow.listeners.WindowDataListener
  * @param [stage] application window stage in which the window will be created.
  */
 class Window(private val stage: Stage) {
-    val windowBase: WindowBase = WindowBase(stage)
+    val instance: WindowBase = WindowBase(stage)
 
     /**
      * Animation duration for background color changing of title-bar zone.
@@ -28,7 +28,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun animationDuration(duration: Duration): Window {
-        windowBase.windowOptions.animationDuration = duration
+        instance.windowOptions.animationDuration = duration
         return this
     }
 
@@ -41,7 +41,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun smoothColorAnimation(isEnabled: Boolean): Window {
-        windowBase.windowOptions.smoothColorAnimation = isEnabled
+        instance.windowOptions.smoothColorAnimation = isEnabled
         return this
     }
 
@@ -52,7 +52,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun borderIsVisible(isVisible: Boolean): Window {
-        windowBase.windowOptions.borderIsVisible = isVisible
+        instance.windowOptions.borderIsVisible = isVisible
         return this
     }
 
@@ -63,7 +63,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun borderColor(fillColor: Color): Window {
-        windowBase.windowOptions.borderColor = fillColor
+        instance.windowOptions.borderColor = fillColor
         return this
     }
 
@@ -74,7 +74,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun borderInactiveColor(fillColor: Color): Window {
-        windowBase.windowOptions.borderInactiveColor = fillColor
+        instance.windowOptions.borderInactiveColor = fillColor
         return this
     }
 
@@ -85,7 +85,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun contextMenuIsEnabled(isEnabled: Boolean): Window {
-        windowBase.windowOptions.contextMenuIsEnabled = isEnabled
+        instance.windowOptions.contextMenuIsEnabled = isEnabled
         return this
     }
 
@@ -98,7 +98,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun icon(iconPath: String): Window {
-        windowBase.windowOptions.icon = iconPath
+        instance.windowOptions.icon = iconPath
         return this
     }
 
@@ -109,7 +109,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun iconIsVisible(isVisible: Boolean): Window {
-        windowBase.windowOptions.iconIsVisible = isVisible
+        instance.windowOptions.iconIsVisible = isVisible
         return this
     }
 
@@ -124,7 +124,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun isClosable(isAble: Boolean): Window {
-        windowBase.windowOptions.isClosable = isAble
+        instance.windowOptions.isClosable = isAble
         return this
     }
 
@@ -135,7 +135,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun closeButtonIsVisibile(isVisibility: Boolean): Window {
-        windowBase.windowOptions.closeButtonIsVisible = isVisibility
+        instance.windowOptions.closeButtonIsVisible = isVisibility
         return this
     }
 
@@ -147,7 +147,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun isMaximizable(isAble: Boolean): Window {
-        windowBase.windowOptions.isMaximizable = isAble
+        instance.windowOptions.isMaximizable = isAble
         return this
     }
 
@@ -158,7 +158,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun maximizeButtonIsVisibile(isVisibility: Boolean): Window {
-        windowBase.windowOptions.maximizeButtonIsVisible = isVisibility
+        instance.windowOptions.maximizeButtonIsVisible = isVisibility
         return this
     }
 
@@ -170,7 +170,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun isMinimizable(isAble: Boolean): Window {
-        windowBase.windowOptions.isMinimizable = isAble
+        instance.windowOptions.isMinimizable = isAble
         return this
     }
 
@@ -181,7 +181,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun minimizeButtonIsVisibile(isVisibility: Boolean): Window {
-        windowBase.windowOptions.minimizeButtonIsVisible = isVisibility
+        instance.windowOptions.minimizeButtonIsVisible = isVisibility
         return this
     }
 
@@ -192,7 +192,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun isDraggable(isAllowed: Boolean): Window {
-        windowBase.windowOptions.isDraggable = isAllowed
+        instance.windowOptions.isDraggable = isAllowed
         return this
     }
 
@@ -203,7 +203,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun isResizable(isAllowed: Boolean): Window {
-        windowBase.windowOptions.isResizable = isAllowed
+        instance.windowOptions.isResizable = isAllowed
         return this
     }
 
@@ -215,7 +215,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun resizeLimit(isEnabled: Boolean): Window {
-        windowBase.windowOptions.resizeLimit = isEnabled
+        instance.windowOptions.resizeLimit = isEnabled
         return this
     }
 
@@ -227,7 +227,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun saveWindowPosition(isEnabled: Boolean): Window {
-        windowBase.windowOptions.saveWindowPosition = isEnabled
+        instance.windowOptions.saveWindowPosition = isEnabled
         return this
     }
 
@@ -241,7 +241,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun svgIconZoom(zoom: Double): Window {
-        windowBase.windowOptions.svgIconZoom = zoom
+        instance.windowOptions.svgIconZoom = zoom
         return this
     }
 
@@ -252,7 +252,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun titleAlignment(alignment: TitleAlignment): Window {
-        windowBase.windowOptions.titleAlignment = alignment
+        instance.windowOptions.titleAlignment = alignment
         return this
     }
 
@@ -263,7 +263,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun titleIsVisible(isVisible: Boolean): Window {
-        windowBase.windowOptions.titleIsVisible = isVisible
+        instance.windowOptions.titleIsVisible = isVisible
         return this
     }
 
@@ -274,7 +274,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun titleText(text: String): Window {
-        windowBase.windowOptions.titleText = text
+        instance.windowOptions.titleText = text
         return this
     }
 
@@ -285,7 +285,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun titleTextFont(font: Font): Window {
-        windowBase.windowOptions.titleTextFont = font
+        instance.windowOptions.titleTextFont = font
         return this
     }
 
@@ -296,7 +296,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun titleBarBackground(backgroundColor: Color): Window {
-        windowBase.windowOptions.titleBarBackground = backgroundColor
+        instance.windowOptions.titleBarBackground = backgroundColor
         return this
     }
 
@@ -307,7 +307,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun titleBarUnActiveBackground(backgroundColor: Color): Window {
-        windowBase.windowOptions.titleBarInactiveBackground = backgroundColor
+        instance.windowOptions.titleBarInactiveBackground = backgroundColor
         return this
     }
 
@@ -318,7 +318,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun titleBarOrder(order: NodeOrientation): Window {
-        windowBase.windowOptions.titleBarOrder = order
+        instance.windowOptions.titleBarOrder = order
         return this
     }
 
@@ -329,7 +329,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun titleBarShadowDepth(depth: TitleShadowDepth): Window {
-        windowBase.windowOptions.titleBarShadowDepth = depth
+        instance.windowOptions.titleBarShadowDepth = depth
         return this
     }
 
@@ -341,7 +341,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun titleBarInactiveShadowDepth(depth: TitleShadowDepth): Window {
-        windowBase.windowOptions.titleBarInactiveShadowDepth = depth
+        instance.windowOptions.titleBarInactiveShadowDepth = depth
         return this
     }
 
@@ -352,7 +352,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun titleBarBottomBorderIsVisible(isVisible: Boolean): Window {
-        windowBase.windowOptions.titleBarBottomBorderIsVisible = isVisible
+        instance.windowOptions.titleBarBottomBorderIsVisible = isVisible
         return this
     }
 
@@ -363,7 +363,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun toolButtonsStyle(style: ButtonStyle): Window {
-        windowBase.windowOptions.toolButtonsStyle = style
+        instance.windowOptions.toolButtonsStyle = style
         return this
     }
 
@@ -374,7 +374,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun toolButtonsTooltipIsEnabled(isEnabled: Boolean): Window {
-        windowBase.windowOptions.toolButtonsTooltipIsEnabled = isEnabled
+        instance.windowOptions.toolButtonsTooltipIsEnabled = isEnabled
         return this
     }
 
@@ -385,7 +385,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun toolButtonsHoverColor(color: Color): Window {
-        windowBase.windowOptions.toolButtonsHoverColor = color
+        instance.windowOptions.toolButtonsHoverColor = color
         return this
     }
 
@@ -396,7 +396,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun toolButtonsPressedColor(color: Color): Window {
-        windowBase.windowOptions.toolButtonsPressedColor = color
+        instance.windowOptions.toolButtonsPressedColor = color
         return this
     }
 
@@ -407,7 +407,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun useMinSizeAsContentSize(isEnabled: Boolean): Window {
-        windowBase.windowOptions.useMinSizeAsContentSize = isEnabled
+        instance.windowOptions.useMinSizeAsContentSize = isEnabled
         return this
     }
 
@@ -419,7 +419,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun windowShadowIsEnabled(isEnabled: Boolean): Window {
-        windowBase.windowOptions.windowShadowIsEnabled = isEnabled
+        instance.windowOptions.windowShadowIsEnabled = isEnabled
         return this
     }
 
@@ -430,7 +430,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun windowShadowType(type: ShadowStyle): Window {
-        windowBase.windowOptions.windowShadowType = type
+        instance.windowOptions.windowShadowType = type
         return this
     }
 
@@ -444,7 +444,7 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun windowRootElement(node: Node): Window {
-        windowBase.windowOptions.windowRootElement = node
+        instance.windowOptions.windowRootElement = node
         return this
     }
 
@@ -463,9 +463,9 @@ class Window(private val stage: Stage) {
         WindowBuilderHelper.validateJVMVersion()
         WindowBuilderHelper.validateStageOnNull(stage)
         WindowBuilderHelper.validateStageStyle(stage)
-        windowBase.windowOptions.stage = stage
-        windowBase.windowStageShownListener.windowOptionsInstance = windowBase.windowOptions
-        windowBase.windowStageShownListener.addShownListener()
+        instance.windowOptions.stage = stage
+        instance.windowStageShownListener.windowOptionsInstance = instance.windowOptions
+        instance.windowStageShownListener.addShownListener()
         return this
     }
 
@@ -480,11 +480,11 @@ class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     fun create(): Window {
-        windowBase.contentPart.prepareUserWorkspace(stage)
-        windowBase.windowUi.assignBaseUi(stage)
+        instance.contentPart.prepareUserWorkspace(stage)
+        instance.windowUi.assignBaseUi(stage)
         applyCreateProperties()
         callInitMethods()
-        windowBase.contentPart.returnUserContent()
+        instance.contentPart.returnUserContent()
         if (!savePosInitialized) {
             WindowDataListener.loadWindowSettings()
             savePosInitialized = true
@@ -493,90 +493,90 @@ class Window(private val stage: Stage) {
     }
 
     private fun applyCreateProperties() {
-        windowBase.animationHelper.windowPart = windowBase.windowPart
+        instance.animationHelper.windowPart = instance.windowPart
 
-        windowBase.contentPart.windowOptionsInstance = windowBase.windowOptions
+        instance.contentPart.windowOptionsInstance = instance.windowOptions
 
-        windowBase.windowDefaultSizeListener.windowBaseInstance = windowBase
-        windowBase.windowDefaultSizeListener.windowOptionsInstance = windowBase.windowOptions
+        instance.windowDefaultSizeListener.windowBaseInstance = instance
+        instance.windowDefaultSizeListener.windowOptionsInstance = instance.windowOptions
 
-        windowBase.windowPart.windowUiInstance = windowBase.windowUi
-        windowBase.windowPart.windowOptionsInstance = windowBase.windowOptions
-        windowBase.windowPart.windowBaseInstance = windowBase
-        windowBase.windowPart.contextPart = windowBase.contextPart
-        windowBase.windowPart.isResizable = windowBase.windowOptions.isResizable
-        windowBase.windowPart.isDraggable = windowBase.windowOptions.isDraggable
-        windowBase.windowPart.isMaximizable = windowBase.windowOptions.isMaximizable
-        windowBase.windowPart.isMinimizable = windowBase.windowOptions.isMinimizable
-        windowBase.windowPart.isClosable = windowBase.windowOptions.isClosable
-        windowBase.windowPart.animationDuration = windowBase.windowOptions.animationDuration
-        windowBase.windowPart.smoothColorAnim = windowBase.windowOptions.smoothColorAnimation
-        windowBase.windowPart.useMinSizeAsContentSize = windowBase.windowOptions.useMinSizeAsContentSize
-        windowBase.windowPart.useMinSizeAsContentSizeHelper = windowBase.windowOptions.useMinSizeAsContentSize
+        instance.windowPart.windowUiInstance = instance.windowUi
+        instance.windowPart.windowOptionsInstance = instance.windowOptions
+        instance.windowPart.windowBaseInstance = instance
+        instance.windowPart.contextPart = instance.contextPart
+        instance.windowPart.isResizable = instance.windowOptions.isResizable
+        instance.windowPart.isDraggable = instance.windowOptions.isDraggable
+        instance.windowPart.isMaximizable = instance.windowOptions.isMaximizable
+        instance.windowPart.isMinimizable = instance.windowOptions.isMinimizable
+        instance.windowPart.isClosable = instance.windowOptions.isClosable
+        instance.windowPart.animationDuration = instance.windowOptions.animationDuration
+        instance.windowPart.smoothColorAnim = instance.windowOptions.smoothColorAnimation
+        instance.windowPart.useMinSizeAsContentSize = instance.windowOptions.useMinSizeAsContentSize
+        instance.windowPart.useMinSizeAsContentSizeHelper = instance.windowOptions.useMinSizeAsContentSize
 
-        windowBase.windowResizeHelper.stage = windowBase.windowOptions.stage
-        windowBase.windowResizeHelper.scene = windowBase.windowOptions.stage.scene
+        instance.windowResizeHelper.stage = instance.windowOptions.stage
+        instance.windowResizeHelper.scene = instance.windowOptions.stage.scene
 
-        windowBase.windowStateListener.borderInstance = windowBase.borderPart
-        windowBase.windowStateListener.windowOptionsInstance = windowBase.windowOptions
-        windowBase.windowStateListener.windowUiInstance = windowBase.windowUi
-        windowBase.windowStateListener.windowInstance = windowBase.windowPart
+        instance.windowStateListener.borderInstance = instance.borderPart
+        instance.windowStateListener.windowOptionsInstance = instance.windowOptions
+        instance.windowStateListener.windowUiInstance = instance.windowUi
+        instance.windowStateListener.windowInstance = instance.windowPart
 
-        windowBase.windowInactiveListener.borderPartInstance = windowBase.borderPart
-        windowBase.windowInactiveListener.titleBarPart = windowBase.titleBarPart
-        windowBase.windowInactiveListener.windowOptionsInstance = windowBase.windowOptions
+        instance.windowInactiveListener.borderPartInstance = instance.borderPart
+        instance.windowInactiveListener.titleBarPart = instance.titleBarPart
+        instance.windowInactiveListener.windowOptionsInstance = instance.windowOptions
 
-        windowBase.borderPart.windowOptionsInstance = windowBase.windowOptions
-        windowBase.borderPart.windowUiInstance = windowBase.windowUi
-        windowBase.borderPart.stateListener = windowBase.windowStateListener
-        windowBase.borderPart.borderIsVisibleHelper = windowBase.windowOptions.borderIsVisible
+        instance.borderPart.windowOptionsInstance = instance.windowOptions
+        instance.borderPart.windowUiInstance = instance.windowUi
+        instance.borderPart.stateListener = instance.windowStateListener
+        instance.borderPart.borderIsVisibleHelper = instance.windowOptions.borderIsVisible
 
-        windowBase.titlePart.windowOptionsInstance = windowBase.windowOptions
-        windowBase.titlePart.windowUiInstance = windowBase.windowUi
+        instance.titlePart.windowOptionsInstance = instance.windowOptions
+        instance.titlePart.windowUiInstance = instance.windowUi
         
-        windowBase.iconPart.windowOptionsInstance = windowBase.windowOptions
-        windowBase.iconPart.windowUiInstance = windowBase.windowUi
+        instance.iconPart.windowOptionsInstance = instance.windowOptions
+        instance.iconPart.windowUiInstance = instance.windowUi
 
-        windowBase.titleBarPart.animHelperInstance = windowBase.animationHelper
-        windowBase.titleBarPart.windowUiInstance = windowBase.windowUi
-        windowBase.titleBarPart.windowOptionsInstance = windowBase.windowOptions
-        windowBase.titleBarPart.windowPart = windowBase.windowPart
+        instance.titleBarPart.animHelperInstance = instance.animationHelper
+        instance.titleBarPart.windowUiInstance = instance.windowUi
+        instance.titleBarPart.windowOptionsInstance = instance.windowOptions
+        instance.titleBarPart.windowPart = instance.windowPart
 
-        windowBase.buttonPart.titleBarPart = windowBase.titleBarPart
-        windowBase.buttonPart.windowOptionsInstance = windowBase.windowOptions
-        windowBase.buttonPart.windowUiInstance = windowBase.windowUi
-        windowBase.buttonPart.buttonHoverColor = windowBase.windowOptions.toolButtonsHoverColor
-        windowBase.buttonPart.buttonPressedColor = windowBase.windowOptions.toolButtonsPressedColor
+        instance.buttonPart.titleBarPart = instance.titleBarPart
+        instance.buttonPart.windowOptionsInstance = instance.windowOptions
+        instance.buttonPart.windowUiInstance = instance.windowUi
+        instance.buttonPart.buttonHoverColor = instance.windowOptions.toolButtonsHoverColor
+        instance.buttonPart.buttonPressedColor = instance.windowOptions.toolButtonsPressedColor
 
-        windowBase.windowTitleBarListener.windowOptionsInstance = windowBase.windowOptions
-        windowBase.windowTitleBarListener.windowUiInstance = windowBase.windowUi
-        windowBase.windowTitleBarListener.windowPart = windowBase.windowPart
+        instance.windowTitleBarListener.windowOptionsInstance = instance.windowOptions
+        instance.windowTitleBarListener.windowUiInstance = instance.windowUi
+        instance.windowTitleBarListener.windowPart = instance.windowPart
 
-        windowBase.contextPart.windowUiInstance = windowBase.windowUi
-        windowBase.contextPart.windowOptionsInstance = windowBase.windowOptions
-        windowBase.contextPart.windowPart = windowBase.windowPart
+        instance.contextPart.windowUiInstance = instance.windowUi
+        instance.contextPart.windowOptionsInstance = instance.windowOptions
+        instance.contextPart.windowPart = instance.windowPart
     }
 
     private fun callInitMethods() {
-        windowBase.windowResizeHelper.makeResizable()
-        windowBase.windowStateListener.addBorderChangeListener()
-        windowBase.windowStateListener.addWindowMaximizeListener()
-        windowBase.windowStateListener.addWindowMinimizeListener()
-        windowBase.contextPart.applyContextMenuProperties()
-        windowBase.titlePart.applyTitleProperties()
-        windowBase.iconPart.applyIconProperties()
-        windowBase.borderPart.applyBorderProperties()
-        windowBase.titleBarPart.applyTitleBarColor()
-        windowBase.titleBarPart.applyTitleBarProperties()
-        windowBase.titleBarPart.applyResizeProperties()
-        windowBase.buttonPart.applyButtonProperties()
-        windowBase.windowTitleBarListener.addResizeListeners()
-        windowBase.windowTitleBarListener.addTitleMoveListener()
-        windowBase.windowInactiveListener.addWindowUnActiveListener()
+        instance.windowResizeHelper.makeResizable()
+        instance.windowStateListener.addBorderChangeListener()
+        instance.windowStateListener.addWindowMaximizeListener()
+        instance.windowStateListener.addWindowMinimizeListener()
+        instance.contextPart.applyContextMenuProperties()
+        instance.titlePart.applyTitleProperties()
+        instance.iconPart.applyIconProperties()
+        instance.borderPart.applyBorderProperties()
+        instance.titleBarPart.applyTitleBarColor()
+        instance.titleBarPart.applyTitleBarProperties()
+        instance.titleBarPart.applyResizeProperties()
+        instance.buttonPart.applyButtonProperties()
+        instance.windowTitleBarListener.addResizeListeners()
+        instance.windowTitleBarListener.addTitleMoveListener()
+        instance.windowInactiveListener.addWindowUnActiveListener()
 
         if (!savePosInitialized) {
-            WindowDataListener.stage = windowBase.windowOptions.stage
-            WindowDataListener.savePosIsEnabled = windowBase.windowOptions.saveWindowPosition
+            WindowDataListener.stage = instance.windowOptions.stage
+            WindowDataListener.savePosIsEnabled = instance.windowOptions.saveWindowPosition
             WindowDataListener.addPosListener()
         }
     }

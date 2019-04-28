@@ -39,7 +39,7 @@ class IconView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                iconSourceResult.text = window.windowBase.iconPart.icon
+                iconSourceResult.text = window.instance.iconPart.icon
             }
         }
 
@@ -57,7 +57,7 @@ class IconView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                window.windowBase.iconPart.icon = iconSource.text
+                window.instance.iconPart.icon = iconSource.text
             }
         }
 
@@ -75,7 +75,7 @@ class IconView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                window.windowBase.iconPart.iconIsVisible = this.isSelected
+                window.instance.iconPart.iconIsVisible = this.isSelected
             }
         }
 
@@ -89,7 +89,7 @@ class IconView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                iconIsSvgResult.text = window.windowBase.iconPart.iconIsSvg.toString()
+                iconIsSvgResult.text = window.instance.iconPart.iconIsSvg.toString()
             }
         }
 
@@ -107,7 +107,7 @@ class IconView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                svgIconZoomResult.text = window.windowBase.iconPart.svgIconZoom.toString()
+                svgIconZoomResult.text = window.instance.iconPart.svgIconZoom.toString()
             }
         }
 
@@ -125,7 +125,7 @@ class IconView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                window.windowBase.iconPart.svgIconZoom = svgIconZoom.text.toDouble()
+                window.instance.iconPart.svgIconZoom = svgIconZoom.text.toDouble()
             }
         }
 
@@ -143,7 +143,7 @@ class IconView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                window.windowBase.iconPart.removeIcon()
+                window.instance.iconPart.removeIcon()
             }
         }
 

@@ -13,25 +13,33 @@ import java.awt.Robot
 
 // todo: add ability to disabling spacing
 class ContextPart {
-    @get:JvmSynthetic @set:JvmSynthetic
+    @get:JvmSynthetic
+    @set:JvmSynthetic
     internal lateinit var windowUiInstance: WindowUi
-    @get:JvmSynthetic @set:JvmSynthetic
+    @get:JvmSynthetic
+    @set:JvmSynthetic
     internal lateinit var windowOptionsInstance: WindowOptions
-    @get:JvmSynthetic @set:JvmSynthetic
+    @get:JvmSynthetic
+    @set:JvmSynthetic
     internal lateinit var windowPart: WindowPart
     private var contextMenu: Boolean = true
-
-    @get:JvmSynthetic @set:JvmSynthetic
+    @get:JvmSynthetic
+    @set:JvmSynthetic
     internal var forceDisableMaximize: Boolean = false
-    @get:JvmSynthetic @set:JvmSynthetic
+    @get:JvmSynthetic
+    @set:JvmSynthetic
     internal var forceDisableMinimize: Boolean = false
-    @get:JvmSynthetic @set:JvmSynthetic
+    @get:JvmSynthetic
+    @set:JvmSynthetic
     internal var forceDisableClose: Boolean = false
-    @get:JvmSynthetic @set:JvmSynthetic
+    @get:JvmSynthetic
+    @set:JvmSynthetic
     internal var forceDisableMove: Boolean = false
-    @get:JvmSynthetic @set:JvmSynthetic
+    @get:JvmSynthetic
+    @set:JvmSynthetic
     internal var forceDisableResize: Boolean = false
     var spacing = "     "
+    var spacingIsEnabled: Boolean = true // not implemented
 
     @JvmSynthetic
     internal fun applyContextMenuProperties() {
@@ -72,7 +80,15 @@ class ContextPart {
 
         contextMenu.setOnShowing {
             contextMenu.items.clear()
-            contextMenu.items.addAll(restore, move, size, minimize, maximize, SeparatorMenuItem(), close)
+            contextMenu.items.addAll(
+                restore,
+                move,
+                size,
+                minimize,
+                maximize,
+                SeparatorMenuItem(),
+                close
+            )
 
             close.isDisable = forceDisableClose
             minimize.isDisable = forceDisableMinimize

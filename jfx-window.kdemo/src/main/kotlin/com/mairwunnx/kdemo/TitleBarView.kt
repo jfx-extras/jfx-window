@@ -39,7 +39,7 @@ class TitleBarView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                barBackgroundColorResult.text = window.windowBase.titleBarPart.titleBackground.toString()
+                barBackgroundColorResult.text = window.instance.titleBarPart.titleBackground.toString()
             }
         }
 
@@ -57,7 +57,7 @@ class TitleBarView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                window.windowBase.titleBarPart.titleBackground = c(barBackgroundColor.text)
+                window.instance.titleBarPart.titleBackground = c(barBackgroundColor.text)
             }
         }
 
@@ -76,8 +76,8 @@ class TitleBarView : View() {
 
             setOnAction {
                 when {
-                    this.isSelected -> window.windowBase.titleBarPart.order = NodeOrientation.RIGHT_TO_LEFT
-                    else -> window.windowBase.titleBarPart.order = NodeOrientation.LEFT_TO_RIGHT
+                    this.isSelected -> window.instance.titleBarPart.order = NodeOrientation.RIGHT_TO_LEFT
+                    else -> window.instance.titleBarPart.order = NodeOrientation.LEFT_TO_RIGHT
                 }
             }
         }
@@ -91,7 +91,7 @@ class TitleBarView : View() {
             prefWidth = 170.0
 
             setOnAction {
-                window.windowBase.contextPart.contextMenuIsEnabled = this.isSelected
+                window.instance.contextPart.contextMenuIsEnabled = this.isSelected
             }
         }
 
@@ -105,7 +105,7 @@ class TitleBarView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                barShadowDepthResult.text = window.windowBase.titleBarPart.shadowDepth.name
+                barShadowDepthResult.text = window.instance.titleBarPart.shadowDepth.name
             }
         }
 
@@ -123,7 +123,7 @@ class TitleBarView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                window.windowBase.titleBarPart.shadowDepth = enumValueOf("DEPTH${barShadowDepth.text}")
+                window.instance.titleBarPart.shadowDepth = enumValueOf("DEPTH${barShadowDepth.text}")
             }
         }
 

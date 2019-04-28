@@ -37,7 +37,7 @@ class BorderView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                borderColorResult.text = Application.windowInstance.windowBase.borderPart.borderColor.toString()
+                borderColorResult.text = Application.windowInstance.instance.borderPart.borderColor.toString()
             }
         }
 
@@ -55,7 +55,7 @@ class BorderView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                Application.windowInstance.windowBase.borderPart.borderColor = c(borderColor.text)
+                Application.windowInstance.instance.borderPart.borderColor = c(borderColor.text)
             }
         }
 
@@ -73,7 +73,8 @@ class BorderView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                borderInactiveColorResult.text = Application.windowInstance.windowBase.borderPart.borderInactiveColor.toString()
+                borderInactiveColorResult.text =
+                    Application.windowInstance.instance.borderPart.borderInactiveColor.toString()
             }
         }
 
@@ -91,7 +92,7 @@ class BorderView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                Application.windowInstance.windowBase.borderPart.borderInactiveColor = c(borderInactiveColor.text)
+                Application.windowInstance.instance.borderPart.borderInactiveColor = c(borderInactiveColor.text)
             }
         }
 
@@ -108,7 +109,7 @@ class BorderView : View() {
             prefWidth = 170.0
 
             setOnAction {
-                Application.windowInstance.windowBase.borderPart.bottomBorderIsVisible = this.isSelected
+                Application.windowInstance.instance.borderPart.bottomBorderIsVisible = this.isSelected
             }
         }
 
@@ -121,7 +122,7 @@ class BorderView : View() {
             prefWidth = 170.0
 
             setOnAction {
-                Application.windowInstance.windowBase.borderPart.borderIsVisible = this.isSelected
+                Application.windowInstance.instance.borderPart.borderIsVisible = this.isSelected
             }
         }
     }

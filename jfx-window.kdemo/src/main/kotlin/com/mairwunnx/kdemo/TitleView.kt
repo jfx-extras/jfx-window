@@ -40,7 +40,7 @@ class TitleView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                titleTextResult.text = Application.windowInstance.windowBase.titlePart.titleText
+                titleTextResult.text = Application.windowInstance.instance.titlePart.titleText
             }
         }
 
@@ -58,7 +58,7 @@ class TitleView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                Application.windowInstance.windowBase.titlePart.titleText = titleText.text
+                Application.windowInstance.instance.titlePart.titleText = titleText.text
             }
         }
 
@@ -76,7 +76,7 @@ class TitleView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                Application.windowInstance.windowBase.titlePart.titleIsVisible = this.isSelected
+                Application.windowInstance.instance.titlePart.titleIsVisible = this.isSelected
             }
         }
 
@@ -90,7 +90,7 @@ class TitleView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                titleAlignmentResult.text = Application.windowInstance.windowBase.titlePart.titleAlignment.name
+                titleAlignmentResult.text = Application.windowInstance.instance.titlePart.titleAlignment.name
             }
         }
 
@@ -108,7 +108,7 @@ class TitleView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                Application.windowInstance.windowBase.titlePart.titleAlignment = enumValueOf(titleAlignment.text)
+                Application.windowInstance.instance.titlePart.titleAlignment = enumValueOf(titleAlignment.text)
             }
         }
 
@@ -126,7 +126,7 @@ class TitleView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                titleTextFontResult.text = Application.windowInstance.windowBase.titlePart.titleTextFont.toString()
+                titleTextFontResult.text = Application.windowInstance.instance.titlePart.titleTextFont.toString()
             }
         }
 
@@ -144,7 +144,7 @@ class TitleView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                Application.windowInstance.windowBase.titlePart.titleTextFont =
+                Application.windowInstance.instance.titlePart.titleTextFont =
                     Font.font(
                         titleTextFont.text.split(';')[0],
                         titleTextFont.text.split(';')[1].toDouble()
