@@ -74,7 +74,7 @@ class Application : App(BaseView::class) {
         windowInstance.instance.titlePart.titleText = "Size: $width x $height"
         windowInstance.instance.windowPart.calculateMinWidthSizeByTitleBar()
         // ↑ It can be applied if you want to set min width size (label width + button widths)
-        // just comment 54 line for see what be if disable it, and you can also change "Size:" to another text.
+        // just comment 75 line for see what be if disable it, and you can also change "Size:" to another text.
         // but you can just set fixed minWidth on stage.
     }
 
