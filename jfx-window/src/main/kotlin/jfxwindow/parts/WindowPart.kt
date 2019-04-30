@@ -5,7 +5,7 @@ import jfxwindow.base.WindowBase
 import jfxwindow.base.WindowOptions
 import jfxwindow.base.WindowUi
 import jfxwindow.listeners.WindowDataListener
-import kotlin.properties.Delegates
+import kotlin.properties.Delegates.observable
 
 /**
  * It class contains variables for controlling window state,
@@ -22,7 +22,7 @@ class WindowPart {
     internal lateinit var contextPart: ContextPart
     @get:JvmSynthetic @set:JvmSynthetic
     internal var useMinSizeAsContentSizeHelper: Boolean = false
-    private var isMaximizableOldValueHelper: Boolean = true
+//    private var isMaximizableOldValueHelper: Boolean = true
 
     var defaultOpacity: Double = 1.0
     var disabledOpacity: Double = 0.4
@@ -33,7 +33,7 @@ class WindowPart {
         set(isEnabled) {
             WindowDataListener.savePosIsEnabled = isEnabled
         }
-    var isResizable: Boolean by Delegates.observable(true) { _, _, newValue ->
+    var isResizable: Boolean by observable(true) { _, _, newValue ->
         contextPart.forceDisableResize = !newValue
 
 //        if (isMaximizable && !newValue) {
@@ -43,10 +43,10 @@ class WindowPart {
 //            isMaximizable = isMaximizableOldValueHelper
 //        }
     }
-    var isDraggable: Boolean by Delegates.observable(true) { _, _, newValue ->
+    var isDraggable: Boolean by observable(true) { _, _, newValue ->
         contextPart.forceDisableMove = !newValue
     }
-    var isMaximizable by Delegates.observable(true) { _, _, newValue ->
+    var isMaximizable by observable(true) { _, _, newValue ->
         windowUiInstance.win32MaxButton.isDisable = !newValue
         windowUiInstance.win32UnMaxButton.isDisable = !newValue
         contextPart.forceDisableMaximize = !newValue
@@ -59,7 +59,7 @@ class WindowPart {
             windowUiInstance.win32UnMaxButton.opacity = disabledOpacity
         }
     }
-    var isMinimizable by Delegates.observable(true) { _, _, newValue ->
+    var isMinimizable by observable(true) { _, _, newValue ->
         windowUiInstance.win32MinButton.isDisable = !newValue
         contextPart.forceDisableMinimize = !newValue
 
@@ -69,7 +69,7 @@ class WindowPart {
             windowUiInstance.win32MinButton.opacity = disabledOpacity
         }
     }
-    var isClosable by Delegates.observable(true) { _, _, newValue ->
+    var isClosable by observable(true) { _, _, newValue ->
         windowUiInstance.win32CloseButton.isDisable = !newValue
         contextPart.forceDisableClose = !newValue
 
