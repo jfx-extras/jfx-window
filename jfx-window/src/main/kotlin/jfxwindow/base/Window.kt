@@ -556,6 +556,9 @@ class Window(private val stage: Stage) {
         instance.contextPart.windowUiInstance = instance.windowUi
         instance.contextPart.windowOptionsInstance = instance.windowOptions
         instance.contextPart.windowPart = instance.windowPart
+
+        instance.shadowPart.windowOptionsInstance = instance.windowOptions
+        instance.shadowPart.windowUiInstance = instance.windowUi
     }
 
     private fun callInitMethods() {
@@ -571,6 +574,7 @@ class Window(private val stage: Stage) {
         instance.titleBarPart.applyTitleBarProperties()
         instance.titleBarPart.applyResizeProperties()
         instance.buttonPart.applyButtonProperties()
+        instance.shadowPart.applyShadowProperties()
         instance.windowTitleBarListener.addResizeListeners()
         instance.windowTitleBarListener.addTitleMoveListener()
         instance.windowInactiveListener.addWindowUnActiveListener()

@@ -28,6 +28,7 @@ class WindowBase(stage: Stage) {
     var iconPart = IconPart()
     var titleBarPart = TitleBarPart()
     var buttonPart = ButtonPart()
+    var shadowPart = ShadowPart()
     var animationHelper = AnimationHelper()
     var windowTitleBarListener = WindowTitleBarListener()
     @set:JvmSynthetic @get:JvmSynthetic

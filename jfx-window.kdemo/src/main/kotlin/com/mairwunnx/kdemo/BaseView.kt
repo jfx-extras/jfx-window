@@ -13,6 +13,7 @@ class BaseView : View("jfx-window") {
     private val titleBarView: TitleBarView by inject()
     private val buttonView: ButtonView by inject()
     private val borderView: BorderView by inject()
+    private val shadowView: ShadowView by inject()
     override val root: HBox = hbox()
 
     init {
@@ -22,5 +23,6 @@ class BaseView : View("jfx-window") {
         root += titleBarView
         root += buttonView
         root += borderView
+        root += shadowView
     }
 }
