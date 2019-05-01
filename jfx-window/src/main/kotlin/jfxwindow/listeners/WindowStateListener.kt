@@ -6,6 +6,7 @@ import javafx.stage.Screen
 import jfxwindow.base.WindowOptions
 import jfxwindow.base.WindowUi
 import jfxwindow.parts.BorderPart
+import jfxwindow.parts.ButtonPart
 import jfxwindow.parts.WindowPart
 
 internal class WindowStateListener {
@@ -18,6 +19,8 @@ internal class WindowStateListener {
     internal lateinit var borderInstance: BorderPart
     @set:JvmSynthetic @get:JvmSynthetic
     internal lateinit var windowInstance: WindowPart
+    @set:JvmSynthetic @get:JvmSynthetic
+    internal lateinit var buttonPartInstance: ButtonPart
 
     @JvmSynthetic
     internal fun addWindowMaximizeListener() =
@@ -28,7 +31,7 @@ internal class WindowStateListener {
                 windowUiInstance.win32MaxButton.isVisible = !newValue
                 windowUiInstance.win32UnMaxButton.isManaged = newValue
                 windowUiInstance.win32UnMaxButton.isVisible = newValue
-                
+
                 borderOnState(newValue)
 
                 if (newValue) {
@@ -58,6 +61,14 @@ internal class WindowStateListener {
                     windowUiInstance.windowPane.padding = Insets(-18.0)
                 } else {
                     windowUiInstance.windowPane.padding = Insets(0.0)
+                }
+
+                if (!buttonPartInstance.maxButtonIsVisible)
+                {
+                    windowUiInstance.win32MaxButton.isManaged = false
+                    windowUiInstance.win32MaxButton.isVisible = false
+                    windowUiInstance.win32UnMaxButton.isManaged = false
+                    windowUiInstance.win32UnMaxButton.isVisible = false
                 }
             }
 

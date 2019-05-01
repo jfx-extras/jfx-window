@@ -521,6 +521,7 @@ class Window(private val stage: Stage) {
         instance.windowStateListener.windowOptionsInstance = instance.windowOptions
         instance.windowStateListener.windowUiInstance = instance.windowUi
         instance.windowStateListener.windowInstance = instance.windowPart
+        instance.windowStateListener.buttonPartInstance = instance.buttonPart
 
         instance.windowInactiveListener.borderPartInstance = instance.borderPart
         instance.windowInactiveListener.titleBarPart = instance.titleBarPart

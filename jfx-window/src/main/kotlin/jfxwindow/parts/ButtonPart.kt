@@ -22,6 +22,7 @@ class ButtonPart {
     private var unMaxIsEnabled: Boolean = true
     private var minIsEnabled: Boolean = true
     private var tooltipIsEnabledHelper: Boolean = true
+    private var maxButtonIsVisibleHelper: Boolean = true
     @get:JvmSynthetic @set:JvmSynthetic
     internal lateinit var windowOptionsInstance: WindowOptions
     @get:JvmSynthetic @set:JvmSynthetic
@@ -171,10 +172,10 @@ class ButtonPart {
             windowUiInstance.win32CloseButton.isManaged = isVisible
         }
 
-    // todo: fix not correct behavior when changed maximized and when it false. lol
     var maxButtonIsVisible: Boolean
-        get() = windowUiInstance.win32MaxButton.isVisible
+        get() = maxButtonIsVisibleHelper
         set(isVisible) {
+            maxButtonIsVisibleHelper = isVisible
             if (windowOptionsInstance.stage.isMaximized) {
                 windowUiInstance.win32UnMaxButton.isVisible = isVisible
                 windowUiInstance.win32UnMaxButton.isManaged = isVisible
