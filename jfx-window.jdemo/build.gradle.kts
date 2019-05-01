@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "org.jfxextras"
-version = "8.0.0.229"
+version = "8.0.1.277"
 
 repositories {
     maven("https://kotlin.bintray.com/kotlinx")
@@ -16,7 +16,7 @@ repositories {
 
 application {
     group = "org.jfxextras"
-    version = "8.0.0.229"
+    version = "8.0.1.277"
     applicationName = "jfx-window.jdemo"
     mainClassName = "com.mairwunnx.jdemo.EntryPoint"
 }
