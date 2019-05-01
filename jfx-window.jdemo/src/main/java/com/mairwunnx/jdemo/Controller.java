@@ -8,6 +8,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
+import jfxwindow.enums.ShadowStyle;
 import jfxwindow.enums.TitleAlignment;
 import jfxwindow.enums.TitleShadowDepth;
 
@@ -230,5 +231,19 @@ public class Controller {
 
     public void changeBorderIsVisible() {
         window.getInstance().getBorderPart().setBorderIsVisible(!window.getInstance().getBorderPart().getBorderIsVisible());
+    }
+
+    public void changeShadowIsEnabled(MouseEvent mouseEvent) {
+        ToggleButton toggleButton = (ToggleButton) mouseEvent.getSource();
+        window.getInstance().getShadowPart().setWindowShadowIsEnabled(toggleButton.isSelected());
+    }
+
+    public void changeShadowType(MouseEvent mouseEvent) {
+        ToggleButton toggleButton = (ToggleButton) mouseEvent.getSource();
+        if (toggleButton.isSelected()) {
+            window.getInstance().getShadowPart().setWindowShadowType(ShadowStyle.WIN32);
+        } else {
+            window.getInstance().getShadowPart().setWindowShadowType(ShadowStyle.MATERIAL);
+        }
     }
 }
