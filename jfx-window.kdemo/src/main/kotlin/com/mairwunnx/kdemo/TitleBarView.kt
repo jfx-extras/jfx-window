@@ -95,6 +95,19 @@ class TitleBarView : View() {
             }
         }
 
+        togglebutton("switch context menu spacing") {
+            isFocusTraversable = false
+            isMnemonicParsing = false
+            maxHeight = Double.MAX_VALUE
+            maxWidth = Double.MAX_VALUE
+            prefHeight = 25.0
+            prefWidth = 170.0
+
+            setOnAction {
+                window.instance.contextPart.spacingIsEnabled = this.isSelected
+            }
+        }
+
         button("get bar shadow depth") {
             isFocusTraversable = false
             isMnemonicParsing = false

@@ -11,7 +11,6 @@ import jfxwindow.base.WindowUi
 import jfxwindow.consts.ContextIcons
 import java.awt.Robot
 
-// todo: add ability to disabling spacing
 class ContextPart {
     @get:JvmSynthetic
     @set:JvmSynthetic
@@ -38,8 +37,15 @@ class ContextPart {
     @get:JvmSynthetic
     @set:JvmSynthetic
     internal var forceDisableResize: Boolean = false
-    var spacing = "     "
-    var spacingIsEnabled: Boolean = true // not implemented
+    var spacing: String = "     "
+    var spacingIsEnabled: Boolean = true
+
+    private val restoreString = "Restore"
+    private val moveString = "Move"
+    private val sizeString = "Size"
+    private val maximizeString = "Maximize"
+    private val minimizeString = "Minimize"
+    private val closeString = "Close"
 
     @JvmSynthetic
     internal fun applyContextMenuProperties() {
@@ -70,12 +76,12 @@ class ContextPart {
         restoreSvg.content = ContextIcons.win32Restore
 
         val contextMenu = ContextMenu()
-        val restore = MenuItem("${spacing}Restore", restoreSvg)
-        val move = MenuItem("${spacing}Move")
-        val size = MenuItem("${spacing}Size")
-        val maximize = MenuItem("${spacing}Maximize", maxSvg)
-        val minimize = MenuItem("${spacing}Minimize", minSvg)
-        val close = MenuItem("${spacing}Close", closeSvg)
+        val restore = MenuItem(restoreString, restoreSvg)
+        val move = MenuItem(moveString)
+        val size = MenuItem(sizeString)
+        val maximize = MenuItem(maximizeString, maxSvg)
+        val minimize = MenuItem(minimizeString, minSvg)
+        val close = MenuItem(closeString, closeSvg)
         close.accelerator = KeyCombination.keyCombination("ALT+F4")
 
         contextMenu.setOnShowing {
@@ -89,6 +95,22 @@ class ContextPart {
                 SeparatorMenuItem(),
                 close
             )
+
+            if (spacingIsEnabled) {
+                restore.text = spacing + restoreString
+                move.text = spacing + moveString
+                size.text = spacing + sizeString
+                maximize.text = spacing + maximizeString
+                minimize.text = spacing + minimizeString
+                close.text = spacing + closeString
+            } else {
+                restore.text = restoreString
+                move.text = moveString
+                size.text = sizeString
+                maximize.text = maximizeString
+                minimize.text = minimizeString
+                close.text = closeString
+            }
 
             close.isDisable = forceDisableClose
             minimize.isDisable = forceDisableMinimize
