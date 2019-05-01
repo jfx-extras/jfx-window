@@ -22,10 +22,41 @@ class WindowPart {
     internal lateinit var contextPart: ContextPart
     @get:JvmSynthetic @set:JvmSynthetic
     internal var useMinSizeAsContentSizeHelper: Boolean = false
-//    private var isMaximizableOldValueHelper: Boolean = true
 
-    var defaultOpacity: Double = 1.0
-    var disabledOpacity: Double = 0.4
+    var defaultOpacity: Double by observable(1.0) { _, oldValue, newValue ->
+        if (newValue < 0.0 || newValue > 1.0) {
+            throw IllegalArgumentException("Default transparency value should be no more than 1.0 and no less than 0.0")
+        } else {
+            if (isClosable) {
+                windowUiInstance.win32CloseButton.opacity = newValue
+            }
+
+            if (isMaximizable) {
+                windowUiInstance.win32MaxButton.opacity = newValue
+            }
+
+            if (isMinimizable) {
+                windowUiInstance.win32MinButton.opacity = newValue
+            }
+        }
+    }
+    var disabledOpacity: Double by observable(0.4) { _, oldValue, newValue ->
+        if (newValue < 0.0 || newValue > 1.0) {
+            throw IllegalArgumentException("Disabled transparency value should be no more than 1.0 and no less than 0.0")
+        } else {
+            if (!isClosable) {
+                windowUiInstance.win32CloseButton.opacity = newValue
+            }
+
+            if (!isMaximizable) {
+                windowUiInstance.win32MaxButton.opacity = newValue
+            }
+
+            if (!isMinimizable) {
+                windowUiInstance.win32MinButton.opacity = newValue
+            }
+        }
+    }
     var animationDuration: Duration = Duration.millis(200.0)
     var smoothColorAnim: Boolean = true
     var saveWindowPosition: Boolean
