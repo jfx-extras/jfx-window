@@ -14,7 +14,7 @@ import jfxwindow.enums.TitleAlignment
 import jfxwindow.enums.TitleShadowDepth
 import java.io.File
 
-internal class WindowOptions(stageInstance: Stage) {
+internal data class WindowOptions(private val stageInstance: Stage) {
     private val domain: String = File(
         WindowOptions::class.java.protectionDomain
             .codeSource
@@ -36,6 +36,8 @@ internal class WindowOptions(stageInstance: Stage) {
 
     @set:JvmSynthetic @get:JvmSynthetic
     internal var contextMenuIsEnabled: Boolean = true
+    @set:JvmSynthetic @get:JvmSynthetic
+    internal var contextMenuSpacingIsEnabled: Boolean = true
 
     @set:JvmSynthetic @get:JvmSynthetic
     internal var icon: String = ""
@@ -46,10 +48,12 @@ internal class WindowOptions(stageInstance: Stage) {
     internal var isClosable: Boolean = true
     @set:JvmSynthetic @get:JvmSynthetic
     internal var closeButtonIsVisible: Boolean = true
+
     @set:JvmSynthetic @get:JvmSynthetic
     internal var isMaximizable: Boolean = stageInstance.isResizable
     @set:JvmSynthetic @get:JvmSynthetic
     internal var maximizeButtonIsVisible: Boolean = true
+
     @set:JvmSynthetic @get:JvmSynthetic
     internal var isMinimizable: Boolean = true
     @set:JvmSynthetic @get:JvmSynthetic
@@ -64,13 +68,10 @@ internal class WindowOptions(stageInstance: Stage) {
 
     @set:JvmSynthetic @get:JvmSynthetic
     internal var saveWindowPosition: Boolean = false
-
     @set:JvmSynthetic @get:JvmSynthetic
     internal var stage: Stage = stageInstance
-
     @set:JvmSynthetic @get:JvmSynthetic
     internal var svgIconZoom: Double = 0.3
-
     @set:JvmSynthetic @get:JvmSynthetic
     internal var titleAlignment: TitleAlignment = TitleAlignment.LEFT
     @set:JvmSynthetic @get:JvmSynthetic
@@ -81,7 +82,6 @@ internal class WindowOptions(stageInstance: Stage) {
     internal var titleTextSize: Double = 12.0
     @set:JvmSynthetic @get:JvmSynthetic
     internal var titleTextFont: Font = Font.getDefault()
-
     @set:JvmSynthetic @get:JvmSynthetic
     internal var titleBarBackground: Color = Color.web("#FFFFFF")
     @set:JvmSynthetic @get:JvmSynthetic
@@ -94,7 +94,6 @@ internal class WindowOptions(stageInstance: Stage) {
     internal var titleBarInactiveShadowDepth: TitleShadowDepth = TitleShadowDepth.DEPTH0
     @set:JvmSynthetic @get:JvmSynthetic
     internal var titleBarBottomBorderIsVisible: Boolean = false
-
     @set:JvmSynthetic @get:JvmSynthetic
     internal var toolButtonsStyle: ButtonStyle = ButtonStyle.WIN32
     @set:JvmSynthetic @get:JvmSynthetic
@@ -103,15 +102,12 @@ internal class WindowOptions(stageInstance: Stage) {
     internal var toolButtonsHoverColor: Color = Color.color(0.0, 0.0, 0.0, 0.1)
     @set:JvmSynthetic @get:JvmSynthetic
     internal var toolButtonsPressedColor: Color = Color.color(0.0, 0.0, 0.0, 0.2)
-
     @set:JvmSynthetic @get:JvmSynthetic
     internal var useMinSizeAsContentSize: Boolean = false
-
     @set:JvmSynthetic @get:JvmSynthetic
     internal var windowShadowIsEnabled: Boolean = true
     @set:JvmSynthetic @get:JvmSynthetic
     internal var windowShadowType: ShadowStyle = ShadowStyle.WIN32
-
     @set:JvmSynthetic @get:JvmSynthetic
     internal var windowRootElement: Node = VBox()
 }
