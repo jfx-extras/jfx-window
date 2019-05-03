@@ -585,7 +585,7 @@ public class Window(private val stage: Stage) {
      */
     public fun create(): Window {
         instance.contentPart.prepareUserWorkspace(stage)
-        instance.windowUi.assignBaseUi(stage) //
+        instance.windowUi.init(stage)
         instance.contextPart.init()
         applyCreateProperties()
         callInitMethods()

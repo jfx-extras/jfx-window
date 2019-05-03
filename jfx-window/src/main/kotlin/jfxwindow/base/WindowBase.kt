@@ -29,7 +29,7 @@ public class WindowBase {
      * Contains some methods and properties allowing to
      * work with the window.
      */
-    public var windowPart = WindowPart()
+    public var windowPart = WindowPart(this)
     /**
      * Contains some methods and properties allowing to
      * work with the border of window.
