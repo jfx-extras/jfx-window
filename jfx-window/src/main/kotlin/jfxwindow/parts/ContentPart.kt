@@ -1,21 +1,24 @@
 package jfxwindow.parts
 
-import javafx.event.EventTarget
 import javafx.fxml.FXMLLoader
-import javafx.scene.Group
 import javafx.scene.Node
 import javafx.scene.Parent
-import javafx.scene.control.*
+import javafx.scene.control.ScrollPane
+import javafx.scene.control.SplitPane
+import javafx.scene.control.TabPane
+import javafx.scene.control.TitledPane
 import javafx.scene.layout.*
 import javafx.stage.Stage
-import jfxwindow.base.WindowOptions
-import jfxwindow.base.WindowUi
-import java.lang.reflect.Method
+import jfxwindow.base.WindowBase
+import jfxwindow.helpers.getChildList
 
-class ContentPart(private val windowUiInstance: WindowUi) {
-    @set:JvmSynthetic
-    @get:JvmSynthetic
-    internal lateinit var windowOptionsInstance: WindowOptions
+@Suppress("RedundantVisibilityModifier", "unused")
+/**
+ * Responsible for managing content in a window.
+ * From public methods, only getting the root element
+ * of your ui is available.
+ */
+public class ContentPart(private val windowBase: WindowBase) {
     private lateinit var userContent: ArrayList<Node>
 
     private val anchorPane: AnchorPane = AnchorPane()
@@ -34,7 +37,11 @@ class ContentPart(private val windowUiInstance: WindowUi) {
 
     private var installedNode: Node = VBox()
 
-    @JvmSynthetic
+    /**
+     * @return user content root node.
+     */
+    public fun getRootNode(): Node = installedNode
+
     internal fun prepareUserWorkspace(stage: Stage) {
         userContent = ArrayList(stage.scene.root.getChildList())
         stage.getChildList()?.clear()
@@ -45,12 +52,11 @@ class ContentPart(private val windowUiInstance: WindowUi) {
         ) as Parent
     }
 
-    @JvmSynthetic
     internal fun returnUserContent() {
-        windowUiInstance.windowContainer.getChildList()?.clear()
+        windowBase.windowUi.windowContainer.getChildList()?.clear()
 
         when {
-            windowOptionsInstance.windowRootElement is AnchorPane -> {
+            windowBase.windowOptions.windowRootElement is AnchorPane -> {
                 userContent.forEach {
                     anchorPane.getChildList()?.apply {
                         add(it)
@@ -58,9 +64,9 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = anchorPane
-                windowUiInstance.windowContainer.content = anchorPane
+                windowBase.windowUi.windowContainer.content = anchorPane
             }
-            windowOptionsInstance.windowRootElement is BorderPane -> {
+            windowBase.windowOptions.windowRootElement is BorderPane -> {
                 userContent.forEach {
                     borderPane.getChildList()?.apply {
                         add(it)
@@ -68,9 +74,9 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = borderPane
-                windowUiInstance.windowContainer.content = borderPane
+                windowBase.windowUi.windowContainer.content = borderPane
             }
-            windowOptionsInstance.windowRootElement is FlowPane -> {
+            windowBase.windowOptions.windowRootElement is FlowPane -> {
                 userContent.forEach {
                     flowPane.getChildList()?.apply {
                         add(it)
@@ -78,9 +84,9 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = flowPane
-                windowUiInstance.windowContainer.content = flowPane
+                windowBase.windowUi.windowContainer.content = flowPane
             }
-            windowOptionsInstance.windowRootElement is GridPane -> {
+            windowBase.windowOptions.windowRootElement is GridPane -> {
                 userContent.forEach {
                     gridPane.getChildList()?.apply {
                         add(it)
@@ -88,9 +94,9 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = gridPane
-                windowUiInstance.windowContainer.content = gridPane
+                windowBase.windowUi.windowContainer.content = gridPane
             }
-            windowOptionsInstance.windowRootElement is HBox -> {
+            windowBase.windowOptions.windowRootElement is HBox -> {
                 userContent.forEach {
                     hBox.getChildList()?.apply {
                         add(it)
@@ -98,9 +104,9 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = hBox
-                windowUiInstance.windowContainer.content = hBox
+                windowBase.windowUi.windowContainer.content = hBox
             }
-            windowOptionsInstance.windowRootElement is Pane -> {
+            windowBase.windowOptions.windowRootElement is Pane -> {
                 userContent.forEach {
                     pane.getChildList()?.apply {
                         add(it)
@@ -108,9 +114,9 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = pane
-                windowUiInstance.windowContainer.content = pane
+                windowBase.windowUi.windowContainer.content = pane
             }
-            windowOptionsInstance.windowRootElement is ScrollPane -> {
+            windowBase.windowOptions.windowRootElement is ScrollPane -> {
                 userContent.forEach {
                     scrollPane.getChildList()?.apply {
                         add(it)
@@ -118,9 +124,9 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = scrollPane
-                windowUiInstance.windowContainer.content = scrollPane
+                windowBase.windowUi.windowContainer.content = scrollPane
             }
-            windowOptionsInstance.windowRootElement is SplitPane -> {
+            windowBase.windowOptions.windowRootElement is SplitPane -> {
                 userContent.forEach {
                     splitPane.getChildList()?.apply {
                         add(it)
@@ -128,9 +134,9 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = splitPane
-                windowUiInstance.windowContainer.content = splitPane
+                windowBase.windowUi.windowContainer.content = splitPane
             }
-            windowOptionsInstance.windowRootElement is StackPane -> {
+            windowBase.windowOptions.windowRootElement is StackPane -> {
                 userContent.forEach {
                     stackPane.getChildList()?.apply {
                         add(it)
@@ -138,9 +144,9 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = stackPane
-                windowUiInstance.windowContainer.content = stackPane
+                windowBase.windowUi.windowContainer.content = stackPane
             }
-            windowOptionsInstance.windowRootElement is TabPane -> {
+            windowBase.windowOptions.windowRootElement is TabPane -> {
                 userContent.forEach {
                     tabPane.getChildList()?.apply {
                         add(it)
@@ -148,9 +154,9 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = tabPane
-                windowUiInstance.windowContainer.content = tabPane
+                windowBase.windowUi.windowContainer.content = tabPane
             }
-            windowOptionsInstance.windowRootElement is TilePane -> {
+            windowBase.windowOptions.windowRootElement is TilePane -> {
                 userContent.forEach {
                     tilePane.getChildList()?.apply {
                         add(it)
@@ -158,9 +164,9 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = tilePane
-                windowUiInstance.windowContainer.content = tilePane
+                windowBase.windowUi.windowContainer.content = tilePane
             }
-            windowOptionsInstance.windowRootElement is TitledPane -> {
+            windowBase.windowOptions.windowRootElement is TitledPane -> {
                 userContent.forEach {
                     titledPane.getChildList()?.apply {
                         add(it)
@@ -168,9 +174,9 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = titledPane
-                windowUiInstance.windowContainer.content = titledPane
+                windowBase.windowUi.windowContainer.content = titledPane
             }
-            windowOptionsInstance.windowRootElement is VBox -> {
+            windowBase.windowOptions.windowRootElement is VBox -> {
                 userContent.forEach {
                     vBox.getChildList()?.apply {
                         add(it)
@@ -178,7 +184,7 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = vBox
-                windowUiInstance.windowContainer.content = vBox
+                windowBase.windowUi.windowContainer.content = vBox
             }
             else -> {
                 userContent.forEach {
@@ -188,49 +194,8 @@ class ContentPart(private val windowUiInstance: WindowUi) {
                 }
 
                 installedNode = vBox
-                windowUiInstance.windowContainer.content = vBox
+                windowBase.windowUi.windowContainer.content = vBox
             }
         }
-    }
-
-    /**
-     * @return user content root element.
-     */
-    fun getRootElement(): Node = installedNode
-
-    /**
-     * It getChildList, getChildrenReflectively, findMethodByName
-     * methods by TornadoFx library. https://github.com/edvin/tornadofx
-     *
-     * Find the list of children from a Parent node. Gleaned code from ControlsFX for this.
-     */
-    private fun EventTarget.getChildList(): MutableList<Node>? = when (this) {
-        is SplitPane -> items
-        is ToolBar -> items
-        is Pane -> children
-        is Group -> children
-        is HBox -> children
-        is VBox -> children
-        is Control -> (skin as? SkinBase<*>)?.children ?: getChildrenReflectively()
-        is Parent -> getChildrenReflectively()
-        else -> null
-    }
-
-    @Suppress("UNCHECKED_CAST", "PLATFORM_CLASS_MAPPED_TO_KOTLIN")
-    private fun Parent.getChildrenReflectively(): MutableList<Node>? {
-        val getter = this.javaClass.findMethodByName("getChildren")
-        if (getter != null && java.util.List::class.java.isAssignableFrom(getter.returnType)) {
-            getter.isAccessible = true
-            return getter.invoke(this) as MutableList<Node>
-        }
-        return null
-    }
-
-    private fun Class<*>.findMethodByName(name: String): Method? {
-        val method = (declaredMethods + methods).find { it.name == name }
-        if (method != null) return method
-        @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
-        if (superclass == java.lang.Object::class.java) return null
-        return superclass.findMethodByName(name)
     }
 }

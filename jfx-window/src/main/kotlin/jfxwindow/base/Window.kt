@@ -2,6 +2,7 @@ package jfxwindow.base
 
 import javafx.geometry.NodeOrientation
 import javafx.scene.Node
+import javafx.scene.layout.VBox
 import javafx.scene.paint.Color
 import javafx.scene.text.Font
 import javafx.stage.Stage
@@ -10,8 +11,9 @@ import jfxwindow.enums.ButtonStyle
 import jfxwindow.enums.ShadowStyle
 import jfxwindow.enums.TitleAlignment
 import jfxwindow.enums.TitleShadowDepth
-import jfxwindow.helpers.WindowBuilderHelper
+import jfxwindow.helpers.validateStage
 import jfxwindow.listeners.WindowDataListener
+import java.io.File
 
 /**
  * Base jfx-window library window constructor and builder.
@@ -29,8 +31,9 @@ public class Window(private val stage: Stage) {
     /**
      * jfx-window WindowBase class instance.
      */
-    public val instance: WindowBase = WindowBase(stage)
+    public val instance: WindowBase = WindowBase()
 
+    private var animationDuration: Duration = Duration.millis(200.0)
     /**
      * Animation duration for background color changing of title-bar zone.
      *
@@ -38,10 +41,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun animationDuration(duration: Duration): Window {
-        instance.windowOptions.animationDuration = duration
+        animationDuration = duration
         return this
     }
 
+    private var smoothColorAnimation: Boolean = true
     /**
      * Animation enabled status for background color changing of title-bar zone.
      *
@@ -51,10 +55,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun smoothColorAnimation(isEnabled: Boolean): Window {
-        instance.windowOptions.smoothColorAnimation = isEnabled
+        smoothColorAnimation = isEnabled
         return this
     }
 
+    private var borderIsVisible: Boolean = true
     /**
      * Border visibility status of application window border.
      *
@@ -62,10 +67,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun borderIsVisible(isVisible: Boolean): Window {
-        instance.windowOptions.borderIsVisible = isVisible
+        borderIsVisible = isVisible
         return this
     }
 
+    private var borderColor: Color = Color.web("#464646")
     /**
      * Border fill color of application window color.
      *
@@ -73,10 +79,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun borderColor(fillColor: Color): Window {
-        instance.windowOptions.borderColor = fillColor
+        borderColor = fillColor
         return this
     }
 
+    private var borderInactiveColor: Color = Color.web("#A5A5A5")
     /**
      * Border fill color of unfocused application window color.
      *
@@ -84,10 +91,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun borderInactiveColor(fillColor: Color): Window {
-        instance.windowOptions.borderInactiveColor = fillColor
+        borderInactiveColor = fillColor
         return this
     }
 
+    private var contextMenuIsEnabled: Boolean = true
     /**
      * TitleBar context-menu enabled state for current instance.
      *
@@ -95,10 +103,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun contextMenuIsEnabled(isEnabled: Boolean): Window {
-        instance.windowOptions.contextMenuIsEnabled = isEnabled
+        contextMenuIsEnabled = isEnabled
         return this
     }
 
+    private var contextMenuSpacingIsEnabled: Boolean = true
     /**
      * TitleBar context-menu enabled state for spacing.
      *
@@ -109,10 +118,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun contextMenuSpacingIsEnabled(isEnabled: Boolean): Window {
-        instance.windowOptions.contextMenuSpacingIsEnabled = isEnabled
+        contextMenuSpacingIsEnabled = isEnabled
         return this
     }
 
+    private var icon: String = ""
     /**
      * TitleBar icon also support SVG (Beta) images.
      * Probably you must use [svgIconZoom] for better result with svg.
@@ -122,10 +132,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun icon(iconPath: String): Window {
-        instance.windowOptions.icon = iconPath
+        icon = iconPath
         return this
     }
 
+    private var iconIsVisible: Boolean = false
     /**
      * TitleBar icon visibility status in title-bar.
      *
@@ -133,10 +144,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun iconIsVisible(isVisible: Boolean): Window {
-        instance.windowOptions.iconIsVisible = isVisible
+        iconIsVisible = isVisible
         return this
     }
 
+    private var isClosable: Boolean = true
     /**
      * Controlling ability to close window with button or
      * closing with context-menu.
@@ -148,10 +160,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun isClosable(isAble: Boolean): Window {
-        instance.windowOptions.isClosable = isAble
+        isClosable = isAble
         return this
     }
 
+    private var closeButtonIsVisible: Boolean = true
     /**
      * Controlling visibility of window close button.
      *
@@ -159,10 +172,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun closeButtonIsVisible(isVisibility: Boolean): Window {
-        instance.windowOptions.closeButtonIsVisible = isVisibility
+        closeButtonIsVisible = isVisibility
         return this
     }
 
+    private var isMaximizable: Boolean = true
     /**
      * Controlling ability to maximize window with button or
      * maximize with context-menu.
@@ -171,10 +185,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun isMaximizable(isAble: Boolean): Window {
-        instance.windowOptions.isMaximizable = isAble
+        isMaximizable = isAble
         return this
     }
 
+    private var maximizeButtonIsVisible: Boolean = true
     /**
      * Controlling visibility of window maximize button.
      *
@@ -182,10 +197,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun maximizeButtonIsVisible(isVisibility: Boolean): Window {
-        instance.windowOptions.maximizeButtonIsVisible = isVisibility
+        maximizeButtonIsVisible = isVisibility
         return this
     }
 
+    private var isMinimizable: Boolean = true
     /**
      * Controlling ability to minimize window with button or
      * minimize with context-menu.
@@ -194,10 +210,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun isMinimizable(isAble: Boolean): Window {
-        instance.windowOptions.isMinimizable = isAble
+        isMinimizable = isAble
         return this
     }
 
+    private var minimizeButtonIsVisible: Boolean = true
     /**
      * Controlling visibility of window minimize button.
      *
@@ -205,10 +222,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun minimizeButtonIsVisible(isVisibility: Boolean): Window {
-        instance.windowOptions.minimizeButtonIsVisible = isVisibility
+        minimizeButtonIsVisible = isVisibility
         return this
     }
 
+    private var isDraggable: Boolean = true
     /**
      * Controlling ability to drag window in screen space.
      *
@@ -216,10 +234,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun isDraggable(isAllowed: Boolean): Window {
-        instance.windowOptions.isDraggable = isAllowed
+        isDraggable = isAllowed
         return this
     }
 
+    private var isResizable: Boolean = stage.isResizable
     /**
      * Controlling ability to resize window.
      *
@@ -227,10 +246,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun isResizable(isAllowed: Boolean): Window {
-        instance.windowOptions.isResizable = isAllowed
+        isResizable = isAllowed
         return this
     }
 
+    private var resizeLimit: Boolean = true
     /**
      * Window resize limit, i.e you not can set size if
      * new size < stage title-bar height.
@@ -239,10 +259,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun resizeLimit(isEnabled: Boolean): Window {
-        instance.windowOptions.resizeLimit = isEnabled
+        resizeLimit = isEnabled
         return this
     }
 
+    private var saveWindowPosition: Boolean = false
     /**
      * Save window position data in user temp folder.
      * **WARN: Data saving in system temp directory!**
@@ -251,24 +272,26 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun saveWindowPosition(isEnabled: Boolean): Window {
-        instance.windowOptions.saveWindowPosition = isEnabled
+        saveWindowPosition = isEnabled
         return this
     }
 
+    private var svgIconZoom: Double = 0.3
     /**
      * Controlling svg icon zoom or size.
      * It can be applied when your SVG image so large or small.
      *
-     * By default it value ~ 0.3 - 0.4.
+     * By default it value 0.3.
      *
      * @param [zoom] zoom modifier for SVG image.
      * @return [Window] instance of window builder.
      */
     public fun svgIconZoom(zoom: Double): Window {
-        instance.windowOptions.svgIconZoom = zoom
+        svgIconZoom = zoom
         return this
     }
 
+    private var titleAlignment: TitleAlignment = TitleAlignment.LEFT
     /**
      * Title alignment in title-bar space.
      *
@@ -276,10 +299,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun titleAlignment(alignment: TitleAlignment): Window {
-        instance.windowOptions.titleAlignment = alignment
+        titleAlignment = alignment
         return this
     }
 
+    private var titleIsVisible: Boolean = true
     /**
      * TitleBar title visibility status.
      *
@@ -287,10 +311,17 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun titleIsVisible(isVisible: Boolean): Window {
-        instance.windowOptions.titleIsVisible = isVisible
+        titleIsVisible = isVisible
         return this
     }
 
+    private val domain: String = File(
+        WindowOptions::class.java.protectionDomain
+            .codeSource
+            .location.toURI()
+            .path
+    ).name
+    private var titleText: String = if (!stage.title.isNullOrEmpty()) stage.title else domain
     /**
      * TitleBar title text or title content.
      *
@@ -298,10 +329,19 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun titleText(text: String): Window {
-        instance.windowOptions.titleText = text
+        titleText = text
         return this
     }
 
+    private fun getSystemFont(): Font {
+        return if (System.getProperty("os.name").contains("windows")) {
+            Font("Segoe UI", 12.0)
+        } else {
+            Font("System Regular", 12.0)
+        }
+    }
+
+    private var titleTextFont: Font = getSystemFont()
     /**
      * TitleBar title text font family or just font name.
      *
@@ -309,10 +349,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun titleTextFont(font: Font): Window {
-        instance.windowOptions.titleTextFont = font
+        titleTextFont = font
         return this
     }
 
+    private var titleBarBackground: Color = Color.web("#FFFFFF")
     /**
      * TitleBar background fill color.
      *
@@ -320,21 +361,23 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun titleBarBackground(backgroundColor: Color): Window {
-        instance.windowOptions.titleBarBackground = backgroundColor
+        titleBarBackground = backgroundColor
         return this
     }
 
+    private var titleBarInactiveBackground: Color = Color.web("#FFFFFF")
     /**
      * Inactive title-bar background fill color.
      *
      * @param [backgroundColor] color for fill inactive title-bar.
      * @return [Window] instance of window builder.
      */
-    public fun titleBarUnActiveBackground(backgroundColor: Color): Window {
-        instance.windowOptions.titleBarInactiveBackground = backgroundColor
+    public fun titleBarInactiveBackground(backgroundColor: Color): Window {
+        titleBarInactiveBackground = backgroundColor
         return this
     }
 
+    private var titleBarOrder: NodeOrientation = NodeOrientation.LEFT_TO_RIGHT
     /**
      * TitleBar ui elements order (orientation).
      *
@@ -342,10 +385,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun titleBarOrder(order: NodeOrientation): Window {
-        instance.windowOptions.titleBarOrder = order
+        titleBarOrder = order
         return this
     }
 
+    private var titleBarShadowDepth: TitleShadowDepth = TitleShadowDepth.DEPTH0
     /**
      * TitleBar bar shadow depth (not window shadow).
      *
@@ -353,10 +397,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun titleBarShadowDepth(depth: TitleShadowDepth): Window {
-        instance.windowOptions.titleBarShadowDepth = depth
+        titleBarShadowDepth = depth
         return this
     }
 
+    private var titleBarInactiveShadowDepth: TitleShadowDepth = TitleShadowDepth.DEPTH0
     /**
      * TitleBar bar shadow depth (not window shadow)
      * for not inactive window.
@@ -365,10 +410,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun titleBarInactiveShadowDepth(depth: TitleShadowDepth): Window {
-        instance.windowOptions.titleBarInactiveShadowDepth = depth
+        titleBarInactiveShadowDepth = depth
         return this
     }
 
+    private var titleBarBottomBorderIsVisible: Boolean = false
     /**
      * Controlling bottom border of title-bar visibility.
      *
@@ -376,10 +422,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun titleBarBottomBorderIsVisible(isVisible: Boolean): Window {
-        instance.windowOptions.titleBarBottomBorderIsVisible = isVisible
+        titleBarBottomBorderIsVisible = isVisible
         return this
     }
 
+    private var toolButtonsStyle: ButtonStyle = ButtonStyle.WIN32
     /**
      * Window buttons style i.e Close, Minimize ... buttons.
      *
@@ -387,10 +434,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun toolButtonsStyle(style: ButtonStyle): Window {
-        instance.windowOptions.toolButtonsStyle = style
+        toolButtonsStyle = style
         return this
     }
 
+    private var toolButtonsTooltipIsEnabled: Boolean = true
     /**
      * Window buttons tooltip enabled state.
      *
@@ -398,10 +446,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun toolButtonsTooltipIsEnabled(isEnabled: Boolean): Window {
-        instance.windowOptions.toolButtonsTooltipIsEnabled = isEnabled
+        toolButtonsTooltipIsEnabled = isEnabled
         return this
     }
 
+    private var toolButtonsHoverColor: Color = Color.color(0.0, 0.0, 0.0, 0.1)
     /**
      * Window buttons (un/maximized, minimized) hover color.
      *
@@ -409,10 +458,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun toolButtonsHoverColor(color: Color): Window {
-        instance.windowOptions.toolButtonsHoverColor = color
+        toolButtonsHoverColor = color
         return this
     }
 
+    private var toolButtonsPressedColor: Color = Color.color(0.0, 0.0, 0.0, 0.2)
     /**
      * Window buttons (un/maximized, minimized) pressed color.
      *
@@ -420,21 +470,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun toolButtonsPressedColor(color: Color): Window {
-        instance.windowOptions.toolButtonsPressedColor = color
+        toolButtonsPressedColor = color
         return this
     }
 
-    /**
-     * Enabling auto-calculating min sizes for window by content size.
-     *
-     * @param [isEnabled] auto-calculating min sizes status.
-     * @return [Window] instance of window builder.
-     */
-    public fun useMinSizeAsContentSize(isEnabled: Boolean): Window {
-        instance.windowOptions.useMinSizeAsContentSize = isEnabled
-        return this
-    }
-
+    private var windowShadowIsEnabled: Boolean = true
     /**
      * Window shadow enabled \ visible status.
      *
@@ -442,10 +482,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun windowShadowIsEnabled(isEnabled: Boolean): Window {
-        instance.windowOptions.windowShadowIsEnabled = isEnabled
+        windowShadowIsEnabled = isEnabled
         return this
     }
 
+    private var windowShadowType: ShadowStyle = ShadowStyle.WIN32
     /**
      * Window shadow style \ type what be applied to window.
      *
@@ -453,10 +494,11 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun windowShadowType(type: ShadowStyle): Window {
-        instance.windowOptions.windowShadowType = type
+        windowShadowType = type
         return this
     }
 
+    private var windowRootElement: Node = VBox()
     /**
      * Controlling base window root element where will
      * placed used content.
@@ -467,7 +509,7 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun windowRootElement(node: Node): Window {
-        instance.windowOptions.windowRootElement = node
+        windowRootElement = node
         return this
     }
 
@@ -483,13 +525,52 @@ public class Window(private val stage: Stage) {
      * @return [Window] instance of window builder.
      */
     public fun build(): Window {
-        WindowBuilderHelper.validateJVMVersion()
-        WindowBuilderHelper.validateStageOnNull(stage)
-        WindowBuilderHelper.validateStageStyle(stage)
-        instance.windowOptions.stage = stage
-        instance.windowStageShownListener.windowOptionsInstance = instance.windowOptions
-        instance.windowStageShownListener.addShownListener()
+        validateStage(stage)
+        instance.windowOptions = getWindowOptionsInstance()
         return this
+    }
+
+    private fun getWindowOptionsInstance(): WindowOptions {
+        return WindowOptions(
+            stage,
+            animationDuration,
+            smoothColorAnimation,
+            borderIsVisible,
+            borderColor,
+            borderInactiveColor,
+            contextMenuIsEnabled,
+            contextMenuSpacingIsEnabled,
+            icon,
+            iconIsVisible,
+            isClosable,
+            closeButtonIsVisible,
+            isMaximizable,
+            maximizeButtonIsVisible,
+            isMinimizable,
+            minimizeButtonIsVisible,
+            isDraggable,
+            isResizable,
+            resizeLimit,
+            saveWindowPosition,
+            svgIconZoom,
+            titleAlignment,
+            titleIsVisible,
+            titleText,
+            titleTextFont,
+            titleBarBackground,
+            titleBarInactiveBackground,
+            titleBarOrder,
+            titleBarShadowDepth,
+            titleBarInactiveShadowDepth,
+            titleBarBottomBorderIsVisible,
+            toolButtonsStyle,
+            toolButtonsTooltipIsEnabled,
+            toolButtonsHoverColor,
+            toolButtonsPressedColor,
+            windowShadowIsEnabled,
+            windowShadowType,
+            windowRootElement
+        )
     }
 
     /**
@@ -504,7 +585,8 @@ public class Window(private val stage: Stage) {
      */
     public fun create(): Window {
         instance.contentPart.prepareUserWorkspace(stage)
-        instance.windowUi.assignBaseUi(stage)
+        instance.windowUi.assignBaseUi(stage) //
+        instance.contextPart.init()
         applyCreateProperties()
         callInitMethods()
         instance.contentPart.returnUserContent()
@@ -517,8 +599,6 @@ public class Window(private val stage: Stage) {
 
     private fun applyCreateProperties(): Unit {
         instance.animationHelper.windowPart = instance.windowPart
-
-        instance.contentPart.windowOptionsInstance = instance.windowOptions
 
         instance.windowDefaultSizeListener.windowBaseInstance = instance
         instance.windowDefaultSizeListener.windowOptionsInstance = instance.windowOptions
@@ -534,9 +614,6 @@ public class Window(private val stage: Stage) {
         instance.windowPart.isClosable = instance.windowOptions.isClosable
         instance.windowPart.animationDuration = instance.windowOptions.animationDuration
         instance.windowPart.smoothColorAnim = instance.windowOptions.smoothColorAnimation
-        instance.windowPart.useMinSizeAsContentSize = instance.windowOptions.useMinSizeAsContentSize
-        instance.windowPart.useMinSizeAsContentSizeHelper =
-            instance.windowOptions.useMinSizeAsContentSize
 
         instance.windowResizeHelper.stage = instance.windowOptions.stage
         instance.windowResizeHelper.scene = instance.windowOptions.stage.scene
@@ -573,13 +650,9 @@ public class Window(private val stage: Stage) {
         instance.buttonPart.buttonHoverColor = instance.windowOptions.toolButtonsHoverColor
         instance.buttonPart.buttonPressedColor = instance.windowOptions.toolButtonsPressedColor
 
-        instance.windowTitleBarListener.windowOptionsInstance = instance.windowOptions
-        instance.windowTitleBarListener.windowUiInstance = instance.windowUi
-        instance.windowTitleBarListener.windowPart = instance.windowPart
-
-        instance.contextPart.windowUiInstance = instance.windowUi
-        instance.contextPart.windowOptionsInstance = instance.windowOptions
-        instance.contextPart.windowPart = instance.windowPart
+        instance.windowBaseListener.windowOptionsInstance = instance.windowOptions
+        instance.windowBaseListener.windowUiInstance = instance.windowUi
+        instance.windowBaseListener.windowPart = instance.windowPart
 
         instance.shadowPart.windowOptionsInstance = instance.windowOptions
         instance.shadowPart.windowUiInstance = instance.windowUi
@@ -590,7 +663,6 @@ public class Window(private val stage: Stage) {
         instance.windowStateListener.addBorderChangeListener()
         instance.windowStateListener.addWindowMaximizeListener()
         instance.windowStateListener.addWindowMinimizeListener()
-        instance.contextPart.applyContextMenuProperties()
         instance.titlePart.applyTitleProperties()
         instance.iconPart.applyIconProperties()
         instance.borderPart.applyBorderProperties()
@@ -599,8 +671,7 @@ public class Window(private val stage: Stage) {
         instance.titleBarPart.applyResizeProperties()
         instance.buttonPart.applyButtonProperties()
         instance.shadowPart.applyShadowProperties()
-        instance.windowTitleBarListener.addResizeListeners()
-        instance.windowTitleBarListener.addTitleMoveListener()
+        instance.windowBaseListener.addTitleMoveListener()
         instance.windowInactiveListener.addWindowUnActiveListener()
 
         if (!savePosIsInitialized) {

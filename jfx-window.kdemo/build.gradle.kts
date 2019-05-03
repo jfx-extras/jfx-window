@@ -26,7 +26,7 @@ application {
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
-    implementation("org.jfxextras:jfxwindow:8.+")
+    implementation("org.jfxextras:jfxwindow:8.0.1.277")
     implementation("no.tornado:tornadofx:1.7.18")
 }
 

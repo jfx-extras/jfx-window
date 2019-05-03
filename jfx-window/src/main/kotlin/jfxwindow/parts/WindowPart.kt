@@ -110,16 +110,6 @@ class WindowPart {
             windowUiInstance.win32CloseButton.opacity = disabledOpacity
         }
     }
-    var useMinSizeAsContentSize: Boolean
-        get() = useMinSizeAsContentSizeHelper
-        set(isEnabled) {
-            if (isEnabled) {
-                windowOptionsInstance.stage.minWidth = windowBaseInstance.windowStageShownListener.sizes[0]
-                windowOptionsInstance.stage.minHeight = windowBaseInstance.windowStageShownListener.sizes[1]
-            } else {
-                windowBaseInstance.windowDefaultSizeListener.setDefaultMinSize()
-            }
-        }
 
     // todo: add kdoc for it method.
     fun calculateMinWidthSizeByTitleBar() {

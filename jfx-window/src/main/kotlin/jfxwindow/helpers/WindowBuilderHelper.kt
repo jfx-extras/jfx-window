@@ -5,34 +5,26 @@ import javafx.stage.StageStyle
 import java.util.logging.Level
 import java.util.logging.Logger
 
-internal class WindowBuilderHelper {
-    companion object {
-        @JvmSynthetic
-        internal fun validateJVMVersion() {
-            if (System.getProperty("java.specification.version") == "1.8") return
+internal fun validateStage(stage: Stage) {
+    validateJVMVersion()
+    validateStageStyle(stage)
+}
 
-            Logger.getLogger(WindowBuilderHelper::class.java.name).log(
-                Level.WARNING,
-                "current version of jfx-window library only supports Java 8. You are using Java ${System.getProperty("java.specification.version")}!"
-            )
-        }
+private fun validateJVMVersion() {
+    if (System.getProperty("java.specification.version") == "1.8") return
 
-        @JvmSynthetic
-        internal fun validateStageOnNull(stage: Stage?) {
-            if (stage != null) return
+    Logger.getLogger("WindowBuilderHelperClass").log(
+        Level.WARNING,
+        "current version of jfx-window library only supports Java 8. You are using Java ${System.getProperty(
+            "java.specification.version"
+        )}!"
+    )
+}
 
-            throw NullPointerException(
-                "stage must be initialized and needed for building and creating titlebar!"
-            )
-        }
+private fun validateStageStyle(stage: Stage) {
+    if (stage.style == StageStyle.TRANSPARENT) return
 
-        @JvmSynthetic
-        internal fun validateStageStyle(stage: Stage) {
-            if (stage.style == StageStyle.TRANSPARENT) return
-
-            throw IllegalStateException(
-                "stage style must be \"TRANSPARENT\"! Otherwise stage can be created with some bugs. Current not correct stage style is ${stage.style}."
-            )
-        }
-    }
+    throw IllegalStateException(
+        "stage style must be \"TRANSPARENT\"! Otherwise stage can be created with some bugs. Current not correct stage style is ${stage.style}."
+    )
 }

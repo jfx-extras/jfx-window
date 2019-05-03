@@ -1,44 +1,74 @@
 package jfxwindow.base
 
-import javafx.stage.Stage
 import jfxwindow.helpers.AnimationHelper
 import jfxwindow.helpers.WindowDefaultSizeHelper
 import jfxwindow.helpers.WindowResizeHelper
 import jfxwindow.listeners.WindowInactiveListener
-import jfxwindow.listeners.WindowStageShownListener
 import jfxwindow.listeners.WindowStateListener
-import jfxwindow.listeners.WindowTitleBarListener
+import jfxwindow.listeners.WindowBaseListener
 import jfxwindow.parts.*
 
 /**
- * It class contains window ui elements instances.
- *
- * @param [stage] application window stage.
+ * It class contains window parts instances.
  */
-class WindowBase(stage: Stage) {
-    @set:JvmSynthetic @get:JvmSynthetic
-    internal var windowOptions = WindowOptions(stage)
-    @set:JvmSynthetic @get:JvmSynthetic
+@Suppress("RedundantVisibilityModifier")
+public class WindowBase {
+    internal lateinit var windowOptions: WindowOptions
+    /**
+     * Responsible for managing content in a window.
+     * From public methods, only getting the root element
+     * of your ui is available.
+     */
+    public var contentPart = ContentPart(this)
+    /**
+     * Contains some methods and properties allowing to
+     * work with the context menu of the window.
+     */
+    public var contextPart = ContextPart(this)
+    /**
+     * Contains some methods and properties allowing to
+     * work with the window.
+     */
+    public var windowPart = WindowPart()
+    /**
+     * Contains some methods and properties allowing to
+     * work with the border of window.
+     */
+    public var borderPart = BorderPart()
+    /**
+     * Contains some methods and properties allowing to
+     * work with the window title.
+     */
+    public var titlePart = TitlePart()
+    /**
+     * Contains some methods and properties allowing to
+     * work with the window icon.
+     */
+    public var iconPart = IconPart()
+    /**
+     * Contains some methods and properties allowing to
+     * work with the window title-bar.
+     */
+    public var titleBarPart = TitleBarPart()
+    /**
+     * Contains some methods and properties allowing to
+     * work with the window buttons (close, minimize, maximize).
+     */
+    public var buttonPart = ButtonPart()
+    /**
+     * Contains some methods and properties allowing to
+     * work with the window shadow.
+     */
+    public var shadowPart = ShadowPart()
+    /**
+     * A class that helps in playing the animation of some elements,
+     * but from the public only an extra animation modifier is available.
+     */
+    public var animationHelper = AnimationHelper()
+    internal var windowBaseListener = WindowBaseListener()
     internal var windowUi = WindowUi()
-    var contentPart = ContentPart(windowUi)
-    var contextPart = ContextPart()
-    var windowPart = WindowPart()
-    var borderPart = BorderPart()
-    var titlePart = TitlePart()
-    var iconPart = IconPart()
-    var titleBarPart = TitleBarPart()
-    var buttonPart = ButtonPart()
-    var shadowPart = ShadowPart()
-    var animationHelper = AnimationHelper()
-    var windowTitleBarListener = WindowTitleBarListener()
-    @set:JvmSynthetic @get:JvmSynthetic
     internal var windowResizeHelper = WindowResizeHelper(windowPart)
-    @set:JvmSynthetic @get:JvmSynthetic
     internal var windowStateListener = WindowStateListener()
-    @set:JvmSynthetic @get:JvmSynthetic
     internal var windowInactiveListener = WindowInactiveListener()
-    @set:JvmSynthetic @get:JvmSynthetic
-    internal var windowStageShownListener = WindowStageShownListener()
-    @set:JvmSynthetic @get:JvmSynthetic
     internal var windowDefaultSizeListener = WindowDefaultSizeHelper()
 }
