@@ -266,6 +266,7 @@ public class Window(private val stage: Stage) {
     private var saveWindowPosition: Boolean = false
     /**
      * Save window position data in user temp folder.
+     *
      * **WARN: Data saving in system temp directory!**
      *
      * @param [isEnabled] enabled state for saving window position.
@@ -585,8 +586,8 @@ public class Window(private val stage: Stage) {
      */
     public fun create(): Window {
         instance.contentPart.prepareUserWorkspace(stage)
-        instance.windowUi.init(stage)
         instance.contextPart.init()
+        instance.windowPart.init()
         applyCreateProperties()
         callInitMethods()
         instance.contentPart.returnUserContent()
@@ -602,18 +603,6 @@ public class Window(private val stage: Stage) {
 
         instance.windowDefaultSizeListener.windowBaseInstance = instance
         instance.windowDefaultSizeListener.windowOptionsInstance = instance.windowOptions
-
-        instance.windowPart.windowUiInstance = instance.windowUi
-        instance.windowPart.windowOptionsInstance = instance.windowOptions
-        instance.windowPart.windowBaseInstance = instance
-        instance.windowPart.contextPart = instance.contextPart
-        instance.windowPart.isResizable = instance.windowOptions.isResizable
-        instance.windowPart.isDraggable = instance.windowOptions.isDraggable
-        instance.windowPart.isMaximizable = instance.windowOptions.isMaximizable
-        instance.windowPart.isMinimizable = instance.windowOptions.isMinimizable
-        instance.windowPart.isClosable = instance.windowOptions.isClosable
-        instance.windowPart.animationDuration = instance.windowOptions.animationDuration
-        instance.windowPart.smoothColorAnim = instance.windowOptions.smoothColorAnimation
 
         instance.windowResizeHelper.stage = instance.windowOptions.stage
         instance.windowResizeHelper.scene = instance.windowOptions.stage.scene

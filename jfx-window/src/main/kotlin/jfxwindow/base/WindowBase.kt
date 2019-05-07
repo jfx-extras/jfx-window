@@ -66,7 +66,7 @@ public class WindowBase {
      */
     public var animationHelper = AnimationHelper()
     internal var windowBaseListener = WindowBaseListener()
-    internal var windowUi = WindowUi()
+    internal var windowUi = WindowUi(this)
     internal var windowResizeHelper = WindowResizeHelper(windowPart)
     internal var windowStateListener = WindowStateListener()
     internal var windowInactiveListener = WindowInactiveListener()

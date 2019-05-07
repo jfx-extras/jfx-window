@@ -22,6 +22,8 @@ internal class WindowStateListener {
     @set:JvmSynthetic @get:JvmSynthetic
     internal lateinit var buttonPartInstance: ButtonPart
 
+    private var isResizableHelper: Boolean = false
+
     @JvmSynthetic
     internal fun addWindowMaximizeListener() =
             windowOptionsInstance.stage.maximizedProperty().addListener { _,
@@ -45,6 +47,7 @@ internal class WindowStateListener {
                         borderInstance.setBottomBorderIsVisible(BorderWidths(0.0))
                     }
 
+                    isResizableHelper = windowInstance.isResizable
                     windowInstance.isResizable = false
                 } else {
                     if (borderInstance.bottomBorderIsVisible) {
@@ -54,7 +57,7 @@ internal class WindowStateListener {
                     }
 
                     borderInstance.borderIsVisible = borderInstance.borderIsVisible
-                    windowInstance.isResizable = true
+                    windowInstance.isResizable = isResizableHelper
                 }
 
                 if (newValue) {

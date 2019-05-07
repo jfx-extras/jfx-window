@@ -12,6 +12,6 @@ internal class WindowDefaultSizeHelper {
     @JvmSynthetic
     internal fun setDefaultMinSize() {
         windowOptionsInstance.stage.minHeight = 33.0 + 36.0
-        windowOptionsInstance.stage.minWidth = windowBaseInstance.windowPart.returnMinWidthSizeByTitleBar()
+        windowOptionsInstance.stage.minWidth = windowBaseInstance.windowPart.getMinWidthSizeByTitleBar()
     }
 }

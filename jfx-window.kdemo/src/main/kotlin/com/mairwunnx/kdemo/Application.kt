@@ -25,7 +25,12 @@ class Application : App(BaseView::class) {
         Or it also can use for further use in controllers.
          */
         val window = Window(stage)
-            .titleTextFont(Font.loadFont(javaClass.classLoader.getResource("segoeui.ttf").toString(), 12.0))
+            .titleTextFont(
+                Font.loadFont(
+                    javaClass.classLoader.getResource("segoeui.ttf").toString(),
+                    12.0
+                )
+            )
             .titleText("jfx-window")
             .saveWindowPosition(true)
             .borderColor(Color.BLACK)
