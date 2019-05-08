@@ -37,9 +37,8 @@ internal class WindowStateListener {
                 borderOnState(newValue)
 
                 if (newValue) {
+                    windowUiInstance.windowPane.padding = Insets(-18.0)
                     windowOptionsInstance.stage.height = Screen.getPrimary().visualBounds.height
-
-                    validateTrueMaximizing()
 
                     if (borderInstance.bottomBorderIsVisible) {
                         borderInstance.setBottomBorderIsVisible(BorderWidths(0.0, 0.0, 1.0, 0.0))
@@ -49,7 +48,9 @@ internal class WindowStateListener {
 
                     isResizableHelper = windowInstance.isResizable
                     windowInstance.isResizable = false
+                    validateTrueMaximizing()
                 } else {
+                    windowUiInstance.windowPane.padding = Insets(0.0)
                     if (borderInstance.bottomBorderIsVisible) {
                         borderInstance.setBottomBorderIsVisible(BorderWidths(1.0, 0.0, 1.0, 0.0))
                     } else {
@@ -58,12 +59,6 @@ internal class WindowStateListener {
 
                     borderInstance.borderIsVisible = borderInstance.borderIsVisible
                     windowInstance.isResizable = isResizableHelper
-                }
-
-                if (newValue) {
-                    windowUiInstance.windowPane.padding = Insets(-18.0)
-                } else {
-                    windowUiInstance.windowPane.padding = Insets(0.0)
                 }
 
                 if (!buttonPartInstance.maxButtonIsVisible)

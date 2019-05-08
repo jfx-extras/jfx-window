@@ -11,6 +11,8 @@ import jfxwindow.enums.ButtonStyle
 import jfxwindow.enums.ShadowStyle
 import jfxwindow.enums.TitleAlignment
 import jfxwindow.enums.TitleShadowDepth
+import jfxwindow.helpers.installCallbackSize
+import jfxwindow.helpers.installDefaultSize
 import jfxwindow.helpers.validateStage
 import jfxwindow.listeners.WindowDataListener
 import java.io.File
@@ -515,6 +517,11 @@ public class Window(private val stage: Stage) {
     }
 
     /**
+     * @return stage instance what used in for window creating.
+     */
+    public fun getStage(): Stage = stage
+
+    /**
      * It method do some checks on compatibility and set stage value
      * to default options instance.
      *
@@ -586,6 +593,8 @@ public class Window(private val stage: Stage) {
      */
     public fun create(): Window {
         instance.contentPart.prepareUserWorkspace(stage)
+        installDefaultSize(instance)
+        installCallbackSize(instance)
         instance.contextPart.init()
         instance.windowPart.init()
         applyCreateProperties()
@@ -600,9 +609,6 @@ public class Window(private val stage: Stage) {
 
     private fun applyCreateProperties(): Unit {
         instance.animationHelper.windowPart = instance.windowPart
-
-        instance.windowDefaultSizeListener.windowBaseInstance = instance
-        instance.windowDefaultSizeListener.windowOptionsInstance = instance.windowOptions
 
         instance.windowResizeHelper.stage = instance.windowOptions.stage
         instance.windowResizeHelper.scene = instance.windowOptions.stage.scene

@@ -1,11 +1,10 @@
 package jfxwindow.base
 
 import jfxwindow.helpers.AnimationHelper
-import jfxwindow.helpers.WindowDefaultSizeHelper
 import jfxwindow.helpers.WindowResizeHelper
+import jfxwindow.listeners.WindowBaseListener
 import jfxwindow.listeners.WindowInactiveListener
 import jfxwindow.listeners.WindowStateListener
-import jfxwindow.listeners.WindowBaseListener
 import jfxwindow.parts.*
 
 /**
@@ -70,5 +69,4 @@ public class WindowBase {
     internal var windowResizeHelper = WindowResizeHelper(windowPart)
     internal var windowStateListener = WindowStateListener()
     internal var windowInactiveListener = WindowInactiveListener()
-    internal var windowDefaultSizeListener = WindowDefaultSizeHelper()
 }

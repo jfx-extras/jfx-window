@@ -2,6 +2,10 @@ package jfxwindow.parts
 
 import javafx.util.Duration
 import jfxwindow.base.WindowBase
+import jfxwindow.helpers.shadowPadding
+import jfxwindow.helpers.shadowVertEdges
+import jfxwindow.helpers.windowButtonCounts
+import jfxwindow.helpers.windowButtonWidth
 import jfxwindow.listeners.WindowDataListener
 import kotlin.properties.Delegates.observable
 
@@ -156,9 +160,6 @@ public class WindowPart(private val windowBase: WindowBase) {
     /**
      * Sets stage minimal size by title-bar width.
      *
-     * *Calculating min-size is = title width + title padding
-     * left + 47 * 4 + 36 + title x position.*
-     *
      * **NOTE: Minimal size not binging to it method
      * after every changing data in title-bar you need
      * re-calculate data and set again. Or set and binding
@@ -167,7 +168,7 @@ public class WindowPart(private val windowBase: WindowBase) {
      */
     public fun setMinWidthSizeByTitleBar(): Unit {
         windowBase.windowOptions.stage.minWidth =
-            windowBase.windowUi.title.width + windowBase.windowUi.title.padding.left + (47 * 4) + 36 + windowBase.windowUi.title.layoutX
+            ((windowButtonWidth * windowButtonCounts) + (shadowPadding * shadowVertEdges))
     }
 
     /**
@@ -180,5 +181,5 @@ public class WindowPart(private val windowBase: WindowBase) {
      * @return min-width size as double value.
      */
     public fun getMinWidthSizeByTitleBar(): Double =
-        windowBase.windowUi.title.width + windowBase.windowUi.title.padding.left + (47 * 4) + 36 + windowBase.windowUi.title.layoutX
+        ((windowButtonWidth * windowButtonCounts) + (shadowPadding * shadowVertEdges))
 }

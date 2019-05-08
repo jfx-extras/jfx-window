@@ -45,11 +45,6 @@ class Application : App(BaseView::class) {
          use after line upper ↑ (after creating stage).
          */
         window.create()
-        addListeners(stage)
-        width = stage.width
-        height = stage.height
-        calculateSize()
-
         /*
         ↓ it test of exhibiting incompatible size for stage.
         if size so small, it make stage with default min size.
@@ -60,32 +55,7 @@ class Application : App(BaseView::class) {
         // stage.minWidth = 0.0
     }
 
-    private fun addListeners(stage: Stage) {
-        stage.widthProperty().addListener { _,
-                                            _,
-                                            newValue ->
-            width = newValue.toDouble()
-            calculateSize()
-        }
-        stage.heightProperty().addListener { _,
-                                             _,
-                                             newValue ->
-            height = newValue.toDouble()
-            calculateSize()
-        }
-    }
-
-    private fun calculateSize() {
-        windowInstance.instance.titlePart.titleText = "Size: $width x $height"
-        windowInstance.instance.windowPart.calculateMinWidthSizeByTitleBar()
-        // ↑ It can be applied if you want to set min width size (label width + button widths)
-        // just comment 75 line for see what be if disable it, and you can also change "Size:" to another text.
-        // but you can just set fixed minWidth on stage.
-    }
-
     companion object {
         lateinit var windowInstance: Window
-        var width: Double = 0.0
-        var height: Double = 0.0
     }
 }

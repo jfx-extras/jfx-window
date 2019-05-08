@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--suppress JavaFxUnresolvedStyleClassReference -->
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -8,7 +9,8 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
-<BorderPane fx:id="windowShadowPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+<BorderPane fx:id="windowShadowPane" maxHeight="-Infinity"
+            maxWidth="-Infinity"
             xmlns="http://javafx.com/javafx/8.0.152"
             xmlns:fx="http://javafx.com/fxml/1">
     <center>
@@ -16,12 +18,10 @@
             <center>
                 <ScrollPane fx:id="windowContainer" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER"
                             minHeight="0.0" minWidth="0.0" styleClass="edge-to-edge" vbarPolicy="NEVER">
-                    <content>
-                        <Pane fx:id="contentPane" minHeight="0.0" minWidth="0.0"/>
-                    </content>
                     <BorderPane.margin>
                         <Insets/>
                     </BorderPane.margin>
+                    <Pane fx:id="contentPane" minHeight="0.0" minWidth="0.0"/>
                 </ScrollPane>
             </center>
             <top>
@@ -43,7 +43,7 @@
                                     <Insets left="10.0" right="-5.0"/>
                                 </HBox.margin>
                             </WebView>
-                            <Label fx:id="title" mouseTransparent="true" prefHeight="33.0" textFill="#111111">
+                            <Label fx:id="title" mouseTransparent="true" prefHeight="33.0" textFill="#000000">
                                 <opaqueInsets>
                                     <Insets/>
                                 </opaqueInsets>
@@ -55,9 +55,9 @@
                     </left>
                     <center>
                         <Label fx:id="titleCenter" alignment="CENTER" prefHeight="33.0" text="Application"
-                               textAlignment="CENTER" textFill="#111111" visible="false" BorderPane.alignment="CENTER">
+                               textAlignment="CENTER" textFill="#000000" visible="false" BorderPane.alignment="CENTER">
                             <font>
-                                <Font size="14.0"/>
+                                <Font size="12.0"/>
                             </font>
                             <BorderPane.margin>
                                 <Insets left="67.0"/>
@@ -67,11 +67,13 @@
                     <right>
                         <HBox fx:id="buttonContainer" alignment="CENTER_RIGHT" prefHeight="33.0"
                               BorderPane.alignment="CENTER_RIGHT">
-                            <HBox fx:id="win32MinButton" alignment="CENTER" prefHeight="33.0" prefWidth="47.0">
+                            <HBox fx:id="win32MinButton" alignment="CENTER" prefHeight="33.0" minWidth="47.0"
+                                  prefWidth="47.0">
                                 <SVGPath fx:id="win32MinIcon" content="M11 4.399V5.5H0V4.399h11z" smooth="false"
                                          stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="0.0"/>
                             </HBox>
-                            <HBox fx:id="win32MaxButton" alignment="CENTER" prefHeight="33.0" prefWidth="47.0">
+                            <HBox fx:id="win32MaxButton" alignment="CENTER" prefHeight="33.0" minWidth="47.0"
+                                  prefWidth="47.0">
                                 <HBox.margin>
                                     <Insets/>
                                 </HBox.margin>
@@ -79,14 +81,16 @@
                                          smooth="false" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE"
                                          strokeWidth="0.0"/>
                             </HBox>
-                            <HBox fx:id="win32UnMaxButton" alignment="CENTER" layoutX="55.0" layoutY="10.0"
+                            <HBox fx:id="win32UnMaxButton" alignment="CENTER" layoutX="55.0" minWidth="47.0"
+                                  layoutY="10.0"
                                   prefHeight="33.0" prefWidth="47.0">
                                 <SVGPath fx:id="win32UnMaxIcon"
                                          content="M11 8.798H8.798V11H0V2.202h2.202V0H11v8.798zm-3.298-5.5h-6.6v6.6h6.6v-6.6zM9.9 1.1H3.298v1.101h5.5v5.5h1.1v-6.6z"
                                          smooth="false" stroke="BLACK" strokeMiterLimit="0.0" strokeType="INSIDE"
                                          strokeWidth="0.0"/>
                             </HBox>
-                            <HBox fx:id="win32CloseButton" alignment="CENTER" prefHeight="33.0" prefWidth="47.0">
+                            <HBox fx:id="win32CloseButton" alignment="CENTER" prefHeight="33.0" minWidth="47.0"
+                                  prefWidth="47.0">
                                 <SVGPath fx:id="win32CloseIcon"
                                          content="M 3.609375 2.890625 L 2.890625 3.609375 L 7.28125 8 L 2.890625 12.390625 L 3.609375 13.109375 L 8 8.71875 L 12.390625 13.109375 L 13.109375 12.390625 L 8.71875 8 L 13.109375 3.609375 L 12.390625 2.890625 L 8 7.28125 Z "
                                          fill="BLACK" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0"/>
