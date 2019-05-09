@@ -2,8 +2,9 @@ package jfxwindow.listeners
 
 import jfxwindow.base.WindowBase
 
+@Suppress("RedundantUnitReturnType")
 internal class WindowInactiveListener(private val windowBase: WindowBase) {
-    internal fun init() {
+    internal fun init(): Unit {
         windowBase.windowOptions.stage.focusedProperty().addListener { _,
                                                                        _,
                                                                        isActive ->
@@ -14,7 +15,7 @@ internal class WindowInactiveListener(private val windowBase: WindowBase) {
         }
     }
 
-    private fun switchTitleBarShadow(isActive: Boolean) {
+    private fun switchTitleBarShadow(isActive: Boolean): Unit {
         if (isActive) {
             windowBase.titleBarPart.shadowDepth = windowBase.titleBarPart.titleActiveShadow
         } else {
@@ -23,7 +24,7 @@ internal class WindowInactiveListener(private val windowBase: WindowBase) {
         }
     }
 
-    private fun switchBarBackgroundColor(isActive: Boolean) {
+    private fun switchBarBackgroundColor(isActive: Boolean): Unit {
         if (isActive) {
             windowBase.titleBarPart.titleBackground =
                 windowBase.titleBarPart.titleActiveColor
@@ -35,7 +36,7 @@ internal class WindowInactiveListener(private val windowBase: WindowBase) {
         }
     }
 
-    private fun switchBorderColor(isActive: Boolean) {
+    private fun switchBorderColor(isActive: Boolean): Unit {
         if (isActive) {
             windowBase.borderPart.borderColor = windowBase.borderPart.borderActiveColor
         } else {
@@ -44,7 +45,7 @@ internal class WindowInactiveListener(private val windowBase: WindowBase) {
         }
     }
 
-    private fun switchTitleOpacity(isActive: Boolean) {
+    private fun switchTitleOpacity(isActive: Boolean): Unit {
         if (isActive) {
             windowBase.titlePart.titleOpacity = windowBase.titlePart.temporaryTitleOpacity
         } else {
