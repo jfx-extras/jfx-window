@@ -1,10 +1,12 @@
 package jfxwindow.base
 
 import jfxwindow.helpers.AnimationHelper
+import jfxwindow.helpers.BorderStateHelper
 import jfxwindow.helpers.WindowResizeHelper
 import jfxwindow.listeners.WindowBaseListener
 import jfxwindow.listeners.WindowInactiveListener
-import jfxwindow.listeners.WindowStateListener
+import jfxwindow.listeners.WindowMaximizeListener
+import jfxwindow.listeners.WindowMinimizeListener
 import jfxwindow.parts.*
 
 /**
@@ -33,7 +35,7 @@ public class WindowBase {
      * Contains some methods and properties allowing to
      * work with the border of window.
      */
-    public var borderPart = BorderPart()
+    public var borderPart = BorderPart(this)
     /**
      * Contains some methods and properties allowing to
      * work with the window title.
@@ -67,6 +69,8 @@ public class WindowBase {
     internal var windowBaseListener = WindowBaseListener()
     internal var windowUi = WindowUi(this)
     internal var windowResizeHelper = WindowResizeHelper(windowPart)
-    internal var windowStateListener = WindowStateListener()
+    internal var borderStateHelper = BorderStateHelper(this)
+    internal var windowMinimizeListener = WindowMinimizeListener(this)
+    internal var windowMaximizeListener = WindowMaximizeListener(this)
     internal var windowInactiveListener = WindowInactiveListener()
 }

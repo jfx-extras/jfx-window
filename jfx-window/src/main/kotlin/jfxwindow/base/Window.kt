@@ -73,7 +73,7 @@ public class Window(private val stage: Stage) {
         return this
     }
 
-    private var borderColor: Color = Color.web("#464646")
+    private var borderColor: Color = Color.web("#707070")
     /**
      * Border fill color of application window color.
      *
@@ -85,7 +85,7 @@ public class Window(private val stage: Stage) {
         return this
     }
 
-    private var borderInactiveColor: Color = Color.web("#A5A5A5")
+    private var borderInactiveColor: Color = Color.web("#AAAAAA")
     /**
      * Border fill color of unfocused application window color.
      *
@@ -595,8 +595,12 @@ public class Window(private val stage: Stage) {
         instance.contentPart.prepareUserWorkspace(stage)
         installDefaultSize(instance)
         installCallbackSize(instance)
+        instance.windowMinimizeListener.init()
+        instance.windowMaximizeListener.init()
+        instance.borderStateHelper.init()
         instance.contextPart.init()
         instance.windowPart.init()
+        instance.borderPart.init()
         applyCreateProperties()
         callInitMethods()
         instance.contentPart.returnUserContent()
@@ -613,20 +617,9 @@ public class Window(private val stage: Stage) {
         instance.windowResizeHelper.stage = instance.windowOptions.stage
         instance.windowResizeHelper.scene = instance.windowOptions.stage.scene
 
-        instance.windowStateListener.borderInstance = instance.borderPart
-        instance.windowStateListener.windowOptionsInstance = instance.windowOptions
-        instance.windowStateListener.windowUiInstance = instance.windowUi
-        instance.windowStateListener.windowInstance = instance.windowPart
-        instance.windowStateListener.buttonPartInstance = instance.buttonPart
-
         instance.windowInactiveListener.borderPartInstance = instance.borderPart
         instance.windowInactiveListener.titleBarPart = instance.titleBarPart
         instance.windowInactiveListener.windowOptionsInstance = instance.windowOptions
-
-        instance.borderPart.windowOptionsInstance = instance.windowOptions
-        instance.borderPart.windowUiInstance = instance.windowUi
-        instance.borderPart.stateListener = instance.windowStateListener
-        instance.borderPart.borderIsVisibleHelper = instance.windowOptions.borderIsVisible
 
         instance.titlePart.windowOptionsInstance = instance.windowOptions
         instance.titlePart.windowUiInstance = instance.windowUi
@@ -655,12 +648,8 @@ public class Window(private val stage: Stage) {
 
     private fun callInitMethods(): Unit {
         instance.windowResizeHelper.makeResizable()
-        instance.windowStateListener.addBorderChangeListener()
-        instance.windowStateListener.addWindowMaximizeListener()
-        instance.windowStateListener.addWindowMinimizeListener()
         instance.titlePart.applyTitleProperties()
         instance.iconPart.applyIconProperties()
-        instance.borderPart.applyBorderProperties()
         instance.titleBarPart.applyTitleBarColor()
         instance.titleBarPart.applyTitleBarProperties()
         instance.titleBarPart.applyResizeProperties()
