@@ -71,10 +71,7 @@ public class BorderPart(private val windowBase: WindowBase) {
             return borderWidths == BorderWidths(
                 0.0, 0.0, 1.0, 0.0
             ) || borderWidths == BorderWidths(
-                1.0,
-                0.0,
-                1.0,
-                0.0
+                1.0, 0.0, 1.0, 0.0
             )
         }
         set(isVisible) = if (isVisible) {

@@ -40,7 +40,7 @@ public class WindowBase {
      * Contains some methods and properties allowing to
      * work with the window title.
      */
-    public var titlePart = TitlePart()
+    public var titlePart = TitlePart(this)
     /**
      * Contains some methods and properties allowing to
      * work with the window icon.

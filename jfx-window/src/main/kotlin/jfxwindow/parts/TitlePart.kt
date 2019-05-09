@@ -1,93 +1,108 @@
 package jfxwindow.parts
 
 import javafx.scene.text.Font
-import jfxwindow.base.WindowOptions
-import jfxwindow.base.WindowUi
+import jfxwindow.base.WindowBase
 import jfxwindow.enums.TitleAlignment
 
-class TitlePart {
-    private var titleAlign: TitleAlignment = TitleAlignment.LEFT
-    @set:JvmSynthetic @get:JvmSynthetic
-    internal lateinit var windowOptionsInstance: WindowOptions
-    @set:JvmSynthetic @get:JvmSynthetic
-    internal lateinit var windowUiInstance: WindowUi
+/**
+ * Contains some methods and properties allowing to
+ * work with the window title.
+ */
+@Suppress(
+    "RedundantVisibilityModifier",
+    "MemberVisibilityCanBePrivate",
+    "RedundantUnitReturnType"
+)
+public class TitlePart(private val windowBase: WindowBase) {
+    private var titleAlignmentHelper: TitleAlignment = TitleAlignment.LEFT
 
-    @JvmSynthetic
-    internal fun applyTitleProperties() {
-        titleAlign = windowOptionsInstance.titleAlignment
-        titleIsVisible = windowOptionsInstance.titleIsVisible
-        titleText = windowOptionsInstance.titleText
-        titleAlignment = windowOptionsInstance.titleAlignment
-        titleTextFont = windowOptionsInstance.titleTextFont
+    internal fun init(): Unit {
+        titleAlignmentHelper = windowBase.windowOptions.titleAlignment
+        titleIsVisible = windowBase.windowOptions.titleIsVisible
+        titleAlignment = windowBase.windowOptions.titleAlignment
+        titleText = windowBase.windowOptions.titleText
+        titleTextFont = windowBase.windowOptions.titleTextFont
     }
 
-    var titleAlignment: TitleAlignment
-        get() = if (titleAlign == TitleAlignment.CENTER) TitleAlignment.CENTER else TitleAlignment.LEFT
+    /**
+     * Title alignment in title-bar space.
+     */
+    public var titleAlignment: TitleAlignment
+        get() = titleAlignmentHelper
         set(side) {
             when (side) {
                 TitleAlignment.LEFT -> {
                     if (titleIsVisible) {
-                        windowUiInstance.titleCenter.isVisible = false
-                        windowUiInstance.titleCenter.isManaged = false
-                        windowUiInstance.title.isVisible = true
-                        windowUiInstance.title.isManaged = true
+                        windowBase.windowUi.titleCenter.isVisible = false
+                        windowBase.windowUi.titleCenter.isManaged = false
+                        windowBase.windowUi.title.isVisible = true
+                        windowBase.windowUi.title.isManaged = true
                     }
 
-                    titleAlign = TitleAlignment.LEFT
+                    titleAlignmentHelper = TitleAlignment.LEFT
                 }
                 TitleAlignment.CENTER -> {
                     if (titleIsVisible) {
-                        windowUiInstance.titleCenter.isVisible = true
-                        windowUiInstance.titleCenter.isManaged = true
-                        windowUiInstance.title.isVisible = false
-                        windowUiInstance.title.isManaged = false
+                        windowBase.windowUi.titleCenter.isVisible = true
+                        windowBase.windowUi.titleCenter.isManaged = true
+                        windowBase.windowUi.title.isVisible = false
+                        windowBase.windowUi.title.isManaged = false
                     }
 
-                    titleAlign = TitleAlignment.CENTER
+                    titleAlignmentHelper = TitleAlignment.CENTER
                 }
             }
         }
 
-    var titleText: String
-        get() = windowUiInstance.title.text
+    /**
+     * TitleBar title text or title content.
+     */
+    public var titleText: String
+        get() = windowBase.windowUi.title.text
         set(text) {
-            windowUiInstance.title.text = text
-            windowUiInstance.titleCenter.text = text
-            windowOptionsInstance.stage.titleProperty().unbind()
-            windowOptionsInstance.stage.title = text
+            windowBase.windowUi.title.text = text
+            windowBase.windowUi.titleCenter.text = text
+            windowBase.windowOptions.stage.titleProperty().unbind()
+            windowBase.windowOptions.stage.title = text
         }
 
-    var titleTextFont: Font
-        get() = windowUiInstance.title.font
+    /**
+     * TitleBar title text font family or just font name.
+     */
+    public var titleTextFont: Font
+        get() = windowBase.windowUi.title.font
         set(font) {
-            windowUiInstance.title.font = font
-            windowUiInstance.titleCenter.font = font
+            windowBase.windowUi.title.font = font
+            windowBase.windowUi.titleCenter.font = font
         }
 
-    var titleIsVisible: Boolean
+    /**
+     * TitleBar title visibility status.
+     */
+    public var titleIsVisible: Boolean
         get() = if (titleAlignment == TitleAlignment.CENTER) {
-            windowUiInstance.titleCenter.isVisible
+            windowBase.windowUi.titleCenter.isVisible
         } else {
-            windowUiInstance.title.isVisible
+            windowBase.windowUi.title.isVisible
         }
         set(isVisible) {
             if (isVisible) {
                 if (titleAlignment == TitleAlignment.CENTER) {
-                    windowUiInstance.titleCenter.isVisible = isVisible
-                    windowUiInstance.titleCenter.isManaged = isVisible
-                    windowUiInstance.title.isVisible = false
-                    windowUiInstance.title.isManaged = false
+                    windowBase.windowUi.titleCenter.isVisible = isVisible
+                    windowBase.windowUi.titleCenter.isManaged = isVisible
+                    windowBase.windowUi.title.isVisible = false
+                    windowBase.windowUi.title.isManaged = false
                 } else {
-                    windowUiInstance.titleCenter.isVisible = false
-                    windowUiInstance.titleCenter.isManaged = false
-                    windowUiInstance.title.isVisible = isVisible
-                    windowUiInstance.title.isManaged = isVisible
+                    windowBase.windowUi.titleCenter.isVisible = false
+                    windowBase.windowUi.titleCenter.isManaged = false
+                    windowBase.windowUi.title.isVisible = isVisible
+                    windowBase.windowUi.title.isManaged = isVisible
                 }
             } else {
-                windowUiInstance.title.isVisible = false
-                windowUiInstance.title.isManaged = false
-                windowUiInstance.titleCenter.isVisible = false
-                windowUiInstance.titleCenter.isManaged = false
+                windowBase.windowUi.title.isVisible = false
+                windowBase.windowUi.title.isManaged = false
+                windowBase.windowUi.titleCenter.isVisible = false
+                windowBase.windowUi.titleCenter.isManaged = false
             }
         }
 }
