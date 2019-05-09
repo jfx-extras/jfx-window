@@ -629,6 +629,7 @@ public class Window(private val stage: Stage) {
         instance.windowPart.init()
         instance.borderPart.init()
         instance.titlePart.init()
+        instance.iconPart.init()
         applyCreateProperties()
         callInitMethods()
         instance.contentPart.returnUserContent()
@@ -644,9 +645,6 @@ public class Window(private val stage: Stage) {
 
         instance.windowResizeHelper.stage = instance.windowOptions.stage
         instance.windowResizeHelper.scene = instance.windowOptions.stage.scene
-
-        instance.iconPart.windowOptionsInstance = instance.windowOptions
-        instance.iconPart.windowUiInstance = instance.windowUi
 
         instance.titleBarPart.animHelperInstance = instance.animationHelper
         instance.titleBarPart.windowUiInstance = instance.windowUi
@@ -669,7 +667,6 @@ public class Window(private val stage: Stage) {
 
     private fun callInitMethods(): Unit {
         instance.windowResizeHelper.makeResizable()
-        instance.iconPart.applyIconProperties()
         instance.titleBarPart.applyTitleBarColor()
         instance.titleBarPart.applyTitleBarProperties()
         instance.titleBarPart.applyResizeProperties()

@@ -45,7 +45,7 @@ public class WindowBase {
      * Contains some methods and properties allowing to
      * work with the window icon.
      */
-    public var iconPart = IconPart()
+    public var iconPart = IconPart(this)
     /**
      * Contains some methods and properties allowing to
      * work with the window title-bar.

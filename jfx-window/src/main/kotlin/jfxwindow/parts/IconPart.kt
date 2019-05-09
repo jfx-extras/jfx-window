@@ -1,129 +1,159 @@
 package jfxwindow.parts
 
 import javafx.scene.image.Image
-import jfxwindow.base.WindowOptions
-import jfxwindow.base.WindowUi
+import jfxwindow.base.WindowBase
 
-class IconPart {
-    @get:JvmSynthetic @set:JvmSynthetic
-    internal lateinit var windowOptionsInstance: WindowOptions
-    @get:JvmSynthetic @set:JvmSynthetic
-    internal lateinit var windowUiInstance: WindowUi
+/**
+ * Contains some methods and properties allowing to
+ * work with the window icon.
+ */
+@Suppress(
+    "RedundantVisibilityModifier",
+    "MemberVisibilityCanBePrivate",
+    "RedundantUnitReturnType",
+    "unused"
+)
+public class IconPart(private val windowBase: WindowBase) {
     private var isSvg: Boolean = false
     private var iconPath: String = ""
 
-    @JvmSynthetic
-    internal fun applyIconProperties() {
-        if (!windowOptionsInstance.icon.isNullOrEmpty()) {
-            isSvg = getImageExtension(windowOptionsInstance.icon) == "svg"
+    internal fun init(): Unit {
+        if (windowBase.windowOptions.icon.isNotEmpty()) {
+            isSvg = getImageExtension(windowBase.windowOptions.icon) == "svg"
 
-            if (windowOptionsInstance.iconIsVisible) {
-                if (isSvg) {
-                    windowUiInstance.svgIcon.isManaged = true
-                    windowUiInstance.svgIcon.isVisible = true
-                    windowUiInstance.icon.isManaged = false
-                    windowUiInstance.icon.isVisible = false
-                } else {
-                    windowUiInstance.svgIcon.isManaged = false
-                    windowUiInstance.svgIcon.isVisible = false
-                    windowUiInstance.icon.isManaged = true
-                    windowUiInstance.icon.isVisible = true
-                }
-
-                icon = windowOptionsInstance.icon
-                iconPath = windowOptionsInstance.icon
+            if (isSvg) {
+                showSvgIcon(true)
+                showDefaultIcon(false)
             } else {
-                windowUiInstance.svgIcon.isManaged = false
-                windowUiInstance.svgIcon.isVisible = false
-                windowUiInstance.icon.isManaged = false
-                windowUiInstance.icon.isVisible = false
+                showSvgIcon(false)
+                showDefaultIcon(true)
             }
+
+            icon = windowBase.windowOptions.icon
+            iconPath = windowBase.windowOptions.icon
         } else {
-            windowUiInstance.svgIcon.isManaged = false
-            windowUiInstance.svgIcon.isVisible = false
-            windowUiInstance.icon.isManaged = false
-            windowUiInstance.icon.isVisible = false
+            disableManagingIcons()
         }
+
+        iconIsVisible = windowBase.windowOptions.iconIsVisible
+        svgIconZoom = windowBase.windowOptions.svgIconZoom
     }
 
-    var icon: String?
+    /**
+     * TitleBar icon also support SVG (Beta) images.
+     * Probably you must use [svgIconZoom] for better result with svg.
+     */
+    public var icon: String
         get() = iconPath
         set(path) {
-            if (path.isNullOrEmpty()) removeIcon() else {
+            if (path.isEmpty()) {
+                removeIcon()
+            } else {
                 if (iconPath.isEmpty()) iconIsVisible = true
-
                 iconPath = path
 
                 if (getImageExtension(iconPath) == "svg") {
                     isSvg = true
 
-                    windowUiInstance.svgIcon.isVisible = true
-                    windowUiInstance.svgIcon.isManaged = true
-                    windowUiInstance.icon.isVisible = false
-                    windowUiInstance.icon.isManaged = false
+                    showSvgIcon(true)
+                    showDefaultIcon(false)
 
                     val url = iconPath
-                    windowUiInstance.svgIcon.engine.load(url)
-                    windowUiInstance.svgIcon.isContextMenuEnabled = false
-                    svgIconZoom = windowOptionsInstance.svgIconZoom
+                    windowBase.windowUi.svgIcon.engine.load(url)
+                    windowBase.windowUi.svgIcon.isContextMenuEnabled = false
+                    svgIconZoom = windowBase.windowOptions.svgIconZoom
 
-                    val webPage = com.sun.javafx.webkit.Accessor.getPageFor(windowUiInstance.svgIcon.engine)
+                    val webPage =
+                        com.sun.javafx.webkit.Accessor.getPageFor(
+                            windowBase.windowUi.svgIcon.engine
+                        )
                     webPage.setBackgroundColor(0)
                 } else {
                     isSvg = false
 
-                    windowUiInstance.icon.isVisible = true
-                    windowUiInstance.icon.isManaged = true
-                    windowUiInstance.svgIcon.isVisible = false
-                    windowUiInstance.svgIcon.isManaged = false
+                    showDefaultIcon(true)
+                    showSvgIcon(false)
 
-                    windowUiInstance.icon.image = Image(iconPath)
-                    windowOptionsInstance.stage.icons.add(Image(iconPath))
+                    windowBase.windowUi.icon.image = Image(iconPath)
+                    windowBase.windowOptions.stage.icons.add(Image(iconPath))
                 }
             }
         }
 
-    var iconIsVisible: Boolean
-        get() = (if (isSvg) windowUiInstance.svgIcon.isVisible else windowUiInstance.icon.isVisible)
+    /**
+     * TitleBar icon visibility status in title-bar.
+     */
+    public var iconIsVisible: Boolean
+        get() {
+            return (if (isSvg) {
+                windowBase.windowUi.svgIcon.isVisible
+            } else {
+                windowBase.windowUi.icon.isVisible
+            })
+        }
         set(isVisible) {
             if (isVisible) {
-                if (isSvg) {
-                    windowUiInstance.svgIcon.isVisible = true
-                    windowUiInstance.svgIcon.isManaged = true
-                    windowUiInstance.icon.isVisible = false
-                    windowUiInstance.icon.isManaged = false
-                    isSvg = true
+                isSvg = if (isSvg) {
+                    showSvgIcon(true)
+                    showDefaultIcon(false)
+                    true
                 } else {
-                    windowUiInstance.icon.isVisible = true
-                    windowUiInstance.icon.isManaged = true
-                    windowUiInstance.svgIcon.isVisible = false
-                    windowUiInstance.svgIcon.isManaged = false
-                    isSvg = false
+                    showDefaultIcon(true)
+                    showSvgIcon(false)
+                    false
                 }
             } else {
-                windowUiInstance.svgIcon.isVisible = false
-                windowUiInstance.svgIcon.isManaged = false
-                windowUiInstance.icon.isVisible = false
-                windowUiInstance.icon.isManaged = false
+                disableManagingIcons()
             }
         }
 
-    var svgIconZoom: Double
-        get() = windowUiInstance.svgIcon.zoom
-        set(zoom) { windowUiInstance.svgIcon.zoom = zoom }
+    /**
+     * Controlling svg icon zoom or size.
+     * It can be applied when your SVG image so large or small.
+     *
+     * By default it value 0.3.
+     */
+    public var svgIconZoom: Double
+        get() = windowBase.windowUi.svgIcon.zoom
+        set(zoom) {
+            windowBase.windowUi.svgIcon.zoom = zoom
+        }
 
-    val iconIsSvg: Boolean
+    /**
+     * Return icon is svg value.
+     */
+    public val iconIsSvg: Boolean
         get() = isSvg
 
-    fun removeIcon() {
+    /**
+     * Just fully remove icon from application.
+     */
+    public fun removeIcon(): Unit {
         iconPath = ""
         iconIsVisible = false
-        windowUiInstance.icon.image = null
-        windowUiInstance.svgIcon.engine.load(null)
+        windowBase.windowUi.icon.image = null
+        windowBase.windowUi.svgIcon.engine.load(null)
     }
 
-    private fun getImageExtension(imagePath: String?): String {
-        val pathString: List<String> = imagePath!!.split("/")
+    private fun getImageExtension(imagePath: String): String {
+        val pathString: List<String> = imagePath.split("/")
         return pathString.last().split(".")[1].toLowerCase()
+    }
+
+    private fun disableManagingIcons(): Unit {
+        windowBase.windowUi.svgIcon.isManaged = false
+        windowBase.windowUi.svgIcon.isVisible = false
+        windowBase.windowUi.icon.isManaged = false
+        windowBase.windowUi.icon.isVisible = false
+    }
+
+    private fun showSvgIcon(show: Boolean): Unit {
+        windowBase.windowUi.svgIcon.isManaged = show
+        windowBase.windowUi.svgIcon.isVisible = show
+    }
+
+    private fun showDefaultIcon(show: Boolean): Unit {
+        windowBase.windowUi.icon.isManaged = show
+        windowBase.windowUi.icon.isVisible = show
     }
 }
