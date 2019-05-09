@@ -15,14 +15,33 @@ import jfxwindow.enums.TitleAlignment
 )
 public class TitlePart(private val windowBase: WindowBase) {
     private var titleAlignmentHelper: TitleAlignment = TitleAlignment.LEFT
+    internal var temporaryTitleOpacity: Double = 1.0
 
     internal fun init(): Unit {
+        temporaryTitleOpacity = windowBase.windowOptions.titleOpacity
+        titleOpacity = windowBase.windowOptions.titleOpacity
+        titleInactiveOpacity = windowBase.windowOptions.titleInactiveOpacity
         titleAlignmentHelper = windowBase.windowOptions.titleAlignment
         titleIsVisible = windowBase.windowOptions.titleIsVisible
         titleAlignment = windowBase.windowOptions.titleAlignment
         titleText = windowBase.windowOptions.titleText
         titleTextFont = windowBase.windowOptions.titleTextFont
     }
+
+    /**
+     * Controlling title-bar title text opacity
+     */
+    public var titleOpacity: Double
+        get() = windowBase.windowUi.title.opacity
+        set(opacity) {
+            windowBase.windowUi.title.opacity = opacity
+            windowBase.windowUi.titleCenter.opacity = opacity
+        }
+
+    /**
+     * Controlling title-bar title text inactive opacity
+     */
+    public var titleInactiveOpacity: Double = 0.7
 
     /**
      * Title alignment in title-bar space.

@@ -72,5 +72,5 @@ public class WindowBase {
     internal var borderStateHelper = BorderStateHelper(this)
     internal var windowMinimizeListener = WindowMinimizeListener(this)
     internal var windowMaximizeListener = WindowMaximizeListener(this)
-    internal var windowInactiveListener = WindowInactiveListener()
+    internal var windowInactiveListener = WindowInactiveListener(this)
 }

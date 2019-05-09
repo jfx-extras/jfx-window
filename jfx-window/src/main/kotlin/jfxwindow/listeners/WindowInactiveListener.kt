@@ -1,34 +1,55 @@
 package jfxwindow.listeners
 
-import jfxwindow.base.WindowOptions
-import jfxwindow.parts.BorderPart
-import jfxwindow.parts.TitleBarPart
+import jfxwindow.base.WindowBase
 
-class WindowInactiveListener {
-    @set:JvmSynthetic @get:JvmSynthetic
-    internal lateinit var windowOptionsInstance: WindowOptions
-    @set:JvmSynthetic @get:JvmSynthetic
-    internal lateinit var borderPartInstance: BorderPart
-    @set:JvmSynthetic @get:JvmSynthetic
-    internal lateinit var titleBarPart: TitleBarPart
+internal class WindowInactiveListener(private val windowBase: WindowBase) {
+    internal fun init() {
+        windowBase.windowOptions.stage.focusedProperty().addListener { _,
+                                                                       _,
+                                                                       isActive ->
+            switchTitleBarShadow(isActive)
+            switchBarBackgroundColor(isActive)
+            switchBorderColor(isActive)
+            switchTitleOpacity(isActive)
+        }
+    }
 
-    @JvmSynthetic
-    internal fun addWindowUnActiveListener() {
-        windowOptionsInstance.stage.focusedProperty().addListener { _, _, newValue ->
-            if (newValue) {
-                borderPartInstance.borderColor = borderPartInstance.borderActiveColor
-                titleBarPart.titleBackground = titleBarPart.titleActiveColor
-                titleBarPart.shadowDepth = titleBarPart.titleActiveShadow
-            } else {
-                borderPartInstance.borderActiveColor = borderPartInstance.borderColor
-                borderPartInstance.borderColor = borderPartInstance.borderInactiveColor
+    private fun switchTitleBarShadow(isActive: Boolean) {
+        if (isActive) {
+            windowBase.titleBarPart.shadowDepth = windowBase.titleBarPart.titleActiveShadow
+        } else {
+            windowBase.titleBarPart.titleActiveShadow = windowBase.titleBarPart.shadowDepth
+            windowBase.titleBarPart.shadowDepth = windowBase.titleBarPart.titleInactiveShadow
+        }
+    }
 
-                titleBarPart.titleActiveColor = titleBarPart.titleBackground
-                titleBarPart.titleBackground = titleBarPart.titleInactiveBackground
+    private fun switchBarBackgroundColor(isActive: Boolean) {
+        if (isActive) {
+            windowBase.titleBarPart.titleBackground =
+                windowBase.titleBarPart.titleActiveColor
+        } else {
+            windowBase.titleBarPart.titleActiveColor =
+                windowBase.titleBarPart.titleBackground
+            windowBase.titleBarPart.titleBackground =
+                windowBase.titleBarPart.titleInactiveBackground
+        }
+    }
 
-                titleBarPart.titleActiveShadow = titleBarPart.shadowDepth
-                titleBarPart.shadowDepth = titleBarPart.titleInactiveShadow
-            }
+    private fun switchBorderColor(isActive: Boolean) {
+        if (isActive) {
+            windowBase.borderPart.borderColor = windowBase.borderPart.borderActiveColor
+        } else {
+            windowBase.borderPart.borderActiveColor = windowBase.borderPart.borderColor
+            windowBase.borderPart.borderColor = windowBase.borderPart.borderInactiveColor
+        }
+    }
+
+    private fun switchTitleOpacity(isActive: Boolean) {
+        if (isActive) {
+            windowBase.titlePart.titleOpacity = windowBase.titlePart.temporaryTitleOpacity
+        } else {
+            windowBase.titlePart.temporaryTitleOpacity = windowBase.titlePart.titleOpacity
+            windowBase.titlePart.titleOpacity = windowBase.titlePart.titleInactiveOpacity
         }
     }
 }

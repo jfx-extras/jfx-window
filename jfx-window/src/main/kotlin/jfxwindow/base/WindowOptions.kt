@@ -38,6 +38,8 @@ internal data class WindowOptions(
     internal val titleIsVisible: Boolean,
     internal val titleText: String,
     internal val titleTextFont: Font,
+    internal val titleOpacity: Double,
+    internal val titleInactiveOpacity: Double,
     internal val titleBarBackground: Color,
     internal val titleBarInactiveBackground: Color,
     internal val titleBarOrder: NodeOrientation,

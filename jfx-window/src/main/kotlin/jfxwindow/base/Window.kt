@@ -356,6 +356,30 @@ public class Window(private val stage: Stage) {
         return this
     }
 
+    private var titleOpacity: Double = 1.0
+    /**
+     * Controlling title-bar title text opacity.
+     *
+     * @param [opacity] opacity double value.
+     * @return [Window] instance of window builder.
+     */
+    public fun titleOpacity(opacity: Double): Window {
+        titleOpacity = opacity
+        return this
+    }
+
+    private var titleInactiveOpacity: Double = 0.7
+    /**
+     * Controlling title-bar title text inactive opacity.
+     *
+     * @param [opacity] inactive opacity double value.
+     * @return [Window] instance of window builder.
+     */
+    public fun titleInactiveOpacity(opacity: Double): Window {
+        titleInactiveOpacity = opacity
+        return this
+    }
+
     private var titleBarBackground: Color = Color.web("#FFFFFF")
     /**
      * TitleBar background fill color.
@@ -565,6 +589,8 @@ public class Window(private val stage: Stage) {
             titleIsVisible,
             titleText,
             titleTextFont,
+            titleOpacity,
+            titleInactiveOpacity,
             titleBarBackground,
             titleBarInactiveBackground,
             titleBarOrder,
@@ -597,6 +623,7 @@ public class Window(private val stage: Stage) {
         installCallbackSize(instance)
         instance.windowMinimizeListener.init()
         instance.windowMaximizeListener.init()
+        instance.windowInactiveListener.init()
         instance.borderStateHelper.init()
         instance.contextPart.init()
         instance.windowPart.init()
@@ -617,10 +644,6 @@ public class Window(private val stage: Stage) {
 
         instance.windowResizeHelper.stage = instance.windowOptions.stage
         instance.windowResizeHelper.scene = instance.windowOptions.stage.scene
-
-        instance.windowInactiveListener.borderPartInstance = instance.borderPart
-        instance.windowInactiveListener.titleBarPart = instance.titleBarPart
-        instance.windowInactiveListener.windowOptionsInstance = instance.windowOptions
 
         instance.iconPart.windowOptionsInstance = instance.windowOptions
         instance.iconPart.windowUiInstance = instance.windowUi
@@ -653,7 +676,6 @@ public class Window(private val stage: Stage) {
         instance.buttonPart.applyButtonProperties()
         instance.shadowPart.applyShadowProperties()
         instance.windowBaseListener.addTitleMoveListener()
-        instance.windowInactiveListener.addWindowUnActiveListener()
 
         if (!savePosIsInitialized) {
             WindowDataListener.stage = instance.windowOptions.stage
