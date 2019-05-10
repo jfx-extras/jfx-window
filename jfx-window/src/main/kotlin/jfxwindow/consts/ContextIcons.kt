@@ -4,6 +4,7 @@ package jfxwindow.consts
  * It can be removed in next versions, because
  * i want to use font icons.
  */
+@Deprecated("in jfx-window-8.0.3.X-beta version it be removed")
 internal class ContextIcons {
     companion object {
         const val win32Close = "M 3.15625 2.53125 L 2.53125 3.15625 L 6.371094 7 L 2.53125 10.84375 L 3.15625 11.46875 L 7 7.628906 L 10.84375 11.46875 L 11.46875 10.84375 L 7.628906 7 L 11.46875 3.15625 L 10.84375 2.53125 L 7 6.371094 Z "

@@ -6,7 +6,8 @@ package jfxwindow.enums
  * buttons it just implementation material
  * design buttons.
  */
-enum class ButtonStyle {
+@Suppress("RedundantVisibilityModifier")
+public enum class ButtonStyle {
     MATERIAL,
     DARWIN,
     WIN32;

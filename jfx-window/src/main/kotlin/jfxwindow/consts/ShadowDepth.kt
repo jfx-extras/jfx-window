@@ -4,6 +4,7 @@ import javafx.scene.effect.BlurType
 import javafx.scene.effect.DropShadow
 import javafx.scene.paint.Color
 
+@Deprecated("in jfx-window-8.0.3.X-beta version it be moved to just file.")
 internal class ShadowDepth {
     companion object {
         val DEPTH0 = DropShadow(BlurType.GAUSSIAN, Color(0.0, 0.0, 0.0, 0.0), 0.0, 0.0, 0.0, 0.0)

@@ -5,7 +5,8 @@ package jfxwindow.enums
  * Material just implementation material
  * design shadow.
  */
-enum class ShadowStyle {
+@Suppress("RedundantVisibilityModifier")
+public enum class ShadowStyle {
     WIN32,
     MATERIAL;
 }

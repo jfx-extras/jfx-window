@@ -10,7 +10,8 @@ package jfxwindow.enums
  * [DEPTH4] is bottom shadow edge level 4 |
  * [DEPTH5] is bottom shadow edge level 5.
  */
-enum class TitleShadowDepth {
+@Suppress("RedundantVisibilityModifier")
+public enum class TitleShadowDepth {
     DEPTH0,
     DEPTH1,
     DEPTH2,
