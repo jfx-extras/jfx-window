@@ -17,9 +17,9 @@ internal class WindowInactiveListener(private val windowBase: WindowBase) {
 
     private fun switchTitleBarShadow(isActive: Boolean): Unit {
         if (isActive) {
-            windowBase.titleBarPart.shadowDepth = windowBase.titleBarPart.titleActiveShadow
+            windowBase.titleBarPart.shadowDepth = windowBase.titleBarPart.temporaryTitleShadow
         } else {
-            windowBase.titleBarPart.titleActiveShadow = windowBase.titleBarPart.shadowDepth
+            windowBase.titleBarPart.temporaryTitleShadow = windowBase.titleBarPart.shadowDepth
             windowBase.titleBarPart.shadowDepth = windowBase.titleBarPart.titleInactiveShadow
         }
     }
@@ -27,9 +27,9 @@ internal class WindowInactiveListener(private val windowBase: WindowBase) {
     private fun switchBarBackgroundColor(isActive: Boolean): Unit {
         if (isActive) {
             windowBase.titleBarPart.titleBackground =
-                windowBase.titleBarPart.titleActiveColor
+                windowBase.titleBarPart.temporaryTitleColor
         } else {
-            windowBase.titleBarPart.titleActiveColor =
+            windowBase.titleBarPart.temporaryTitleColor =
                 windowBase.titleBarPart.titleBackground
             windowBase.titleBarPart.titleBackground =
                 windowBase.titleBarPart.titleInactiveBackground

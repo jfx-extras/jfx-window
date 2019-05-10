@@ -13,6 +13,7 @@ import jfxwindow.enums.TitleAlignment
 import jfxwindow.enums.TitleShadowDepth
 import jfxwindow.helpers.installCallbackSize
 import jfxwindow.helpers.installDefaultSize
+import jfxwindow.helpers.installInitMaximizing
 import jfxwindow.helpers.validateStage
 import jfxwindow.listeners.WindowDataListener
 import java.io.File
@@ -249,19 +250,6 @@ public class Window(private val stage: Stage) {
      */
     public fun isResizable(isAllowed: Boolean): Window {
         isResizable = isAllowed
-        return this
-    }
-
-    private var resizeLimit: Boolean = true
-    /**
-     * Window resize limit, i.e you not can set size if
-     * new size < stage title-bar height.
-     *
-     * @param [isEnabled] enabled state for resize limit property.
-     * @return [Window] instance of window builder.
-     */
-    public fun resizeLimit(isEnabled: Boolean): Window {
-        resizeLimit = isEnabled
         return this
     }
 
@@ -582,7 +570,6 @@ public class Window(private val stage: Stage) {
             minimizeButtonIsVisible,
             isDraggable,
             isResizable,
-            resizeLimit,
             saveWindowPosition,
             svgIconZoom,
             titleAlignment,
@@ -621,6 +608,7 @@ public class Window(private val stage: Stage) {
         instance.contentPart.prepareUserWorkspace(stage)
         installDefaultSize(instance)
         installCallbackSize(instance)
+        installInitMaximizing(instance)
         instance.windowMinimizeListener.init()
         instance.windowMaximizeListener.init()
         instance.windowInactiveListener.init()
@@ -630,6 +618,7 @@ public class Window(private val stage: Stage) {
         instance.borderPart.init()
         instance.titlePart.init()
         instance.iconPart.init()
+        instance.titleBarPart.init()
         applyCreateProperties()
         callInitMethods()
         instance.contentPart.returnUserContent()
@@ -641,15 +630,8 @@ public class Window(private val stage: Stage) {
     }
 
     private fun applyCreateProperties(): Unit {
-        instance.animationHelper.windowPart = instance.windowPart
-
         instance.windowResizeHelper.stage = instance.windowOptions.stage
         instance.windowResizeHelper.scene = instance.windowOptions.stage.scene
-
-        instance.titleBarPart.animHelperInstance = instance.animationHelper
-        instance.titleBarPart.windowUiInstance = instance.windowUi
-        instance.titleBarPart.windowOptionsInstance = instance.windowOptions
-        instance.titleBarPart.windowPart = instance.windowPart
 
         instance.buttonPart.titleBarPart = instance.titleBarPart
         instance.buttonPart.windowOptionsInstance = instance.windowOptions
@@ -667,9 +649,6 @@ public class Window(private val stage: Stage) {
 
     private fun callInitMethods(): Unit {
         instance.windowResizeHelper.makeResizable()
-        instance.titleBarPart.applyTitleBarColor()
-        instance.titleBarPart.applyTitleBarProperties()
-        instance.titleBarPart.applyResizeProperties()
         instance.buttonPart.applyButtonProperties()
         instance.shadowPart.applyShadowProperties()
         instance.windowBaseListener.addTitleMoveListener()

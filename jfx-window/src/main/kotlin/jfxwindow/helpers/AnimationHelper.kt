@@ -10,15 +10,14 @@ import javafx.scene.layout.CornerRadii
 import javafx.scene.layout.Region
 import javafx.scene.paint.Color
 import javafx.scene.shape.Rectangle
-import javafx.util.Duration
-import jfxwindow.parts.WindowPart
+import jfxwindow.base.WindowBase
 
 /**
- * Animation helper class, contains methods what
- * simplify color interpolations.
+ * A class that helps in playing the animation of some elements,
+ * but from the public only an extra animation modifier is available.
  */
-class AnimationHelper {
-    internal lateinit var windowPart: WindowPart
+@Suppress("RedundantVisibilityModifier", "RedundantUnitReturnType")
+public class AnimationHelper(private val windowBase: WindowBase) {
     private val rectangle = Rectangle()
     private val fillTransition = FillTransition()
     /**
@@ -27,14 +26,17 @@ class AnimationHelper {
      *
      * Default value is 0.2.
      */
-    var animationModifier: Double = 0.2
+    public var animationModifier: Double = 0.2
 
-    @JvmSynthetic
-    internal fun animateRegionColor(control: Region, baseColor: Color, toColor: Color) {
-        if (windowPart.smoothColorAnim) {
+    internal fun animateRegionColor(
+        control: Region,
+        baseColor: Color,
+        toColor: Color
+    ): Unit {
+        if (windowBase.windowPart.smoothColorAnim) {
             rectangle.fill = baseColor
             fillTransition.shape = rectangle
-            fillTransition.duration = windowPart.animationDuration
+            fillTransition.duration = windowBase.windowPart.animationDuration
             fillTransition.fromValue = baseColor
             fillTransition.toValue = toColor
 

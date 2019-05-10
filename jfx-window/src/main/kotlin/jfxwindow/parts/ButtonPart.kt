@@ -9,12 +9,12 @@ import javafx.scene.layout.Background
 import javafx.scene.layout.BackgroundFill
 import javafx.scene.layout.CornerRadii
 import javafx.scene.paint.Color
+import jfxwindow.base.WindowBase
 import jfxwindow.base.WindowOptions
 import jfxwindow.base.WindowUi
-import jfxwindow.helpers.WindowColorHelper.Companion.changeRegionBackground
-import jfxwindow.helpers.WindowColorHelper.Companion.getCalculatedColor
+import jfxwindow.helpers.getBlackOrWhiteByColor
 
-class ButtonPart {
+class ButtonPart(private val windowBase: WindowBase) {
     lateinit var buttonHoverColor: Color
     lateinit var buttonPressedColor: Color
     private var exitIsEnabled: Boolean = true
@@ -23,11 +23,14 @@ class ButtonPart {
     private var minIsEnabled: Boolean = true
     private var tooltipIsEnabledHelper: Boolean = true
     private var maxButtonIsVisibleHelper: Boolean = true
-    @get:JvmSynthetic @set:JvmSynthetic
+    @get:JvmSynthetic
+    @set:JvmSynthetic
     internal lateinit var windowOptionsInstance: WindowOptions
-    @get:JvmSynthetic @set:JvmSynthetic
+    @get:JvmSynthetic
+    @set:JvmSynthetic
     internal lateinit var windowUiInstance: WindowUi
-    @get:JvmSynthetic @set:JvmSynthetic
+    @get:JvmSynthetic
+    @set:JvmSynthetic
     internal lateinit var titleBarPart: TitleBarPart
 
     @JvmSynthetic
@@ -47,15 +50,22 @@ class ButtonPart {
     }
 
     private fun applyTransparentButton() {
-        windowUiInstance.win32CloseButton.backgroundProperty().value = (Background(BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)))
-        windowUiInstance.win32MaxButton.backgroundProperty().value = (Background(BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)))
-        windowUiInstance.win32UnMaxButton.backgroundProperty().value = (Background(BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)))
-        windowUiInstance.win32MinButton.backgroundProperty().value = (Background(BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)))
+        windowUiInstance.win32CloseButton.backgroundProperty().value =
+            (Background(BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)))
+        windowUiInstance.win32MaxButton.backgroundProperty().value =
+            (Background(BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)))
+        windowUiInstance.win32UnMaxButton.backgroundProperty().value =
+            (Background(BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)))
+        windowUiInstance.win32MinButton.backgroundProperty().value =
+            (Background(BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY)))
     }
 
     private fun applyButtonExitProperties() {
         windowUiInstance.win32CloseButton.setOnMouseClicked {
-            if (!StandardCursorFrame(CursorType.valueOf(windowOptionsInstance.stage.scene.cursor.toString())).cursorType.name.contains("RESIZE")) {
+            if (!StandardCursorFrame(CursorType.valueOf(windowOptionsInstance.stage.scene.cursor.toString())).cursorType.name.contains(
+                    "RESIZE"
+                )
+            ) {
                 if (it.button == MouseButton.PRIMARY) {
                     windowOptionsInstance.stage.close()
                 }
@@ -64,23 +74,39 @@ class ButtonPart {
 
         windowUiInstance.win32CloseButton.setOnMouseEntered {
             if (windowUiInstance.win32CloseButton.isPressed) {
-                changeRegionBackground(windowUiInstance.win32CloseButton, Color.web("#F1707A"))
+                windowBase.backgroundHelper.changeRegionBackground(
+                    windowUiInstance.win32CloseButton,
+                    Color.web("#F1707A")
+                )
                 windowUiInstance.win32CloseIcon.fill = Color.web("#000")
             } else {
-                changeRegionBackground(windowUiInstance.win32CloseButton, Color.web("#E81123"))
+                windowBase.backgroundHelper.changeRegionBackground(
+                    windowUiInstance.win32CloseButton,
+                    Color.web("#E81123")
+                )
                 windowUiInstance.win32CloseIcon.fill = Color.web("#fff")
             }
         }
 
         windowUiInstance.win32CloseButton.setOnMouseExited {
-            changeRegionBackground(windowUiInstance.win32CloseButton, Color.TRANSPARENT)
-            windowUiInstance.win32CloseIcon.fill = getCalculatedColor(titleBarPart.titleBackground)
+            windowBase.backgroundHelper.changeRegionBackground(
+                windowUiInstance.win32CloseButton,
+                Color.TRANSPARENT
+            )
+            windowUiInstance.win32CloseIcon.fill =
+                titleBarPart.titleBackground.getBlackOrWhiteByColor(titleBarPart.titleBackground)
         }
 
         windowUiInstance.win32CloseButton.setOnMousePressed {
-            if (!StandardCursorFrame(CursorType.valueOf(windowOptionsInstance.stage.scene.cursor.toString())).cursorType.name.contains("RESIZE")) {
+            if (!StandardCursorFrame(CursorType.valueOf(windowOptionsInstance.stage.scene.cursor.toString())).cursorType.name.contains(
+                    "RESIZE"
+                )
+            ) {
                 if (it.button == MouseButton.PRIMARY) {
-                    changeRegionBackground(windowUiInstance.win32CloseButton, Color.web("#F1707A"))
+                    windowBase.backgroundHelper.changeRegionBackground(
+                        windowUiInstance.win32CloseButton,
+                        Color.web("#F1707A")
+                    )
                     windowUiInstance.win32CloseIcon.fill = Color.web("#000")
                 }
             }
@@ -96,19 +122,31 @@ class ButtonPart {
 
         windowUiInstance.win32MaxButton.setOnMouseEntered {
             if (windowUiInstance.win32MaxButton.isPressed) {
-                changeRegionBackground(windowUiInstance.win32MaxButton, buttonPressedColor)
+                windowBase.backgroundHelper.changeRegionBackground(
+                    windowUiInstance.win32MaxButton,
+                    buttonPressedColor
+                )
             } else {
-                changeRegionBackground(windowUiInstance.win32MaxButton, buttonHoverColor)
+                windowBase.backgroundHelper.changeRegionBackground(
+                    windowUiInstance.win32MaxButton,
+                    buttonHoverColor
+                )
             }
         }
 
         windowUiInstance.win32MaxButton.setOnMouseExited {
-            changeRegionBackground(windowUiInstance.win32MaxButton, Color.TRANSPARENT)
+            windowBase.backgroundHelper.changeRegionBackground(
+                windowUiInstance.win32MaxButton,
+                Color.TRANSPARENT
+            )
         }
 
         windowUiInstance.win32MaxButton.setOnMousePressed {
             if (it.button == MouseButton.PRIMARY) {
-                changeRegionBackground(windowUiInstance.win32MaxButton, buttonPressedColor)
+                windowBase.backgroundHelper.changeRegionBackground(
+                    windowUiInstance.win32MaxButton,
+                    buttonPressedColor
+                )
             }
         }
     }
@@ -122,19 +160,31 @@ class ButtonPart {
 
         windowUiInstance.win32UnMaxButton.setOnMouseEntered {
             if (windowUiInstance.win32UnMaxButton.isPressed) {
-                changeRegionBackground(windowUiInstance.win32UnMaxButton, buttonPressedColor)
+                windowBase.backgroundHelper.changeRegionBackground(
+                    windowUiInstance.win32UnMaxButton,
+                    buttonPressedColor
+                )
             } else {
-                changeRegionBackground(windowUiInstance.win32UnMaxButton, buttonHoverColor)
+                windowBase.backgroundHelper.changeRegionBackground(
+                    windowUiInstance.win32UnMaxButton,
+                    buttonHoverColor
+                )
             }
         }
 
         windowUiInstance.win32UnMaxButton.setOnMouseExited {
-            changeRegionBackground(windowUiInstance.win32UnMaxButton, Color.TRANSPARENT)
+            windowBase.backgroundHelper.changeRegionBackground(
+                windowUiInstance.win32UnMaxButton,
+                Color.TRANSPARENT
+            )
         }
 
         windowUiInstance.win32UnMaxButton.setOnMousePressed {
             if (it.button == MouseButton.PRIMARY) {
-                changeRegionBackground(windowUiInstance.win32UnMaxButton, buttonPressedColor)
+                windowBase.backgroundHelper.changeRegionBackground(
+                    windowUiInstance.win32UnMaxButton,
+                    buttonPressedColor
+                )
             }
         }
     }
@@ -148,19 +198,31 @@ class ButtonPart {
 
         windowUiInstance.win32MinButton.setOnMouseEntered {
             if (windowUiInstance.win32MinButton.isPressed) {
-                changeRegionBackground(windowUiInstance.win32MinButton, buttonPressedColor)
+                windowBase.backgroundHelper.changeRegionBackground(
+                    windowUiInstance.win32MinButton,
+                    buttonPressedColor
+                )
             } else {
-                changeRegionBackground(windowUiInstance.win32MinButton, buttonHoverColor)
+                windowBase.backgroundHelper.changeRegionBackground(
+                    windowUiInstance.win32MinButton,
+                    buttonHoverColor
+                )
             }
         }
 
         windowUiInstance.win32MinButton.setOnMouseExited {
-            changeRegionBackground(windowUiInstance.win32MinButton, Color.TRANSPARENT)
+            windowBase.backgroundHelper.changeRegionBackground(
+                windowUiInstance.win32MinButton,
+                Color.TRANSPARENT
+            )
         }
 
         windowUiInstance.win32MinButton.setOnMousePressed {
             if (it.button == MouseButton.PRIMARY) {
-                changeRegionBackground(windowUiInstance.win32MinButton, buttonPressedColor)
+                windowBase.backgroundHelper.changeRegionBackground(
+                    windowUiInstance.win32MinButton,
+                    buttonPressedColor
+                )
             }
         }
     }

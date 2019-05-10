@@ -31,7 +31,6 @@ internal data class WindowOptions(
     internal val minimizeButtonIsVisible: Boolean,
     internal val isDraggable: Boolean,
     internal val isResizable: Boolean,
-    internal val resizeLimit: Boolean,
     internal val saveWindowPosition: Boolean,
     internal val svgIconZoom: Double,
     internal val titleAlignment: TitleAlignment,

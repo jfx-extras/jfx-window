@@ -1,7 +1,9 @@
 package jfxwindow.base
 
-import jfxwindow.helpers.AnimationHelper
+import jfxwindow.helpers.*
+import jfxwindow.helpers.BackgroundHelper
 import jfxwindow.helpers.BorderStateHelper
+import jfxwindow.helpers.TitleBarFillsHelper
 import jfxwindow.helpers.WindowResizeHelper
 import jfxwindow.listeners.WindowBaseListener
 import jfxwindow.listeners.WindowInactiveListener
@@ -50,12 +52,12 @@ public class WindowBase {
      * Contains some methods and properties allowing to
      * work with the window title-bar.
      */
-    public var titleBarPart = TitleBarPart()
+    public var titleBarPart = TitleBarPart(this)
     /**
      * Contains some methods and properties allowing to
      * work with the window buttons (close, minimize, maximize).
      */
-    public var buttonPart = ButtonPart()
+    public var buttonPart = ButtonPart(this)
     /**
      * Contains some methods and properties allowing to
      * work with the window shadow.
@@ -65,12 +67,14 @@ public class WindowBase {
      * A class that helps in playing the animation of some elements,
      * but from the public only an extra animation modifier is available.
      */
-    public var animationHelper = AnimationHelper()
+    public var animationHelper = AnimationHelper(this)
     internal var windowBaseListener = WindowBaseListener()
     internal var windowUi = WindowUi(this)
+    internal var backgroundHelper = BackgroundHelper()
     internal var windowResizeHelper = WindowResizeHelper(windowPart)
     internal var borderStateHelper = BorderStateHelper(this)
     internal var windowMinimizeListener = WindowMinimizeListener(this)
     internal var windowMaximizeListener = WindowMaximizeListener(this)
     internal var windowInactiveListener = WindowInactiveListener(this)
+    internal var titleBarFillsHelper = TitleBarFillsHelper(this)
 }

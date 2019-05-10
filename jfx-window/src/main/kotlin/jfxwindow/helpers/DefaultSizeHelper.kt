@@ -6,10 +6,11 @@ internal const val shadowPadding = 18.0
 internal const val windowButtonWidth = 47.0
 internal const val windowButtonCounts = 4.0
 internal const val shadowVertEdges = 2.0
+internal const val titleBarHeight = 33.0
 
 internal fun installDefaultSize(instance: WindowBase) {
     instance.windowOptions.stage.minHeight =
-        instance.windowUi.windowTitleBarPane.height + (shadowPadding * 2)
+        titleBarHeight + (shadowPadding * 2)
     instance.windowOptions.stage.minWidth = instance.windowPart.getMinWidthSizeByTitleBar()
 }
 
@@ -27,7 +28,7 @@ internal fun installCallbackSize(instance: WindowBase) {
                                                                    newValue ->
         if (newValue.toDouble() < instance.windowUi.windowTitleBarPane.height + (shadowPadding * shadowVertEdges)) {
             instance.windowOptions.stage.minHeight =
-                instance.windowUi.windowTitleBarPane.height + (shadowPadding * shadowVertEdges)
+                titleBarHeight + (shadowPadding * shadowVertEdges)
         }
     }
 }
