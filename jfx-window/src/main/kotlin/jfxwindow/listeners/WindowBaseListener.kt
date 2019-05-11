@@ -27,19 +27,21 @@ class WindowBaseListener {
         windowOptionsInstance.stage.scene.cursor = Cursor.DEFAULT
 
         windowUiInstance.windowTitleBarPane.setOnMousePressed {
-            if (windowPart.isDraggable && windowPart.isMaximizable) {
+            if (windowPart.isDraggable) {
                 if (it.target == windowUiInstance.windowTitleBarPane) {
                     if (!StandardCursorFrame(CursorType.valueOf(windowOptionsInstance.stage.scene.cursor.toString())).cursorType.name.contains(
                             "RESIZE"
                         )
                     ) {
                         if (it.button == MouseButton.PRIMARY) {
-                            if (windowOptionsInstance.stage.isMaximized) {
+                            if (windowOptionsInstance.stage.isMaximized && windowPart.isMaximizable) {
                                 xOffset = windowOptionsInstance.stage.x - it.screenX
                                 yOffset = windowOptionsInstance.stage.y - 30
                             } else {
-                                xOffset = windowOptionsInstance.stage.x - it.screenX
-                                yOffset = windowOptionsInstance.stage.y - it.screenY
+                                if (!windowOptionsInstance.stage.isMaximized) {
+                                    xOffset = windowOptionsInstance.stage.x - it.screenX
+                                    yOffset = windowOptionsInstance.stage.y - it.screenY
+                                }
                             }
                         }
                     }
@@ -48,21 +50,23 @@ class WindowBaseListener {
         }
 
         windowUiInstance.windowTitleBarPane.setOnMouseDragged {
-            if (windowPart.isDraggable && windowPart.isMaximizable) {
+            if (windowPart.isDraggable) {
                 if (it.target == windowUiInstance.windowTitleBarPane) {
                     if (!StandardCursorFrame(CursorType.valueOf(windowOptionsInstance.stage.scene.cursor.toString())).cursorType.name.contains(
                             "RESIZE"
                         )
                     ) {
                         if (it.button == MouseButton.PRIMARY) {
-                            if (windowOptionsInstance.stage.isMaximized) {
+                            if (windowOptionsInstance.stage.isMaximized && windowPart.isMaximizable) {
                                 windowOptionsInstance.stage.isMaximized = false
                                 windowOptionsInstance.stage.x = it.screenY + yOffset
                                 windowOptionsInstance.stage.y = it.screenY + yOffset
                             } else {
-                                windowOptionsInstance.stage.x = it.screenX + xOffset
-                                windowOptionsInstance.stage.y = it.screenY + yOffset
-                                windowOptionsInstance.stage.scene.cursor = Cursor.DEFAULT
+                                if (!windowOptionsInstance.stage.isMaximized) {
+                                    windowOptionsInstance.stage.x = it.screenX + xOffset
+                                    windowOptionsInstance.stage.y = it.screenY + yOffset
+                                    windowOptionsInstance.stage.scene.cursor = Cursor.DEFAULT
+                                }
                             }
                         }
                     }
