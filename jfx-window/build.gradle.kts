@@ -42,6 +42,8 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation("org.jetbrains.kotlin:kotlin-serialization:1.3.30")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.11.0")
+    implementation("net.java.dev.jna:jna:5.3.1")
+    implementation("net.java.dev.jna:jna-platform:5.3.1")
 }
 
 tasks.withType<KotlinCompile> {
