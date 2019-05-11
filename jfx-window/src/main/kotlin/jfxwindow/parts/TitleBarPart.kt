@@ -7,7 +7,9 @@ import javafx.scene.layout.BackgroundFill
 import javafx.scene.layout.CornerRadii
 import javafx.scene.paint.Color
 import jfxwindow.base.WindowBase
+import jfxwindow.enums.TitleBarTheme
 import jfxwindow.enums.TitleShadowDepth
+import jfxwindow.helpers.getBlackOrWhiteByColor
 
 /**
  * Contains some methods and properties allowing to
@@ -16,11 +18,13 @@ import jfxwindow.enums.TitleShadowDepth
 @Suppress(
     "RedundantVisibilityModifier",
     "RedundantUnitReturnType",
-    "MemberVisibilityCanBePrivate"
+    "MemberVisibilityCanBePrivate",
+    "CascadeIf"
 )
 public class TitleBarPart(private val windowBase: WindowBase) {
     internal lateinit var temporaryTitleColor: Color
     internal lateinit var temporaryTitleShadow: TitleShadowDepth
+    private var themeHelper: TitleBarTheme = TitleBarTheme.AUTO
 
     internal fun init(): Unit {
         temporaryTitleColor = windowBase.windowOptions.titleBarBackground
@@ -39,6 +43,7 @@ public class TitleBarPart(private val windowBase: WindowBase) {
         windowBase.titleBarFillsHelper.updateFills(
             windowBase.windowOptions.titleBarBackground
         )
+        theme = TitleBarTheme.AUTO
     }
 
     /**
@@ -66,6 +71,37 @@ public class TitleBarPart(private val windowBase: WindowBase) {
             )
             windowBase.titleBarFillsHelper.updateFills(backgroundColor)
         }
+
+    /**
+     * Theme of title-bar elements, default value is AUTO.
+     */
+    public var theme: TitleBarTheme
+        get() = themeHelper
+        set(theme) {
+            if (theme == TitleBarTheme.AUTO) {
+                updateFills(
+                    titleBackground.getBlackOrWhiteByColor(
+                        titleBackground
+                    )
+                )
+                themeHelper = TitleBarTheme.AUTO
+            } else if (theme == TitleBarTheme.DARK) {
+                updateFills(Color.BLACK)
+                themeHelper = TitleBarTheme.DARK
+            } else if (theme == TitleBarTheme.LIGHT) {
+                updateFills(Color.WHITE)
+                themeHelper = TitleBarTheme.LIGHT
+            }
+        }
+
+    private fun updateFills(color: Color) {
+        windowBase.windowUi.win32CloseIcon.fill = color
+        windowBase.windowUi.win32MaxIcon.fill = color
+        windowBase.windowUi.win32UnMaxIcon.fill = color
+        windowBase.windowUi.win32MinIcon.fill = color
+        windowBase.windowUi.title.textFill = color
+        windowBase.windowUi.titleCenter.textFill = color
+    }
 
     /**
      * TitleBar ui elements order (orientation).

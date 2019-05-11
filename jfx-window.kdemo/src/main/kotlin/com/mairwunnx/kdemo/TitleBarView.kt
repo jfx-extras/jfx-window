@@ -6,6 +6,7 @@ import javafx.scene.control.TextField
 import javafx.scene.layout.Priority
 import javafx.scene.layout.VBox
 import javafx.scene.text.Font
+import jfxwindow.enums.TitleBarTheme
 import tornadofx.*
 import com.mairwunnx.kdemo.Application.Companion.windowInstance as window
 
@@ -39,7 +40,8 @@ class TitleBarView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                barBackgroundColorResult.text = window.instance.titleBarPart.titleBackground.toString()
+                barBackgroundColorResult.text =
+                    window.instance.titleBarPart.titleBackground.toString()
             }
         }
 
@@ -76,7 +78,8 @@ class TitleBarView : View() {
 
             setOnAction {
                 when {
-                    this.isSelected -> window.instance.titleBarPart.order = NodeOrientation.RIGHT_TO_LEFT
+                    this.isSelected -> window.instance.titleBarPart.order =
+                        NodeOrientation.RIGHT_TO_LEFT
                     else -> window.instance.titleBarPart.order = NodeOrientation.LEFT_TO_RIGHT
                 }
             }
@@ -108,6 +111,33 @@ class TitleBarView : View() {
             }
         }
 
+        var iterations = 0
+
+        button("switch theme") {
+            isFocusTraversable = false
+            isMnemonicParsing = false
+            maxHeight = Double.MAX_VALUE
+            maxWidth = Double.MAX_VALUE
+            prefHeight = 25.0
+            prefWidth = 170.0
+
+            setOnAction {
+                if (iterations == 0) {
+                    window.instance.titleBarPart.theme = TitleBarTheme.AUTO
+                    iterations =+ 1
+                    this.text = "theme: AUTO"
+                } else if (iterations == 1) {
+                    window.instance.titleBarPart.theme = TitleBarTheme.LIGHT
+                    iterations =+ 2
+                    this.text = "theme: LIGHT"
+                } else if (iterations == 2) {
+                    window.instance.titleBarPart.theme = TitleBarTheme.DARK
+                    iterations = 0
+                    this.text = "theme: DARK"
+                }
+            }
+        }
+
         button("get bar shadow depth") {
             isFocusTraversable = false
             isMnemonicParsing = false
@@ -136,7 +166,8 @@ class TitleBarView : View() {
             VBox.setMargin(this, Insets(10.0, 0.0, 0.0, 0.0))
 
             setOnAction {
-                window.instance.titleBarPart.shadowDepth = enumValueOf("DEPTH${barShadowDepth.text}")
+                window.instance.titleBarPart.shadowDepth =
+                    enumValueOf("DEPTH${barShadowDepth.text}")
             }
         }
 
