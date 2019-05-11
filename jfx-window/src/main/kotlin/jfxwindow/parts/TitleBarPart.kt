@@ -74,34 +74,24 @@ public class TitleBarPart(private val windowBase: WindowBase) {
 
     /**
      * Theme of title-bar elements, default value is AUTO.
+     *
+     * **This can be useful if the theme color is not correctly
+     * determined automatically. Change it with your own requirements.**
      */
     public var theme: TitleBarTheme
         get() = themeHelper
         set(theme) {
             if (theme == TitleBarTheme.AUTO) {
-                updateFills(
-                    titleBackground.getBlackOrWhiteByColor(
-                        titleBackground
-                    )
-                )
                 themeHelper = TitleBarTheme.AUTO
+                windowBase.titleBarFillsHelper.updateFills(titleBackground)
             } else if (theme == TitleBarTheme.DARK) {
-                updateFills(Color.BLACK)
                 themeHelper = TitleBarTheme.DARK
+                windowBase.titleBarFillsHelper.updateFills(Color.WHITE)
             } else if (theme == TitleBarTheme.LIGHT) {
-                updateFills(Color.WHITE)
                 themeHelper = TitleBarTheme.LIGHT
+                windowBase.titleBarFillsHelper.updateFills(Color.BLACK)
             }
         }
-
-    private fun updateFills(color: Color) {
-        windowBase.windowUi.win32CloseIcon.fill = color
-        windowBase.windowUi.win32MaxIcon.fill = color
-        windowBase.windowUi.win32UnMaxIcon.fill = color
-        windowBase.windowUi.win32MinIcon.fill = color
-        windowBase.windowUi.title.textFill = color
-        windowBase.windowUi.titleCenter.textFill = color
-    }
 
     /**
      * TitleBar ui elements order (orientation).
