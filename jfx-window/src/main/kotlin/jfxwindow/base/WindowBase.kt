@@ -1,8 +1,6 @@
 package jfxwindow.base
 
-import jfxwindow.helpers.*
-import jfxwindow.helpers.BackgroundHelper
-import jfxwindow.helpers.BorderStateHelper
+import jfxwindow.helpers.AnimationHelper
 import jfxwindow.helpers.TitleBarFillsHelper
 import jfxwindow.helpers.WindowResizeHelper
 import jfxwindow.listeners.WindowBaseListener
@@ -70,9 +68,7 @@ public class WindowBase {
     public var animationHelper = AnimationHelper(this)
     internal var windowBaseListener = WindowBaseListener()
     internal var windowUi = WindowUi(this)
-    internal var backgroundHelper = BackgroundHelper()
     internal var windowResizeHelper = WindowResizeHelper(windowPart)
-    internal var borderStateHelper = BorderStateHelper(this)
     internal var windowMinimizeListener = WindowMinimizeListener(this)
     internal var windowMaximizeListener = WindowMaximizeListener(this)
     internal var windowInactiveListener = WindowInactiveListener(this)

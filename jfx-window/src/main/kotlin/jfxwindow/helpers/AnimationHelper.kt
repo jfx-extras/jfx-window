@@ -11,6 +11,11 @@ import javafx.scene.layout.Region
 import javafx.scene.paint.Color
 import javafx.scene.shape.Rectangle
 import jfxwindow.base.WindowBase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.javafx.JavaFx as Main
 
 /**
  * A class that helps in playing the animation of some elements,
@@ -33,36 +38,39 @@ public class AnimationHelper(private val windowBase: WindowBase) {
         baseColor: Color,
         toColor: Color
     ): Unit {
-        if (windowBase.windowPart.smoothColorAnim) {
-            rectangle.fill = baseColor
-            fillTransition.shape = rectangle
-            fillTransition.duration = windowBase.windowPart.animationDuration
-            fillTransition.fromValue = baseColor
-            fillTransition.toValue = toColor
+        GlobalScope.launch(Dispatchers.Main) {
+            if (windowBase.windowPart.smoothColorAnim) {
+                rectangle.fill = baseColor
+                fillTransition.shape = rectangle
+                fillTransition.duration = windowBase.windowPart.animationDuration
+                fillTransition.fromValue = baseColor
+                fillTransition.toValue = toColor
 
-            if (fillTransition.status == Animation.Status.RUNNING) {
-                fillTransition.stop()
+                if (fillTransition.status == Animation.Status.RUNNING) {
+                    fillTransition.stop()
 
+                    control.backgroundProperty().value = (Background(
+                        BackgroundFill(toColor, CornerRadii.EMPTY, Insets.EMPTY)
+                    ))
+                    this.cancel()
+                } else {
+                    fillTransition.interpolator = object : Interpolator() {
+                        override fun curve(t: Double): Double {
+                            control.backgroundProperty().value =
+                                (Background(
+                                    BackgroundFill(rectangle.fill, CornerRadii.EMPTY, Insets.EMPTY)
+                                ))
+                            return t + animationModifier
+                        }
+                    }
+
+                    fillTransition.play()
+                }
+            } else {
                 control.backgroundProperty().value = (Background(
                     BackgroundFill(toColor, CornerRadii.EMPTY, Insets.EMPTY)
                 ))
-            } else {
-                fillTransition.interpolator = object : Interpolator() {
-                    override fun curve(t: Double): Double {
-                        control.backgroundProperty().value =
-                            (Background(
-                                BackgroundFill(rectangle.fill, CornerRadii.EMPTY, Insets.EMPTY)
-                            ))
-                        return t + animationModifier
-                    }
-                }
-
-                fillTransition.play()
             }
-        } else {
-            control.backgroundProperty().value = (Background(
-                BackgroundFill(toColor, CornerRadii.EMPTY, Insets.EMPTY)
-            ))
         }
     }
 }

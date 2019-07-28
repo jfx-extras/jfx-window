@@ -1,5 +1,6 @@
 package com.mairwunnx.kdemo
 
+import javafx.scene.Scene
 import javafx.scene.layout.HBox
 import javafx.scene.text.Font
 import javafx.stage.Stage
@@ -15,7 +16,7 @@ class Application : App(BaseView::class) {
         a mistake or comment out the line above, an exception
         will be thrown.
          */
-        stage.initStyle(StageStyle.TRANSPARENT)
+        stage.initStyle(StageStyle.UNDECORATED)
 
         /*
         ↓ It window instance, it need because it instance
@@ -37,11 +38,30 @@ class Application : App(BaseView::class) {
 
         windowInstance = window
         super.start(stage)
+
+        val stage1 = Stage(StageStyle.UNDECORATED)
+        stage1.scene = Scene(HBox())
+        stage1.show()
+
+        val window1 = Window(stage1)
+            .titleTextFont(
+                Font.loadFont(
+                    javaClass.classLoader.getResource("segoeui.ttf").toString(),
+                    12.0
+                )
+            )
+            .titleText("jfx-window2")
+            .saveWindowPosition(true)
+            .windowRootElement(HBox())
+            .build()
+
+
         /*
         ↓ It line just do creating window, but it need
          use after line upper ↑ (after creating stage).
          */
         window.create()
+        window1.create()
         /*
         ↓ it test of exhibiting incompatible size for stage.
         if size so small, it make stage with default min size.

@@ -11,6 +11,8 @@ import jfxwindow.enums.ButtonStyle
 import jfxwindow.enums.ShadowStyle
 import jfxwindow.enums.TitleAlignment
 import jfxwindow.enums.TitleShadowDepth
+import jfxwindow.helpers.*
+import jfxwindow.helpers.installBorderStateHelper
 import jfxwindow.helpers.installCallbackSize
 import jfxwindow.helpers.installDefaultSize
 import jfxwindow.helpers.installInitMaximizing
@@ -609,16 +611,17 @@ public class Window(private val stage: Stage) {
         installDefaultSize(instance)
         installCallbackSize(instance)
         installInitMaximizing(instance)
+        installBorderStateHelper(instance)
         instance.windowMinimizeListener.init()
         instance.windowMaximizeListener.init()
         instance.windowInactiveListener.init()
-        instance.borderStateHelper.init()
         instance.contextPart.init()
         instance.windowPart.init()
         instance.borderPart.init()
         instance.titlePart.init()
         instance.iconPart.init()
         instance.titleBarPart.init()
+        instance.buttonPart.init()
         applyCreateProperties()
         callInitMethods()
         instance.contentPart.returnUserContent()
@@ -633,9 +636,6 @@ public class Window(private val stage: Stage) {
         instance.windowResizeHelper.stage = instance.windowOptions.stage
         instance.windowResizeHelper.scene = instance.windowOptions.stage.scene
 
-        instance.buttonPart.titleBarPart = instance.titleBarPart
-        instance.buttonPart.windowOptionsInstance = instance.windowOptions
-        instance.buttonPart.windowUiInstance = instance.windowUi
         instance.buttonPart.buttonHoverColor = instance.windowOptions.toolButtonsHoverColor
         instance.buttonPart.buttonPressedColor = instance.windowOptions.toolButtonsPressedColor
 

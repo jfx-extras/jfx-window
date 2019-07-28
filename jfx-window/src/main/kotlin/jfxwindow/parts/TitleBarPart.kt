@@ -9,7 +9,6 @@ import javafx.scene.paint.Color
 import jfxwindow.base.WindowBase
 import jfxwindow.enums.TitleBarTheme
 import jfxwindow.enums.TitleShadowDepth
-import jfxwindow.helpers.getBlackOrWhiteByColor
 
 /**
  * Contains some methods and properties allowing to

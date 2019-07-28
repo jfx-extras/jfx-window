@@ -2,11 +2,18 @@ package jfxwindow.listeners
 
 import com.sun.javafx.cursor.CursorType
 import com.sun.javafx.cursor.StandardCursorFrame
+import com.sun.jna.Pointer
+import com.sun.jna.platform.win32.User32
+import com.sun.jna.platform.win32.WinDef
+import com.sun.jna.platform.win32.WinUser
 import javafx.scene.Cursor
 import javafx.scene.input.MouseButton
 import jfxwindow.base.WindowOptions
 import jfxwindow.base.WindowUi
 import jfxwindow.parts.WindowPart
+import com.sun.jna.platform.win32.WinDef.HWND
+
+
 
 class WindowBaseListener {
     private var xOffset: Double = 0.0
@@ -63,8 +70,33 @@ class WindowBaseListener {
                                 windowOptionsInstance.stage.y = it.screenY + yOffset
                             } else {
                                 if (!windowOptionsInstance.stage.isMaximized) {
-                                    windowOptionsInstance.stage.x = it.screenX + xOffset
-                                    windowOptionsInstance.stage.y = it.screenY + yOffset
+                                    val lhwnd = com.sun.glass.ui.Window.getFocusedWindow().nativeWindow
+                                    val lpVoid = Pointer(lhwnd)
+                                    val hwnd = WinDef.HWND(lpVoid)
+                                    val user32 = User32.INSTANCE
+                                    user32.SetWindowPos(
+                                        hwnd,
+                                        WinDef.HWND(Pointer(0)),
+                                        (it.screenX + xOffset).toInt(),
+                                        (it.screenY + yOffset).toInt(),
+                                        windowOptionsInstance.stage.width.toInt(),
+                                        windowOptionsInstance.stage.height.toInt(),
+                                        0x0040 or 0x0020
+                                    )
+
+                                    user32.MoveWindow(
+                                        hwnd,
+                                        (it.screenX + xOffset).toInt(),
+                                        (it.screenY + yOffset).toInt(),
+                                        windowOptionsInstance.stage.width.toInt(),
+                                        windowOptionsInstance.stage.height.toInt(),
+                                        true
+                                    )
+//
+                                    user32.SendMessage(hwnd, 0x0083, WinDef.WPARAM(), WinDef.LPARAM())
+//
+//                                    windowOptionsInstance.stage.x = it.screenX + xOffset
+//                                    windowOptionsInstance.stage.y = it.screenY + yOffset
                                     windowOptionsInstance.stage.scene.cursor = Cursor.DEFAULT
                                 }
                             }

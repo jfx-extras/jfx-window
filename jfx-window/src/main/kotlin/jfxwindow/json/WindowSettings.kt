@@ -1,33 +1,33 @@
 package jfxwindow.json
 
-import kotlinx.serialization.*
+import kotlinx.serialization.Serializable
 
 @Serializable
-data class WindowSettings(
-    val window: Window
+internal data class WindowSettings(
+    internal val window: Window
 ) {
     @Serializable
-    data class Window(
-        val positions: Positions,
-        val sizes: Sizes,
-        val states: States
+    internal data class Window(
+        internal val positions: Positions,
+        internal val sizes: Sizes,
+        internal val states: States
     ) {
         @Serializable
-        data class Sizes(
-            val height: String,
-            val width: String
+        internal data class Sizes(
+            internal val height: String,
+            internal val width: String
         )
 
         @Serializable
-        data class Positions(
-            val x: String,
-            val y: String
+        internal data class Positions(
+            internal val x: String,
+            internal val y: String
         )
 
         @Serializable
-        data class States(
-            val isMaximized: String,
-            val isMinimized: String
+        internal data class States(
+            internal val isMaximized: String,
+            internal val isMinimized: String
         )
     }
 }

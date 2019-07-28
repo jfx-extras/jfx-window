@@ -7,7 +7,7 @@ import java.util.logging.Logger
 
 internal fun validateStage(stage: Stage) {
     validateJVMVersion()
-    validateStageStyle(stage)
+    //validateStageStyle(stage)
 }
 
 private fun validateJVMVersion() {
